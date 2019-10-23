@@ -1,0 +1,30 @@
+<view class="icon_name">
+    <view class="icon">
+        <image src="{{iconUrl}}"></image>
+    </view>
+    <text class="username">{{userName}}</text>
+</view>
+
+<view class="main">
+    <view class="edit">
+        <text style="font-size">基本信息</text>
+        <text style="font-size: 30rpx; color:#868686">编辑</text>
+    </view>
+    <view class="info">
+        <view class="left_info">
+            <text>姓名\n</text>
+            <text>学号\n</text>
+            <text>手机\n</text>
+            <text>邮箱\n</text>
+            <text>账户类型\n</text>
+        </view>
+        <view class="right_info">
+            <text>{{stuName}}\n</text>
+            <text>{{id}}\n</text>
+            <text>{{phone}}\n</text>
+            <text>{{email}}\n</text>
+            <text>{{type}}\n</text>
+        </view>
+    </view>
+</view>
+

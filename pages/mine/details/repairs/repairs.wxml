@@ -1,0 +1,25 @@
+<form>
+    <view class="inputs">
+        <text>设备ID</text>
+        <input type="text" placeholder="请输入设备ID" placeholder-class="placeholder"></input>
+    </view>
+    <view class="inputs">
+        <text>设备名称</text>
+        <input type="text" placeholder="请输入设备名称"></input>
+    </view>
+    <view class="inputs">
+        <text>报修原因</text>
+        <input type="text" placeholder="请输入报修原因"></input>
+    </view>
+    <view class="area">
+        <text>详细描述</text>
+        <textarea placeholder="输入详细报修原因"></textarea>
+    </view>
+    <view class="inputs">
+        <text>上传照片</text>
+        <button size="mini" bindtap="uploadImg">选择图片</button>
+    </view>
+    <view class="bottom">
+        <button type="primary">提交</button>
+    </view>
+</form>
