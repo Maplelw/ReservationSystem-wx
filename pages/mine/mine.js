@@ -1,9 +1,8 @@
-let website = require('../../global/global.js').web_test;
-console.log(website);
 Page({
 
   /**
    * 页面的初始数据
+   *
    */
   data: {
     iconUrl: "",
@@ -22,15 +21,6 @@ Page({
         that.setData({iconUrl:res.userInfo.avatarUrl});
         that.setData({userName:res.userInfo.nickName});
       }
-    }); 
-    wx.request({
-        url: website,
-        success (res) {
-            console.log(res);
-        },
-        fail (res){
-            console.log("请求失败");
-        }
     })
   },
 

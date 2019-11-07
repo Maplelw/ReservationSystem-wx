@@ -1,7 +1,9 @@
 {
     "pages": [
-"pages/mine/mine",
-
+        "pages/mine/mine",
+        "pages/register/register",
+        
+        
         "pages/mine/details/changeEquip/changeEquip",
         "pages/mine/details/record/record",
         "pages/mine/details/borrowed/borrowed",

@@ -1,6 +1,6 @@
 const datas = {
     host: "localhost",
-    web_test: "http://" + "localhost" + ":8080/ReservationSystem_war/test"
+    login: "http://" + "localhost" + ":8080/index/login",
+    register: "http://localhost:8080/index/register"
 }
-
 module.exports = datas;

@@ -1,31 +1,22 @@
+let login = require('../../../../global/global.js').login;
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        stuName: "张三",
-        id: "20172601031248",
-        phone: "18845673256",
+        stuName: "",
+        id: "",
+        phone: "",
         email: "13154@hun.com",
-        type: "老师"
+        type: ""
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        var that = this;
-        wx.getUserInfo({
-            success: function (res) {
-                console.log(res);
-                that.setData({ iconUrl: res.userInfo.avatarUrl });
-                that.setData({ userName: res.userInfo.nickName });
-            }
-        }),
-        wx.request({
-            url: '',
-        })
+        
     },
 
     /**
@@ -39,7 +30,32 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        var that = this;
+        wx.getUserInfo({
+            success: function (res) {
+                that.setData({ iconUrl: res.userInfo.avatarUrl });
+                that.setData({ userName: res.userInfo.nickName });
+            }
+        }),
+            wx.request({
+                url: login,
+                data: {
+                    username: "lw"
+                },
+                success(res) {
+                    console.log(res);
+                    that.setData({
+                        stuName: res.data.name,
+                        id: res.data.id,
+                        phone: res.data.phone,
+                        email: res.data.email,
+                        type: res.data.type
+                    })
+                },
+                fail(res) {
+                    console.log("请求失败");
+                }
+            })
     },
 
     /**
