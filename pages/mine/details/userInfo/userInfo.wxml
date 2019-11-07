@@ -17,13 +17,15 @@
             <text>手机\n</text>
             <text>邮箱\n</text>
             <text>账户类型\n</text>
+            <text>班级\n</text>
         </view>
         <view class="right_info">
-            <text>{{stuName}}\n</text>
-            <text>{{id}}\n</text>
-            <text>{{phone}}\n</text>
-            <text>{{email}}\n</text>
-            <text>{{type}}\n</text>
+            <text>{{u_name}}\n</text>
+            <text>{{u_userno}}\n</text>
+            <text>{{u_phone}}\n</text>
+            <text>{{u_email}}\n</text>
+            <text>{{u_user_type}}\n</text>
+            <text>{{u_classno}}\n</text>
         </view>
     </view>
 </view>

@@ -17,14 +17,6 @@
             </view>
             <image src="/img/mine/arrow.png" class="arrow"></image>
         </navigator>
-
-        <navigator class="options" url="/pages/mine/details/changePassword/changePassword">
-            <view class="img_text">
-                <image src="/img/mine/changePassword.png" class="icon"></image>
-                <text>修改密码</text>
-            </view>
-            <image src="/img/mine/arrow.png" class="arrow"></image>
-        </navigator>
         <view class="gap">
             <text>设备</text>
         </view>
@@ -51,13 +43,6 @@
             <view class="img_text">
                 <image src="/img/mine/userInfo.png" class="icon"></image>
                 <text>个人资料</text>
-            </view>
-            <image src="/img/mine/arrow.png" class="arrow"></image>
-        </navigator>
-        <navigator class="options" url="/pages/mine/details/changePassword/changePassword">
-            <view class="img_text">
-                <image src="/img/mine/changePassword.png" class="icon"></image>
-                <text>修改密码</text>
             </view>
             <image src="/img/mine/arrow.png" class="arrow"></image>
         </navigator>

@@ -5,11 +5,12 @@ Page({
      * 页面的初始数据
      */
     data: {
-        stuName: "",
-        id: "",
-        phone: "",
-        email: "13154@hun.com",
-        type: ""
+        u_name: "",
+        u_userno: "",
+        u_phone: "",
+        u_email: "",
+        u_user_type: "",
+        u_classno: ""
     },
 
     /**
@@ -40,16 +41,17 @@ Page({
             wx.request({
                 url: login,
                 data: {
-                    username: "lw"
+                    u_wechatid: "043ydeZ21oqM8Q1nKaY21vlsZ21ydeZa"
                 },
                 success(res) {
-                    console.log(res);
+                    console.log(res.data.data.u_name);
                     that.setData({
-                        stuName: res.data.name,
-                        id: res.data.id,
-                        phone: res.data.phone,
-                        email: res.data.email,
-                        type: res.data.type
+                        u_name: res.data.data.u_name,
+                        u_userno: res.data.data.u_userno,
+                        u_phone: res.data.data.u_phone,
+                        u_email: res.data.data.u_email,
+                        u_user_type: res.data.data.u_user_type,
+                        u_classno: res.data.data.u_classno
                     })
                 },
                 fail(res) {

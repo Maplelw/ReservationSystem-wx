@@ -9,7 +9,6 @@ Page({
         code: "",
     },
 
-
     formSubmit: function(e) {
         var that = this;
         wx.login({

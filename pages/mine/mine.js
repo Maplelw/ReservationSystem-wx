@@ -7,7 +7,7 @@ Page({
   data: {
     iconUrl: "",
     userName: "",
-    isManager: false,
+    isManager:false,
     length: ""
   },
 

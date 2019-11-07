@@ -13,9 +13,6 @@
         "pages/mine/details/userInfo/userInfo",
         "pages/mine/details/changePassword/changePassword",
 
-        
-        
-        
         "pages/logs/logs",
         "pages/index/index"
     ],

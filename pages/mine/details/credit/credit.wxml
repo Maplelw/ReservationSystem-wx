@@ -3,7 +3,7 @@
         <text style="font-size: 35rpx; color: #3E606F">您的信用评分</text>
     </view>
     <view class="score">
-        <text style="font-size: 80rpx;">{{score}}</text>
+        <text style="font-size: 80rpx;">{{u_credit_score}}</text>
         <text style="font-size: 30rpx; color: #AAAAAA">{{comment}}</text>
     </view>
 </view>
