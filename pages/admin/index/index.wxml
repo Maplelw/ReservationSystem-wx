@@ -1,0 +1,40 @@
+<view class="up">
+    <view class="mark">
+        <image src="/img/admin/circlePoint.png"></image>
+        <text>事务 处理</text>
+    </view>
+    <view>
+        <view class="choice">
+            <navigator class="eachChoice" url="/pages/admin/index/checkReservation/checkReservation">
+                <image src="/img/admin/reservation.png" ></image>
+                <text>预约申请</text>
+            </navigator>
+            <navigator class="eachChoice" url="/pages/admin/index/checkReturn/checkReturn">
+                <image src="/img/admin/return.png"></image>
+                <text>归还确认</text>
+            </navigator>
+            <navigator class="eachChoice" url="/pages/admin/index/checkOverdue/checkOverdue">
+                <image src="/img/admin/overdue.png"></image>
+                <text>逾期未还</text>
+            </navigator>
+        </view>
+    </view>
+</view>
+<view class="down">
+    <view class="mark">
+        <image src="/img/admin/circlePoint.png"></image>
+        <text>录入修改</text>
+    </view>
+    <view>
+        <view class="choice">
+            <navigator class="eachChoice" url="/pages/admin/index/recordDevice/recordDevice">
+                <image src="/img/admin/logging.png" ></image>
+                <text>录入设备</text>
+            </navigator>
+            <navigator class="eachChoice" url="/pages/admin/index/changeDevice/changeDevice">
+                <image src="/img/admin/change.png"></image>
+                <text>修改设备</text>
+            </navigator>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,14 @@
+<view class="all" wx:for="{{device}}" wx:key="{{index}}" data-index="{{index}}" bindtap="getDetails">
+    <view class="device" >
+        <image src="/img/global/device.png"></image>
+        <view class="device_info">
+            <text style="font-size:32rpx;">{{item.d_no}}</text>
+            <text style="font-size:32rpx;">{{item.d_name}}</text>
+            <text style="color:#aaaaaa;font-size:30rpx;">主要用途:</text>
+            <text style="color:#aaaaaa;font-size:30rpx;">{{item.d_main_use}}</text>
+        </view>
+    </view>
+    <view>
+        <text class="num">申请人数：{{item.reservation_num}}</text>
+    </view>
+</view>

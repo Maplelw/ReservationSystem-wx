@@ -1,0 +1,38 @@
+<view class="top">
+    <view style="display: flex">
+        <image src="/img/global/device.png"></image>
+        <view class="device_info">
+            <text style="font-size:32rpx;">{{device.d_no}}</text>
+            <text style="font-size:32rpx;">{{device.d_name}}</text>
+        </view>
+    </view>
+    <view class="state">{{device.d_state}}</view>
+</view>
+<view class="middle">
+    <text bindtap="toDetail" style="color:{{detailColor}}">详细信息</text>
+    <text bindtap="toComment" style="color:{{commentColor}}">评论</text>
+</view>
+<view wx:if="{{choice==='detail'}}">
+    <view class="details">
+        <view class="texts">设备编号:<text>{{device.d_no}}</text></view>
+        <view class="texts">设备名称:<text>{{device.d_name}}</text></view>
+        <view class="texts">主要用途:<text>{{device.d_main_use}}</text></view>
+        <view class="texts">重要参数:<text>{{device.d_important_param}}</text></view>
+        <view class="texts">存放场地:<text>{{device.d_save_site}}</text></view>
+        <view class="texts">保管人姓名:<text>{{device.a_name}}</text></view>
+        <view class="texts">保管人电话:<text>{{device.a_phone}}</text></view>
+    </view>
+    <view class="reservation">
+        <button class="button1" bindtap="reserve">预约设备</button>    
+        <button class="button2" bindtap="follow">跟踪设备</button>
+    </view>
+</view>
+<view wx:else>
+    <view class="comments" wx:for="{{comment}}" wx:key="{{index}}">
+        <view class="iconName">
+            <image src="/img/global/icon.png"></image>
+            <text>{{item.u_name}}</text>
+        </view>
+        <view class="content">{{item.c_content}}</view>
+    </view>
+</view>

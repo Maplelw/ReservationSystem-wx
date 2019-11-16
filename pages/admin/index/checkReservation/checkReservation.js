@@ -1,18 +1,41 @@
-// pages/test/test.js
+let handleReservation = require('../../../../global/global.js').handleReservation;
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        device: []
+    },
 
+    getDetails: function(e) {
+        var param = e.currentTarget.dataset.index;
+        var d_no = this.data.device[param].d_no;
+        wx.navigateTo({
+            url: '/pages/admin/index/checkReservation/chooseReservation/chooseReservation' + '?d_no=' + d_no,
+        })
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        var that = this;
+        wx:wx.login({
+            success(res) {
+                wx.request({
+                    url: handleReservation,
+                    data: {
+                        code: res.code
+                    },
+                    success(res) {
+                        that.setData({
+                            device: res.data.device
+                        })
+                    }
+                })
+            }
+        })
     },
 
     /**

@@ -1,0 +1,20 @@
+<view wx:for="{{info}}" wx:key="index">
+    <view class="application">
+        <view class="info">
+            <view>
+                <text style="color: #000000;font-size:40rpx;margin-right:40rpx;">{{item.u_name}}</text>
+                <text>{{item.u_type}}</text>
+            </view>
+            <text>借用时间：{{item.r_borrow_date}}--{{item.r_return_date}}</text>
+            <text>手机：{{item.u_phone}}</text>
+            <text>邮箱：{{item.u_email}}</text>
+        </view>
+        <view class="credit">
+            <text>信用分</text>
+            <text>{{item.u_credit_grade}}</text>
+        </view>
+    </view>
+    <view class="buttons">
+        <text bindtap="remind" style="background-color: #607D8B; color:#ffffff; border-radius:15%">提醒</text>
+    </view>
+</view>

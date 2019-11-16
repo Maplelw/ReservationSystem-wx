@@ -1,4 +1,8 @@
-<view class="t1">
-    heh 
-    <view class="t2">嘻嘻</view>
+<view>
+    <navigator open-type="redirect" url="/pages/admin/index/index">
+        <button>管理员测试入口</button>
+    </navigator>
+    <navigator open-type="redirect" url="/pages/user/index/index">
+        <button>用户测试入口</button>
+    </navigator>
 </view>

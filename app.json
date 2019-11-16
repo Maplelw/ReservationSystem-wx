@@ -1,20 +1,27 @@
 {
     "pages": [
-        "pages/mine/mine",
-        "pages/register/register",
+        "pages/test/test",
+        "pages/user/index/index",
+        "pages/admin/index/index",
+        "pages/user/index/device/device",
         
+        "pages/user/mine/mine",
+        "pages/user/register/register",
+        "pages/user/mine/borrowed/borrowed",
+        "pages/user/mine/reservation/reservation",
+        "pages/user/mine/credit/credit",
+        "pages/user/mine/repairs/repairs",
+        "pages/user/mine/userInfo/userInfo",
         
-        "pages/mine/details/changeEquip/changeEquip",
-        "pages/mine/details/record/record",
-        "pages/mine/details/borrowed/borrowed",
-        "pages/mine/details/preservation/preservation",
-        "pages/mine/details/credit/credit",
-        "pages/mine/details/repairs/repairs",
-        "pages/mine/details/userInfo/userInfo",
-        "pages/mine/details/changePassword/changePassword",
-
-        "pages/logs/logs",
-        "pages/index/index"
+        "pages/admin/mine/changePassword/changePassword",
+        "pages/admin/index/checkReservation/checkReservation",
+        "pages/admin/index/checkReservation/chooseReservation/chooseReservation",
+        "pages/admin/index/checkReturn/checkReturn",
+        "pages/admin/index/checkOverdue/checkOverdue",
+        "pages/admin/index/changeDevice/changeDevice",
+        "pages/admin/index/recordDevice/recordDevice",
+        "pages/admin/mine/mine"
+        
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -22,21 +29,5 @@
         "navigationBarTitleText": "WeChat",
         "navigationBarTextStyle": "black"
     },
-    "sitemapLocation": "sitemap.json",
-    "tabBar": {
-        "list": [
-            {
-                "pagePath": "pages/index/index",
-                "text": "首页",
-                "iconPath": "/img/global/nv_index_off.png",
-                "selectedIconPath": "/img/global/nv_index_on.png"
-            },
-            {
-                "pagePath": "pages/mine/mine",
-                "text": "我的",
-                "iconPath": "/img/global/nv_mine_off.png",
-                "selectedIconPath": "/img/global/nv_mine_on.png"
-            }
-        ]
-    }
+    "sitemapLocation": "sitemap.json"
 }

@@ -1,0 +1,43 @@
+<!-- 头部选项 -->
+<view class="top">
+    <text bindtap="toHot" style="color:{{hotColor}}">热门</text>
+    <text bindtap="toAll" style="color:{{allColor}}">所有</text>
+</view>
+<!-- 中间数据 -->
+<view wx:if="{{choice === 'hot'}}">
+    <view class="device" data-index="{{index}}" wx:for="{{hotDevice}}" wx:key="{{index}}" bindtap="getDetails">
+        <view class="img">
+            <image src="/img/global/device.png"></image>
+        </view>
+        
+        <view class="device_info">
+            <text style="font-size:32rpx;">{{item.d_no}}</text>
+            <text style="font-size:32rpx;">{{item.d_name}}</text>
+            <text style="color:#aaaaaa;font-size:30rpx;">主要用途:</text>
+            <text style="color:#aaaaaa;font-size:30rpx;">{{item.d_main_use}}</text>
+        </view>
+    </view>
+</view>
+<view wx:else>
+所有
+    <view class="device" data-index="{{index}}" wx:for="{{hotDevice}}" wx:key="{{index}}" bindtap="getDetails">
+        <image src="/img/global/device.png"></image>
+        <view class="device_info">
+            <text style="font-size:32rpx;">{{item.d_no}}</text>
+            <text style="font-size:32rpx;">{{item.d_name}}</text>
+            <text style="color:#aaaaaa;font-size:30rpx;">主要用途:</text>
+            <text style="color:#aaaaaa;font-size:30rpx;">{{item.d_main_use}}</text>
+        </view>
+    </view>
+</view>
+<!-- 底部导航 -->
+<view class="footer">
+    <view class="box">
+        <view data-index="{{index}}" bindtap="navigate" wx:for="{{navigator}}" wx:key="{{index}}">
+            <view class="choice">
+                <image src="{{item.img}}"></image>
+                <text>{{item.name}}</text>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,29 @@
+.all {
+    border-bottom: 2rpx solid #eeeeee;
+    padding: 10rpx;
+}
+
+.device {
+    display: flex;
+}
+
+.device_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+image {
+    width: 120rpx;
+    height: 100rpx;
+    margin: 30rpx 50rpx;
+}
+
+.num {
+    color:#000000;
+    font-size:30rpx;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20rpx;
+    
+}

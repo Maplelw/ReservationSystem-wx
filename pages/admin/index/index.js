@@ -1,4 +1,4 @@
-// pages/test/test.js
+// pages/user/index/index.js
 Page({
 
     /**

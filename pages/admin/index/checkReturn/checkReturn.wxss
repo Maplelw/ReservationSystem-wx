@@ -1,0 +1,39 @@
+.application {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20rpx;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 550rpx;
+}
+
+.info text {
+    font-size:32rpx;
+    color: #5e5e5e;
+    margin: 5rpx;
+}
+
+.credit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(45, 154, 167)
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10rpx;
+    border-bottom: 2rpx solid #eeeeee;
+    padding-bottom: 20rpx;
+}
+
+.buttons text {
+    font-size: 30rpx;
+    margin-right: 20rpx;
+    padding: 12rpx;
+}
