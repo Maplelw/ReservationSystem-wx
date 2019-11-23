@@ -3,14 +3,14 @@
     justify-content: center;
 }
 
-.icon image {
+.icon open-data {
     width: 150rpx;
     height: 150rpx;
     border-radius: 50%;
 }
 
 .username {
-    margin: 10rpx 0;
+    margin: 20rpx 0;
     justify-content: center;
     display: flex;
 }
@@ -63,6 +63,8 @@
     bottom: 0;
     width: 750rpx;
     background-color: #ffffff;  
+    border-top: 2rpx solid #cccccc;
+    padding-top: 20rpx;
 }
 
 .footer .box {

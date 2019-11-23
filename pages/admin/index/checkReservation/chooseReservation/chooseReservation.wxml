@@ -1,19 +1,22 @@
-<view wx:for="{{info}}" wx:key="index">
+<view wx:for="{{reservation}}" wx:key="index">
     <view class="application">
         <view class="info">
             <view>
-                <text style="color: #000000;font-size:40rpx;margin-right:40rpx;">{{item.u_name}}</text>
-                <text>{{item.u_type}}</text>
+                <text style="color: #000000;font-size:40rpx;margin-right:40rpx;">{{item.m_Uname}}</text>
+                <text>{{item.m_Utype}}</text>
             </view>
-            <text>申请时间：{{item.r_reservation_date}}</text>
-            <text>借用时间：{{item.r_borrow_date}}--{{item.r_return_date}}</text>
+            <text>申请时间：{{item.m_RreservationDate}}</text>
+            <text>借用时间：{{item.m_RstartDate}}--{{item.m_RreturnDate}}</text>
         </view>
         <view class="credit">
             <text>信用分</text>
-            <text>{{item.u_credit_grade}}</text>
+            <text>{{item.m_UcreditGrade}}</text>
         </view>
     </view>
     <view class="buttons">
-        <text bindtap="confirm" style="background-color: #607D8B; color:#ffffff; border-radius:15%">确认租借</text>
+        <text data-index="{{index}}" bindtap="reject" 
+            style="background-color: #eeeeee; color:#607D8B; border-radius:15%">拒绝租借</text>
+        <text data-index="{{index}}" bindtap="confirm" 
+            style="background-color: #607D8B; color:#ffffff; border-radius:15%">确认租借</text>
     </view>
 </view>

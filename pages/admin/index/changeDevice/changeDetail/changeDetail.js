@@ -1,20 +1,30 @@
-let hot = require('../../../../global/global.js').hot;
+let deviceDetail = require('../../../../../global/global.js').deviceDetail;
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        hotDevice: [],
-        allDevice: [],
+        choice: 'detail',//详细信息或修改
+        device: {},
+        code: "",
+        d_no: "",
     },
 
-    //获取热门设备中的具体信息
-    getDetails: function (e) {
-        var t = e.currentTarget.dataset.index;
-        var d_no = this.data.hotDevice[t].m_Dno;
-        wx.navigateTo({
-            url: 'changeDetail/changeDetail' + '?d_no=' + d_no,
+    //修改设备信息
+    editDevice: function() {
+        console.log("修改设备")
+        this.setData({
+            choice: 'edit'
+        })
+    },
+
+    //确定修改信息
+    confirm: function() {
+        console.log("确定修改信息")
+        this.setData({
+            choice: 'detail'
         })
     },
 
@@ -22,17 +32,23 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.setData({
+            d_no: options.d_no
+        })
+        console.log("上一页面传来的编号")
+        console.log(this.data.d_no)
         var that = this;
         wx.request({
-            url: hot,
-            method: 'POST',
-            success: function (res) {
+            url: deviceDetail,
+            data: {
+                d_no: that.data.d_no
+            },
+            success(res) {
                 console.log(res.data)
                 that.setData({
-                    hotDevice: res.data.device
+                    device: 　res.data.device
                 })
-            },
-            fail: function (res) { console.log("请求失败") },
+            }
         })
     },
 

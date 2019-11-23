@@ -16,9 +16,9 @@
     <view class="details">
         <view class="texts">设备编号:<text>{{device.d_no}}</text></view>
         <view class="texts">设备名称:<text>{{device.d_name}}</text></view>
-        <view class="texts">主要用途:<text>{{device.d_main_use}}</text></view>
-        <view class="texts">重要参数:<text>{{device.d_important_param}}</text></view>
-        <view class="texts">存放场地:<text>{{device.d_save_site}}</text></view>
+        <view class="texts">主要用途:<text>{{device.d_mainUse}}</text></view>
+        <view class="texts">重要参数:<text>{{device.d_importantParam}}</text></view>
+        <view class="texts">存放场地:<text>{{device.d_saveSite}}</text></view>
         <view class="texts">保管人姓名:<text>{{device.a_name}}</text></view>
         <view class="texts">保管人电话:<text>{{device.a_phone}}</text></view>
     </view>
@@ -27,6 +27,7 @@
         <button class="button2" bindtap="follow">跟踪设备</button>
     </view>
 </view>
+<!-- 评论 -->
 <view wx:else>
     <view class="comments" wx:for="{{comment}}" wx:key="{{index}}">
         <view class="iconName">

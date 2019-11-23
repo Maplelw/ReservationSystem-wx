@@ -26,6 +26,7 @@ Page({
                 that.setData(
                     {securityCode:res.data.securityCode}
                 )
+                console.log(that.data.securityCode);
             }
         })
     },
@@ -37,11 +38,14 @@ Page({
             var that = this;
             wx.login({
                 success(res) {
-                    console.log(res);
+                    console.log(res.code);
                     that.setData({ code: res.code });
                     wx.request({
                         url: register,
                         method: "POST",
+                        header: {
+                            "content-type": "application/x-www-form-urlencoded"
+                        },
                         data: {
                             code: that.data.code,
                             u_no: e.detail.value.u_no,
@@ -53,8 +57,8 @@ Page({
                             u_mentor_name: e.detail.value.u_mentor_name,
                             u_mentor_phone: e.detail.value.u_mentor_phone
                         },
-                        header: {
-                            'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+                        success: function(res) {
+                            console.log(res.data)
                         }
                     })
                 },

@@ -14,19 +14,21 @@
             <text style="font-size:32rpx;">{{item.d_no}}</text>
             <text style="font-size:32rpx;">{{item.d_name}}</text>
             <text style="color:#aaaaaa;font-size:30rpx;">主要用途:</text>
-            <text style="color:#aaaaaa;font-size:30rpx;">{{item.d_main_use}}</text>
+            <text style="color:#aaaaaa;font-size:30rpx;">{{item.d_mainUse}}</text>
         </view>
     </view>
 </view>
-<view wx:else>
-所有
+<!-- 所有 -->
+<view wx:else> 
     <view class="device" data-index="{{index}}" wx:for="{{hotDevice}}" wx:key="{{index}}" bindtap="getDetails">
-        <image src="/img/global/device.png"></image>
+        <view class="img">
+            <image src="/img/global/device.png"></image>
+        </view>
         <view class="device_info">
             <text style="font-size:32rpx;">{{item.d_no}}</text>
             <text style="font-size:32rpx;">{{item.d_name}}</text>
             <text style="color:#aaaaaa;font-size:30rpx;">主要用途:</text>
-            <text style="color:#aaaaaa;font-size:30rpx;">{{item.d_main_use}}</text>
+            <text style="color:#aaaaaa;font-size:30rpx;">{{item.d_mainUse}}</text>
         </view>
     </view>
 </view>

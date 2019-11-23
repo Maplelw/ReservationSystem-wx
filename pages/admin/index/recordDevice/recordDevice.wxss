@@ -44,3 +44,7 @@
 .bottom {
     margin: 50rpx;
 }
+
+.bottom button {
+    background-color: #607D8B; 
+}

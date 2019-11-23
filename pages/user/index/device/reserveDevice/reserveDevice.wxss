@@ -1,0 +1,28 @@
+.borrow {
+    border-bottom: 1rpx solid #e6e6e6;
+    display: flex;
+    font-size: 40rpx;
+    font-weight: 500;
+    padding: 20rpx 0;
+}
+
+.borrow text {
+    margin-left: 40rpx;
+}
+
+.borrow .pickTime text {
+    color: #aaa;
+    margin-left: 50rpx;
+    font-size: 35rpx;
+}
+
+.down {
+    background-color: rgba(62, 96, 111, 1);
+    margin: 40rpx 40rpx;
+}
+
+.btn {
+    background-color: rgba(62, 96, 111, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 34rpx;
+}

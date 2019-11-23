@@ -1,5 +1,5 @@
-let details = require('../../../../global/global.js').details;
-let reserve = require('../../../../global/global.js').reserve;
+let deviceDetail = require('../../../../global/global.js').deviceDetail;
+
 Page({
 
     /**
@@ -9,27 +9,15 @@ Page({
         choice: 'detail',//详细信息或评论
         detailColor: "#000000",//设置选中颜色
         commentColor: "#bbbbbb",
+        device: {},
         code: "",
         d_no: "",
-        device: []
     },
 
     //预约设备
     reserve: function() {
-        var that = this;
-        wx.login({
-            success(res) {
-                wx.request({
-                    url: reserve,
-                    data: {
-                        d_no: that.data.device.d_no,
-                        code: res.code
-                    },
-                    success(res) {
-                        console.log(res.data)
-                    }
-                })
-            }
+        wx.navigateTo({
+            url: '/pages/user/index/device/reserveDevice/reserveDevice' + '?d_no=' + this.data.d_no,
         })
     },
     //跟踪设备
@@ -76,14 +64,14 @@ Page({
         console.log(this.data.d_no);
         var that = this;
         wx.request({
-            url: details,
+            url: deviceDetail,
             data: {
                 d_no: that.data.d_no
             },
             success(res) {
+                console.log(res.data)
                 that.setData({
-                    device: res.data.device,
-                    comment: res.data.comment
+                    device: 　res.data.device
                 })
             }
         })

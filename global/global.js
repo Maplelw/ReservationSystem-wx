@@ -5,7 +5,7 @@ const datas = {
     register: host + "/user/register",
     getSecurityCode: host +　"/user/getSecurityCode",
     hot: host + "/user/hot",
-    details: host + "/user/details",
+    deviceDetail: host + "/user/deviceDetail",
     reserve: host +　"/user/reserve",
     reservationDetail: host + "/admin/reservationDetail",
     rejectReservation: host + "/admin/rejectReservation",
@@ -14,5 +14,6 @@ const datas = {
     confirmReturn: host + "/admin/confirmReturn",
     overDue: host + "/admin/overDue",
     remindOverDue: host + "/admin/remindOverDue",
+    getMessage: host + "/user/getMessage",
 }
 module.exports = datas;

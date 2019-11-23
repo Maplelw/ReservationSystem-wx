@@ -2,13 +2,13 @@
     <view class="device" >
         <image src="/img/global/device.png"></image>
         <view class="device_info">
-            <text style="font-size:32rpx;">{{item.d_no}}</text>
-            <text style="font-size:32rpx;">{{item.d_name}}</text>
+            <text style="font-size:32rpx;">{{item.m_Dno}}</text>
+            <text style="font-size:32rpx;">{{item.m_Dname}}</text>
             <text style="color:#aaaaaa;font-size:30rpx;">主要用途:</text>
-            <text style="color:#aaaaaa;font-size:30rpx;">{{item.d_main_use}}</text>
+            <text style="color:#aaaaaa;font-size:30rpx;">{{item.m_DmainUse}}</text>
         </view>
     </view>
     <view>
-        <text class="num">申请人数：{{item.reservation_num}}</text>
+        <text class="num">申请人数：{{item.m_Rsum}}</text>
     </view>
 </view>

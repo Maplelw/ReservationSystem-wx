@@ -2,7 +2,25 @@
     <image src="/img/mine/search.png"></image>
     <text>查找</text>
 </view>
-<view class="container1" wx:for="{{equipment}}"  wx:key="{{index}}">
+
+<!-- 中间数据 -->
+<view>
+    <view class="device" data-index="{{index}}" wx:for="{{hotDevice}}" wx:key="{{index}}" bindtap="getDetails">
+        <view class="img">
+            <image src="/img/global/device.png"></image>
+        </view>
+        
+        <view class="device_info">
+            <text style="font-size:32rpx;">{{item.m_Dno}}</text>
+            <text style="font-size:32rpx;">{{item.m_Dname}}</text>
+            <text style="color:#aaaaaa;font-size:30rpx;">主要用途:</text>
+            <text style="color:#aaaaaa;font-size:30rpx;">{{item.m_DmainUse}}</text>
+        </view>
+    </view>
+</view>
+
+<!-- 初始样式 -->
+<!-- <view class="container1" wx:for="{{equipment}}"  wx:key="{{index}}">
     <view class="main">
         <view class="head">
             <text style="font-size: 35rpx; color:#1897b9">{{item.state}}</text>
@@ -17,4 +35,4 @@
             <text>查看具体信息</text>
         </view>
     </view>
-</view>
+</view> -->

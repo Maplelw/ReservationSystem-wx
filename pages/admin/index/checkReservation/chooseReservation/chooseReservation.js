@@ -7,7 +7,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        info: [{
+        d_no:"",
+        reservation: [{
             u_name: "至臻",
             u_type: "老师",
             r_reservation_date: "2019/10/01",
@@ -25,21 +26,24 @@ Page({
     },
 
     //拒绝租借按钮
-    reject: function(e) {
+    reject: function (e) {
+        var that = this;
         wx.showModal({
             title: '提示',
-            content: '确认拒绝租借？',
+            content: '拒绝租借？',
             success: (res) => {
                 if (res.confirm) {
-                    this.data.info.splice(e.currentTarget.dataset.index, 1)
-                    this.setData({
-                        info: this.data.info
+                    //通过具体点击按钮获取每个申请人的编号
+                    var u_no = that.data.reservation[e.currentTarget.dataset.index].m_Uno;
+                    that.data.reservation.splice(e.currentTarget.dataset.index, 1)
+                    that.setData({
+                        reservation: this.data.reservation
                     })
                     wx.request({
                         url: rejectReservation,
                         data: {
-                            d_no: "001",
-                            u_no: "201726010312"
+                            d_no: that.data.d_no,
+                            u_no: u_no
                         },
                         success: function (res) {
                             console.log(res.data)
@@ -56,20 +60,23 @@ Page({
     },
     //确认租借按钮
     confirm: function (e) {
+        var that = this;
         wx.showModal({
             title: '提示',
             content: '确认租借？',
             success: (res) => {
                 if (res.confirm) {
-                    this.data.info.splice(e.currentTarget.dataset.index, 1)
-                    this.setData({
-                        info: this.data.info
+                    //通过具体点击按钮获取每个申请人的编号
+                    var u_no = that.data.reservation[e.currentTarget.dataset.index].m_Uno;
+                    that.data.reservation.splice(e.currentTarget.dataset.index, 1)
+                    that.setData({
+                        reservation: this.data.reservation
                     })
                     wx.request({
                         url: confirmReservation,
                         data: {
-                            d_no: "001",
-                            u_no: "201726010312"
+                            d_no: that.data.d_no,
+                            u_no: u_no
                         },
                         success: function (res) {
                             console.log(res.data)
@@ -88,17 +95,21 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(options.d_no)
+        console.log( "上一页面发送的设备编号" + options.d_no)
+        this.setData({
+            d_no: options.d_no
+        })
         var that = this
         wx.request({
             url: reservationDetail,
             data: {
-                d_no: "001"
+                d_no: options.d_no
             },
             success: function(res) {
-               //console.log(res)
+               console.log("获取具体设备的申请信息\n")
+                console.log(res.data)
                that.setData({
-                    info: res.data.info
+                    reservation: res.data.reservation,
                 })
             },
             fail: function(res) {

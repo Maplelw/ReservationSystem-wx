@@ -5,4 +5,7 @@
     <navigator open-type="redirect" url="/pages/user/index/index">
         <button>用户测试入口</button>
     </navigator>
+    <navigator open-type="redirect" url="/pages/user/register/register">
+        <button>注册</button>
+    </navigator>
 </view>

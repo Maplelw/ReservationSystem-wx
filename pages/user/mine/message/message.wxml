@@ -1,0 +1,7 @@
+<view class="gap">
+</view>
+
+<view class="message" wx:for="{{messages}}" wx:key="{{index}}">
+    <view class="content">{{item.content}}</view>
+    <view class="time">{{item.date}}</view>
+</view>

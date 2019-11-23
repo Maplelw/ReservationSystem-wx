@@ -65,7 +65,7 @@ Page({
         var that = this;
         wx.request({
             url: hot,
-            method: 'GET',
+            method: 'POST',
             success: function(res) {
                 console.log(res.data)
                 that.setData({

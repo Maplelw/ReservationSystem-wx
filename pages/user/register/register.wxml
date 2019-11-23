@@ -5,7 +5,7 @@
     </view>
     <view class="inputs">
         <text>学工号</text>
-        <input type="text" placeholder="请输入设备学工号" name="u_no"></input>
+        <input type="text" placeholder="请输入学工号" name="u_no"></input>
     </view>
     <view class="inputs">
         <text>手机号</text>
@@ -23,10 +23,10 @@
     <view class="inputs">
         <text>身份</text>
         <radio-group class="radio-group" bindchange="radioChange" name="u_type">
-            <radio class="radio" value="student">
+            <radio color="#607D8B" class="radio" value="学生">
                 <text>学生</text>
             </radio>
-            <radio value="teacher">
+            <radio color="#607D8B" value="老师">
                 <text>老师</text>
             </radio>
         </radio-group>
@@ -46,7 +46,7 @@
         </view>   
     </view>
     <view class="bottom">
-        <button type="primary" form-type="submit" open-type="getUserInfo" bindgetuserinfo="getUserInfo">提交           </button>
+        <button type="primary" form-type="submit">提交</button>
     </view>
     <view class="errorMsg">
         <text >{{errorMsg}}</text>

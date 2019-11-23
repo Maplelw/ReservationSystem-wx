@@ -1,7 +1,7 @@
 <view class="up">
     <view class="mark">
         <image src="/img/admin/circlePoint.png"></image>
-        <text>事务 处理</text>
+        <text>事务处理</text>
     </view>
     <view>
         <view class="choice">

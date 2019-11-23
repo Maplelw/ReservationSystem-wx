@@ -10,7 +10,7 @@ Page({
 
     getDetails: function(e) {
         var param = e.currentTarget.dataset.index;
-        var d_no = this.data.device[param].d_no;
+        var d_no = this.data.device[param].m_Dno;
         wx.navigateTo({
             url: '/pages/admin/index/checkReservation/chooseReservation/chooseReservation' + '?d_no=' + d_no,
         })
@@ -25,10 +25,15 @@ Page({
             success(res) {
                 wx.request({
                     url: handleReservation,
+                    method: 'POST',
+                    header: {
+                        "content-type": "application/x-www-form-urlencoded"
+                    },
                     data: {
                         code: res.code
                     },
                     success(res) {
+                        console.log(res.data)
                         that.setData({
                             device: res.data.device
                         })

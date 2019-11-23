@@ -49,6 +49,10 @@ radio {
     margin: 50rpx;
 }
 
+.bottom button {
+    background-color: #607D8B;
+}
+
 .errorMsg {
     font-size: 32rpx;
     color: #aaaaaa;
