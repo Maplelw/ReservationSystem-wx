@@ -1,8 +1,8 @@
 {
     "pages": [
-        
-        "pages/test/test",
         "pages/user/mine/mine",
+        "pages/test/test",
+        
         "pages/user/index/index",
         "pages/admin/index/index",
         "pages/user/index/device/device",

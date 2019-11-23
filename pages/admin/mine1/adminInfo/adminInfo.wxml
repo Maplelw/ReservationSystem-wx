@@ -1,8 +1,9 @@
-<view>
+<!--pages/admin/mine/adminInfo/adminInfo.wxml-->
+<view class="icon_name">
     <view class="icon">
-        <open-data type="userAvatarUrl"></open-data>
+        <image src="{{iconUrl}}"></image>
     </view>
-    <open-data class="username" type="userNickName"></open-data>
+    <text class="username">{{userName}}</text>
 </view>
 
 <view class="main">
@@ -16,17 +17,16 @@
             <text>学号\n</text>
             <text>手机\n</text>
             <text>邮箱\n</text>
-            <text>类型\n</text>
-            <text>班级\n</text>
+            <text>权限\n</text>
         </view>
         <view class="right_info">
-            <text>{{user.u_name}}\n</text>
-            <text>{{user.u_no}}\n</text>
-            <text>{{user.u_phone}}\n</text>
-            <text>{{user.u_email}}\n</text>
-            <text>{{user.u_type}}\n</text>
-            <text>{{user.u_classno}}\n</text>
+            <text>{{admin.name}}\n</text>
+            <text>{{admin.userno}}\n</text>
+            <text>{{admin.phone}}\n</text>
+            <text>{{admin.email}}\n</text>
+            <text>{{admin.permissions}}\n</text>
         </view>
     </view>
 </view>
+
 

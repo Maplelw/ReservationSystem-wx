@@ -1,4 +1,6 @@
 // pages/mine/details/preservation/preservation.js
+let booked = require('../../../../global/global.js').booked;
+let cancelReservation = require('../../../../global/global.js').cancelReservation;
 Page({
 
     /**
@@ -19,13 +21,63 @@ Page({
             date: "2019-10-25"
         }]
     },
+  
+  cancel: function(e){
+    wx.showModal({
+      title: '提示',
+      content: '是否取消预约',
+      success: (res) =>{
+        if (res.confirm) {
+          wx.request({
+            url: remindOverDue,
+            data: {
+              userCode: res.Code,
+              deviceNo: "001"
+            },
+            success: function (res) {
+              console.log(res.data)
+            },
+            fail: function (res) {
+              consolo.log("请求失败")
+            },
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+  onLoad: function (options) {
+    var that=this;
+    wx.login({
+        success: function(res) {
+            wx.request({
+                url: booked,
+                data: {
+                    code: res.code
+                },
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded'
+                },
+                method: 'POST',
+                success: function (res) {
+                    console.log(res.data)
+                    that.setData({
+                        equipment: res.data.reservation
+                    })
+                },
+                fail: function (res) {
+                    consolo.log("请求失败")
+                },
 
-    },
+            })
+        }
+    })
+  },
 
     /**
      * 生命周期函数--监听页面初次渲染完成

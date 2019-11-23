@@ -1,40 +1,28 @@
-let getMessage = require('../../../../global/global.js').getMessage;
+// pages/mine/details/repairs/repairs.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        messages: ""
-    },
 
+    },
+    uploadImg: function() {
+        wx.chooseImage({
+            count: 9,
+            sizeType: [],
+            sourceType: [],
+            success: function (res) { },
+            fail: function (res) { },
+            complete: function (res) { },
+        })
+    },
+   
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        var that = this;
-        wx.login({
-            success: function (res) {
-                wx.request({
-                    url: getMessage,
-                    data: {
-                        code: res.code
-                    },
-                    success(res) {
-                        console.log(res.data)
-                        that.setData({
-                            messages: res.data.messages
-                        })
-                    },
-                    fail() {
-                        console.log("请求失败")
-                    }
-                })
-            },
-            fail: function (res) {
-                console.log("login失败")
-            },
-        })
+
     },
 
     /**

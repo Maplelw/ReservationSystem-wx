@@ -1,23 +1,24 @@
 <view class="container1" wx:for="{{equipment}}"  wx:key="{{index}}">
     <view class="top">
-        <view class="head">
-            <text style="font-size: 40rpx; font-weight: 500">预约设备</text>
-            <text style="font-size: 30rpx; color:#3E606F">编辑</text>
-        </view>
-        <view class="equipName">{{item.name}}</view>
-        <view class="details">
-            <text>工作原理：{{item.workingPrinciple}}</text>
-            <text>主要参数：{{item.mainParameter}}</text>
-        </view>
+    
+        <view class="equipName" style="font-size:32rpx;color:#222222 ">设备编号：{{item.d_no}}</view>
+        <view class="equipName">{{item.d_name}}</view>
         <view class="check">
             <text>查看具体信息</text>
         </view>
     </view>
     <view class="down">
-        <text style="font-size: 40rpx; font-weight: 500">预约日期</text>
-        <text style="font-size: 35rpx;">{{item.date}}</text>
+        <view>
+            <text style="font-size: 35rpx; font-weight: 500">预约日期</text>
+            <text style="font-size: 32rpx;">{{item.r_reservationDate}}</text>
+        </view>
+        <view>
+            <text style="font-size: 35rpx; font-weight: 500">借用日期</text>
+            <text style="font-size: 32rpx;">{{item.r_startDate}} -- {{item.r_returnDate}}</text>
+        </view>
+        
         <view class="cancel">
-            <text>取消预约</text>
+            <text bintap="cancel">取消预约</text>
         </view>
     </view>
 

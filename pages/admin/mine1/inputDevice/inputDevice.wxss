@@ -1,0 +1,64 @@
+.inputs {
+    margin-top: 50rpx;
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+}
+
+.placeholder {
+    font-size: 32rpx;
+    color: #818181; 
+}
+
+.inputs text {
+    width: 180rpx;
+    margin-left: 50rpx;
+    font-size: 32rpx;
+}
+
+.inputs input {
+    height: 60rpx;
+    width: 480rpx;
+    border-bottom: 2rpx solid #dfdfdf;
+    font-size: 32rpx;
+}
+.time {
+    margin-top: 50rpx;
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+}
+.time text {
+    width: 180rpx;
+    margin-left: 50rpx;
+    font-size: 32rpx;
+}
+
+.time input {
+    height: 60rpx;
+    width: 480rpx;
+    border-bottom: 2rpx solid #dfdfdf;
+    font-size: 32rpx;
+}
+
+.area {
+    margin-top: 50rpx;
+    display: flex;
+}
+
+.area text {
+    width: 180rpx;
+    margin-left: 50rpx;
+    font-size: 32rpx;
+}
+
+.area textarea {
+    width: 480rpx;
+    height: 300rpx;
+    border: 2rpx solid #dfdfdf;
+    font-size: 32rpx;
+}
+
+.bottom {
+    margin: 50rpx;
+}

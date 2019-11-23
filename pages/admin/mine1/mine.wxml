@@ -1,0 +1,81 @@
+<view>
+    <view class="icon">
+        <image src="{{iconUrl}}"></image>
+    </view>
+    <text class="username">{{userName}}</text>
+</view>
+
+<view>
+    <view wx:if="{{isManager}}">
+        <view class="gap">
+            <text>个人</text>
+        </view>
+        <navigator class="options" url="/pages/mine/details/userInfo/userInfo">
+            <view class="img_text">
+                <image src="/img/mine/userInfo.png" class="icon"></image>
+                <text>个人资料</text>
+            </view>
+            <image src="/img/mine/arrow.png" class="arrow"></image>
+        </navigator>
+        <view class="gap">
+            <text>设备</text>
+        </view>
+        <navigator class="options" url="/pages/mine/details/record/record">
+            <view class="img_text">
+                <image src="/img/mine/record.png" class="icon"></image>
+                <text>录入设备</text>
+            </view>
+            <image src="/img/mine/arrow.png" class="arrow"></image>
+        </navigator>
+        <navigator class="options" url="/pages/mine/details/changeEquip/changeEquip">
+            <view class="img_text">
+                <image src="/img/mine/changeEquip.png" class="icon"></image>
+                <text>修改设备</text>
+            </view>
+            <image src="/img/mine/arrow.png" class="arrow"></image>
+        </navigator>
+    </view>
+    <view wx:else>
+        <view class="gap">
+            <text>个人</text>
+        </view>
+        <navigator class="options" url="/pages/mine/details/userInfo/userInfo">
+            <view class="img_text">
+                <image src="/img/mine/userInfo.png" class="icon"></image>
+                <text>个人资料</text>
+            </view>
+            <image src="/img/mine/arrow.png" class="arrow"></image>
+        </navigator>
+        <navigator class="options" url="/pages/mine/details/credit/credit">
+            <view class="img_text">
+                <image src="/img/mine/credit.png" class="icon"></image>
+                <text>信用评分</text>
+            </view>
+            <image src="/img/mine/arrow.png" class="arrow"></image>
+        </navigator>
+        <navigator class="options" url="/pages/mine/details/preservation/preservation">
+            <view class="img_text">
+                <image src="/img/mine/preservation.png" class="icon"></image>
+                <text>我的预约</text>
+            </view>
+            <image src="/img/mine/arrow.png" class="arrow"></image>
+        </navigator>
+        <navigator class="options" url="/pages/mine/details/borrowed/borrowed">
+            <view class="img_text">
+                <image src="/img/mine/borrowed.png" class="icon"></image>
+                <text>已借设备</text>
+            </view>
+            <image src="/img/mine/arrow.png" class="arrow"></image>
+        </navigator>
+        <view class="gap">
+            <text>设备</text>
+        </view>
+        <navigator class="options" url="/pages/mine/details/repairs/repairs">
+            <view class="img_text" >
+                <image src="/img/mine/repairs.png" class="icon"></image>
+                <text>报修</text>
+            </view>
+            <image src="/img/mine/arrow.png" class="arrow"></image>
+        </navigator>
+    </view>
+</view>

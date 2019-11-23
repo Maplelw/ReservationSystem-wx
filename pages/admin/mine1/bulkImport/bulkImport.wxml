@@ -1,0 +1,7 @@
+ <view class="inputs">
+    <text>上传文件</text>
+    <button size="mini" bindtap="uploadFile" style="margin-left: 100rpx;margin-top:20rpx">选择文件</button>
+ </view>
+ <view class="bottom">
+    <button type="primary" bindtap="handin">提交</button>
+ </view>

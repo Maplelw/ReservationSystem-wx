@@ -1,7 +1,17 @@
 
 .top {
     border-bottom: 2rpx solid #eeeeee;
-    /* padding-bottom: 20rpx; */
+    padding-bottom: 20rpx;
+}
+.top .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+}
+
+.top .head text {
+   margin: 10rpx 40rpx 40rpx 15rpx; 
 }
 
 .top .equipName {
@@ -11,13 +21,21 @@
     margin: 10rpx; 
 }
 
+.top .details {
+    display: flex;
+    flex-direction: column;
+    font-size: 32rpx;
+    color: #959595;
+    margin-left: 50rpx;
+    margin-top: 50rpx;
+}
+
 .top .check {
     display: flex;
     justify-content: flex-end;
-    margin: 20rpx 20rpx;
+    margin: 20rpx 40rpx;
     color: #3E606F;
-    font-size: 32rpx;
-    font-weight: 600;
+    font-size: 35rpx;
 }
 
 .down {
@@ -30,18 +48,15 @@
 }
 
 .down .cancel {
-    margin-right: 20rpx;
+    margin-right: 40rpx;
     display: flex;
     justify-content: flex-end;
 }
 
 .down .cancel text {
-    font-size: 30rpx;
-    color: #ffffff;
+    font-size: 33rpx;
+    color: #3E606F;
     font-weight: 500;
-    background-color: #3E606F;
-    padding: 10rpx;
-    border-radius: 10%;
 }
 
 

@@ -1,5 +1,4 @@
 // pages/mine/details/borrowed/borrowed.js
-let borrowed = require('../../../../global/global.js').borrowed;
 Page({
 
     /**
@@ -12,50 +11,23 @@ Page({
             workingPrinciple: "三片式马卡",
             mainParameter: "三片式马卡产品 焦距：2400mm",
             date: "2019-10-25",
-            place: "物电院B301",
-            state: "借用中"
+            place: "物电院B301"
         },
         {
             name: "博冠马卡 200/2400",
             workingPrinciple: "三片式马卡",
             mainParameter: "三片式马卡产品 焦距：2400mm",
             date: "2019-10-25",
-            place: "物电院B301",
-            state: "已归还"
+            place: "物电院B301"
         }]
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-  onLoad: function (options) {
-    var that = this;
-    wx.login({
-        success: function(res){
-            wx.request({
-                url: borrowed,
-                data: {
-                    code: res.code
-                },
-                header: {
-                    'content-type': 'application/x-www-form-urlencoded'
-                },
-                method: 'POST',
-                dataType: 'json',
-                success: function (res) {
-                    console.log(res.data)
-                    that.setData({
-                        equipment: res.data.borrowed_item
-                    })
-                },
-                fail: function (res) {
-                    consolo.log("请求失败")
-                },
+    onLoad: function (options) {
 
-            }) 
-        }
-    })
-  },
+    },
 
     /**
      * 生命周期函数--监听页面初次渲染完成

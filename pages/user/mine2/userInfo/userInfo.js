@@ -19,35 +19,9 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-  onLoad: function (options) {
-    var that = this
-    wx.login({
-        success: function(res) {
-            wx.request({
-                url: getUserInfo,
-                data: {
-                    code: res.code
-                },
-                header: {
-                    'content-type': 'application/x-www-form-urlencoded'
-                },
-                method: 'POST',
-                success: function (res) {
-                    console.log(res.data)
-                    that.setData({
-                        user: res.data.user
-                    })
-                },
-                fail: function (res) {
-                    consolo.log("请求失败")
-                },
-            })
-        },
-        fail: function(res) {
-            console.log("login失败")
-        },
-    })
-  },
+    onLoad: function (options) {
+        
+    },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -60,6 +34,28 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        var that = this;
+        wx.getUserInfo({
+            success: function (res) {
+                that.setData({ iconUrl: res.userInfo.avatarUrl });
+                that.setData({ userName: res.userInfo.nickName });
+                wx.request({
+                    url: getUserInfo,
+                    data: {
+                        code: res.code
+                    },
+                    success(res) {
+                        console.log(res.data);
+                        that.setData({
+                            user: res.data.user
+                        })
+                    },
+                    fail(res) {
+                        console.log("请求失败");
+                    }
+                })
+            }
+        })
     },
 
     /**

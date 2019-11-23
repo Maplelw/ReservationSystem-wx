@@ -2,7 +2,6 @@
     <view class="top">
         <view class="head">
             <text style="font-size: 45rpx; font-weight: 500">设备</text>
-            <text class="state" style="font-size: 45rpx; font-weight: 500">{{item.state}}</text>
         </view>
         <view class="equipName">{{item.name}}</view>
         <view class="details">

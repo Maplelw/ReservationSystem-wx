@@ -7,14 +7,14 @@ Page({
     data: {
         messages: ""
     },
-
+   
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
         var that = this;
         wx.login({
-            success: function (res) {
+            success: function(res) {
                 wx.request({
                     url: getMessage,
                     data: {
@@ -23,7 +23,7 @@ Page({
                     success(res) {
                         console.log(res.data)
                         that.setData({
-                            messages: res.data.messages
+                            messages: res.data.message
                         })
                     },
                     fail() {
@@ -31,10 +31,10 @@ Page({
                     }
                 })
             },
-            fail: function (res) {
+            fail: function(res) {
                 console.log("login失败")
             },
-        })
+        }) 
     },
 
     /**

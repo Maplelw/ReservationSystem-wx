@@ -1,40 +1,29 @@
-let getMessage = require('../../../../global/global.js').getMessage;
+let login = require('../../../../global/global.js').login;
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        messages: ""
+        u_credit_score: "",
+        comment: "信用极好，优先借用",
+        record: [
+            {
+                date: "2019-10-1",
+                equipmentName: "博冠马卡 200/4000"
+            },
+            {
+                date: "2019-10-1",
+                equipmentName: "博冠马卡 200/4000"
+            },
+        ]
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        var that = this;
-        wx.login({
-            success: function (res) {
-                wx.request({
-                    url: getMessage,
-                    data: {
-                        code: res.code
-                    },
-                    success(res) {
-                        console.log(res.data)
-                        that.setData({
-                            messages: res.data.messages
-                        })
-                    },
-                    fail() {
-                        console.log("请求失败")
-                    }
-                })
-            },
-            fail: function (res) {
-                console.log("login失败")
-            },
-        })
+
     },
 
     /**
@@ -48,7 +37,22 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        var that = this;
+        wx.request({
+            url: login,
+            data: {
+                u_wechatid: "043ydeZ21oqM8Q1nKaY21vlsZ21ydeZa"
+            },
+            success(res) {
+                console.log(res.data.data.u_name);
+                that.setData({
+                    u_credit_score: res.data.data.u_credit_score
+                })
+            },
+            fail(res) {
+                console.log("请求失败");
+            }
+        })
     },
 
     /**
