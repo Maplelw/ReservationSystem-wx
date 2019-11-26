@@ -2,15 +2,15 @@
     <view class="application">
         <view class="info">
             <view>
-                <text style="color: #000000;font-size:40rpx;margin-right:40rpx;">{{item.m_Uname}}</text>
-                <text>{{item.m_Utype}}</text>
+                <text style="color: #000000;font-size:40rpx;margin-right:40rpx;">{{item.u_name}}</text>
+                <text>{{item.u_type}}</text>
             </view>
-            <text>申请时间：{{item.m_RreservationDate}}</text>
-            <text>借用时间：{{item.m_RstartDate}}--{{item.m_RreturnDate}}</text>
+            <text>申请时间：{{item.r_reservationDate}}</text>
+            <text>借用时间：{{item.r_startDate}}--{{item.r_returnDate}}</text>
         </view>
         <view class="credit">
             <text>信用分</text>
-            <text>{{item.m_UcreditGrade}}</text>
+            <text>{{item.u_creditGrade}}</text>
         </view>
     </view>
     <view class="buttons">

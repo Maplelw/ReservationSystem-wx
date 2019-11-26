@@ -8,4 +8,5 @@
     <navigator open-type="redirect" url="/pages/user/register/register">
         <button>注册</button>
     </navigator>
+    <button bindtap="test">测试</button>
 </view>

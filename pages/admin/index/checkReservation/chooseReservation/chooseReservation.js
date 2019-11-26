@@ -27,35 +27,9 @@ Page({
 
     //拒绝租借按钮
     reject: function (e) {
-        var that = this;
-        wx.showModal({
-            title: '提示',
-            content: '拒绝租借？',
-            success: (res) => {
-                if (res.confirm) {
-                    //通过具体点击按钮获取每个申请人的编号
-                    var u_no = that.data.reservation[e.currentTarget.dataset.index].m_Uno;
-                    that.data.reservation.splice(e.currentTarget.dataset.index, 1)
-                    that.setData({
-                        reservation: this.data.reservation
-                    })
-                    wx.request({
-                        url: rejectReservation,
-                        data: {
-                            d_no: that.data.d_no,
-                            u_no: u_no
-                        },
-                        success: function (res) {
-                            console.log(res.data)
-                        },
-                        fail: function (res) {
-                            consolo.log("请求失败")
-                        },
-                    })
-                } else if (res.cancel) {
-                    console.log('用户点击取消')
-                }
-            }
+        var r_no = this.data.reservation[e.currentTarget.dataset.index].r_no
+        wx.navigateTo({
+            url: '/pages/admin/index/checkReservation/chooseReservation/refuseFeedback/refuseFeedback' + "?r_no=" + r_no,
         })
     },
     //确认租借按钮
@@ -67,22 +41,25 @@ Page({
             success: (res) => {
                 if (res.confirm) {
                     //通过具体点击按钮获取每个申请人的编号
-                    var u_no = that.data.reservation[e.currentTarget.dataset.index].m_Uno;
-                    that.data.reservation.splice(e.currentTarget.dataset.index, 1)
-                    that.setData({
-                        reservation: this.data.reservation
-                    })
                     wx.request({
                         url: confirmReservation,
                         data: {
-                            d_no: that.data.d_no,
-                            u_no: u_no
+                            //发送预约编号
+                            r_no: that.data.reservation[e.currentTarget.dataset.index].r_no
+                        },
+                        method: 'POST',
+                        header: {
+                            "content-type": "application/x-www-form-urlencoded"
                         },
                         success: function (res) {
                             console.log(res.data)
+                            that.data.reservation.splice(e.currentTarget.dataset.index, 1)
+                            that.setData({
+                                reservation: that.data.reservation
+                            })
                         },
                         fail: function (res) {
-                            consolo.log("请求失败")
+                            console.log("请求失败")
                         },
                     })
                 } else if (res.cancel) {
@@ -95,10 +72,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log( "上一页面发送的设备编号" + options.d_no)
-        this.setData({
-            d_no: options.d_no
-        })
+        console.log( "上一页面发送的设备编号:" + options.d_no)
         var that = this
         wx.request({
             url: reservationDetail,
@@ -115,7 +89,6 @@ Page({
             fail: function(res) {
                 consolo.log("请求失败")
             },
-        
         })
     },
 

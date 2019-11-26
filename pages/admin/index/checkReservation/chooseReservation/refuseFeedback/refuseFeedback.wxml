@@ -1,0 +1,17 @@
+<view class="top">
+
+</view>
+<view class="main">
+    <view class="main_view1">请填写拒绝原因</view>
+    <view class="main_view2">(我们会将它反馈给申请人)</view>
+    <view class="main_textarea" >
+        <textarea placeholder="请填写具体拒绝租借原因" bindinput="getInput"></textarea>
+    </view>
+    <view class="main_button">
+        <button bindtap="sendMessage">提交</button>
+    </view>
+    
+</view>
+<view class="down">
+
+</view>

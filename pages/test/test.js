@@ -8,6 +8,16 @@ Page({
 
     },
 
+    test: function() {
+      wx.showModal({
+          title: '嘻嘻',
+          content: '123123',
+      })  
+      wx.showToast({
+          title: 'enheng',
+      })
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */

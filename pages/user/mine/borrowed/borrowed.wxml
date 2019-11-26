@@ -1,13 +1,9 @@
-<view class="container1" wx:for="{{equipment}}"  wx:key="{{index}}">
+<view wx:for="{{borrowed_item}}"  wx:key="{{index}}">
     <view class="top">
-        <view class="head">
-            <text style="font-size: 45rpx; font-weight: 500">设备</text>
-            <text class="state" style="font-size: 45rpx; font-weight: 500">{{item.state}}</text>
-        </view>
-        <view class="equipName">{{item.name}}</view>
+        <view class="equipName">{{item.d_name}}</view>
         <view class="details">
-            <text>工作原理：{{item.workingPrinciple}}</text>
-            <text>主要参数：{{item.mainParameter}}</text>
+            <text>设备编号：{{item.d_no}}</text>
+            <text>主要用途：{{item.d_mainUse}}</text>
         </view>
         <view class="check">
             <text>查看具体信息</text>
@@ -16,14 +12,11 @@
     <view class="down">
         <view>
             <text style="font-size: 35rpx; margin-bottom: 40rpx;">归还日期</text>
-            <text style="font-size: 30rpx;">{{item.date}}</text>
+            <text style="font-size: 30rpx;">{{item.b_returnDate}}</text>
         </view>
-        <view style="margin-top: 20rpx;">
+        <view style="margin-top: 0rpx;">
             <text style="font-size: 35rpx; font-weight: 500">归还地点</text>
-            <text style="font-size: 30rpx;">{{item.place}}</text>
-        </view>
-        <view class="cancel">
-            <text>归还</text>
+            <text style="font-size: 30rpx;">{{item.d_saveSite}}</text>
         </view>
     </view>
 </view>

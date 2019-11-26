@@ -1,19 +1,29 @@
-<view wx:for="{{info}}" wx:key="index">
+<view class="top">
+    <view class="search">
+        <image src="/img/admin/search.png"></image>
+        <input placeholder="搜索学工号或者设备编号" bindinput="input" confirm-type="search" 
+            bindconfirm="search"></input>
+    </view>
+</view>
+
+<view wx:for="{{borrow}}" wx:key="index">
     <view class="application">
         <view class="info">
             <view>
                 <text style="color: #000000;font-size:40rpx;margin-right:40rpx;">{{item.u_name}}</text>
                 <text>{{item.u_type}}</text>
             </view>
-            <text>申请时间：{{item.r_reservation_date}}</text>
-            <text>借用时间：{{item.r_borrow_date}}--{{item.r_return_date}}</text>
+            <text>设备id：{{item.d_no}}</text>
+            <text>设备名称：{{item.d_name}}</text>
+            <text>借用时间：{{item.b_borrowDate}}--{{item.b_returnDate}}</text>
         </view>
         <view class="credit">
             <text>信用分</text>
-            <text>{{item.u_credit_grade}}</text>
+            <text>{{item.u_creditGrade}}</text>
         </view>
     </view>
     <view class="buttons">
-        <text bindtap="confirm" style="background-color: #607D8B; color:#ffffff; border-radius:15%">确认归还</text>
+        <text bindtap="confirm" data-index="{{index}}"
+        style="background-color: #607D8B; color:#ffffff; border-radius:15%">确认归还</text>
     </view>
 </view>

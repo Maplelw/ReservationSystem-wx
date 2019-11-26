@@ -25,7 +25,7 @@
             <text>{{user.u_phone}}\n</text>
             <text>{{user.u_email}}\n</text>
             <text>{{user.u_type}}\n</text>
-            <text>{{user.u_classno}}\n</text>
+            <text>{{user.u_majorClass}}\n</text>
         </view>
     </view>
 </view>

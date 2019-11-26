@@ -6,7 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        info: [{
+        borrow: [{
             u_name: "至臻",
             u_type: "老师",
             u_no: "201726010312",
@@ -29,6 +29,7 @@ Page({
 
     //提醒按钮
     remind: function (e) {
+        var that = this
         wx.showModal({
             title: '提示',
             content: '确认提醒',
@@ -37,14 +38,13 @@ Page({
                     wx.request({
                         url: remindOverDue,
                         data: {
-                            d_no: "001",
-                            u_no: "201726010312"
+                            b_no: this.data.borrow[e.currentTarget.dataset.index].b_no
                         },
                         success: function (res) {
                             console.log(res.data)
                         },
                         fail: function (res) {
-                            consolo.log("请求失败")
+                            console.log("请求失败")
                         },
                     })
                 } else if (res.cancel) {
@@ -56,25 +56,32 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-        console.log(options.d_no)
+    onLoad: function () {
         var that = this
-        wx.request({
-            url: overDue,
-            data: {
-                d_no: "001"
-            },
-            success: function (res) {
-                //console.log(res)
-                that.setData({
-                    info: res.data.info
+        wx.login({
+            success: function(res) {
+                wx.request({
+                    url: overDue,
+                    data: {
+                        code: res.code
+                    },
+                    method:　'POST',
+                    header: {
+                        'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    success: function (res) {
+                        console.log(res.data)
+                        that.setData({
+                            borrow: res.data.borrow
+                        })
+                    },
+                    fail: function (res) {
+                        console.log("请求失败")
+                    },
                 })
-            },
-            fail: function (res) {
-                consolo.log("请求失败")
-            },
-
+            }
         })
+        
     },
 
     /**

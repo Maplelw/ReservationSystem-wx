@@ -42,6 +42,8 @@ const datas = {
     remindOverDue: host + "/admin/remindOverDue",
     // 管理员个人资料
     getAdminInfo: host + "/admin/getAdminInfo",
+    // 获取借用的信息
+    handleBorrow: host + 　"/admin/handleBorrow",
     // 录入设备
     inputDevice: host + "/admin/inputDevice",
     batchInputDevice: host + "/admin/batchInputDevice"

@@ -14,7 +14,9 @@
 
 <view class="contianer2">
     <view wx:for="{{record}}" wx:key="{{index}}" class="records">
-        <text style="font-size: 30rpx; color: #777777">{{item.date}}\n</text>
-        <text>{{item.equipmentName}}</text>
+        <view style="font-size: 30rpx; color: #777777">{{item.cr_date}}</view>
+        <view style="font-size: 32rpx;margin-left:40rpx;">{{item.cr_changeReason}}</view>
+        <view style="font-size: 32rpx;color: #777777; margin-left:40rpx;" >
+            变化分: {{item.cr_changeScore}}</view>
     </view>
 </view>

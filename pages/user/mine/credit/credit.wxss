@@ -21,21 +21,17 @@
 }
 
 .container1 {
-    margin: 40rpx 20rpx;
-}
-
-.container2 {
-    
+    margin: 20rpx 20rpx 0 20rpx;
 }
 
 .records {
-    background-color: #F0F3F4;
+    background-color: #F8F8F8;
     margin: 20rpx 0;
     padding-bottom: 10rpx;
+    padding-left: 20rpx;
 }
 
-.records text {
+.records view {
     font-size: 35rpx;
-    margin: 40rpx;
-
+    margin: 10rpx;
 }

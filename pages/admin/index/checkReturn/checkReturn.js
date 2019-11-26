@@ -1,12 +1,14 @@
 let reservationDetail = require('../../../../global/global.js').reservationDetail;
 let confirmReturn = require('../../../../global/global.js').confirmReturn;
+let handleBorrow = require('../../../../global/global.js').handleBorrow
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        info: [{
+        input: "搜索内容",
+        borrow: [{
             u_name: "至臻",
             u_type: "老师",
             r_reservation_date: "2019/10/01",
@@ -25,22 +27,26 @@ Page({
 
     //确认归还按钮
     confirm: function (e) {
+        var that = this
         wx.showModal({
             title: '提示',
             content: '确认归还',
             success: (res) => {
                 if (res.confirm) {
-                    this.data.info.splice(e.currentTarget.dataset.index, 1)
-                    this.setData({
-                        info: this.data.info
-                    })
                     wx.request({
                         url: confirmReturn,
                         data: {
-                            d_no: "001",
-                            u_no: "201726010312"
+                            b_no: that.data.borrow[e.currentTarget.dataset.index].b_no,
+                        },
+                        method: 'POST',
+                        header: {
+                            "content-type": "application/x-www-form-urlencoded"
                         },
                         success: function (res) {
+                            that.data.borrow.splice(e.currentTarget.dataset.index, 1)
+                            that.setData({
+                                borrow: that.data.borrow
+                            })
                             console.log(res.data)
                         },
                         fail: function (res) {
@@ -53,25 +59,63 @@ Page({
             }
         })
     },
+    // 搜索内容改变
+    input: function(e) {
+        this.setData({
+            input: e.detail.value
+        })
+    },
+    // 提交搜索
+    search: function(e) {
+        console.log("提交内容:")
+        console.log(e.detail.value)
+        wx.login({
+            success: function(res) {
+                wx: wx.request({
+                    url: '',
+                    data: {
+                        content: e.detail.value,
+                        code: res.code
+                    },
+                    success: function(res) {
+                        console.log(res.data)
+
+                    },
+                    fail: function(res) {
+                        console.log("请求失败")
+                    }
+                })
+            }
+        })
+        
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
         var that = this
-        wx.request({
-            url: reservationDetail,
-            data: {
-                d_no: "001"
-            },
-            success: function (res) {
-                that.setData({
-                    info: res.data.info
+        wx:wx.login({
+            success: function(res) {
+                wx.request({
+                    url: handleBorrow,
+                    data: {
+                        code: res.code
+                    },
+                    method: 'POST',
+                    header: {
+                        "content-type": "application/x-www-form-urlencoded"
+                    },
+                    success: function (res) {
+                        console.log(res.data)
+                        that.setData({
+                            borrow: res.data.borrow
+                        })
+                    },
+                    fail: function (res) {
+                        console.log("请求失败")
+                    },
                 })
-            },
-            fail: function (res) {
-                consolo.log("请求失败")
-            },
-
+            }
         })
     },
 

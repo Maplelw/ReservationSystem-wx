@@ -1,10 +1,11 @@
 {
     "pages": [
-        "pages/user/mine/mine",
         "pages/test/test",
-        
-        "pages/user/index/index",
         "pages/admin/index/index",
+        
+        
+        "pages/user/mine/mine",
+        "pages/user/index/index",
         "pages/user/index/device/device",
         "pages/user/index/device/reserveDevice/reserveDevice",
         "pages/user/register/register",
@@ -14,11 +15,11 @@
         "pages/user/mine/message/message",
         "pages/user/mine/userInfo/userInfo",
         
+        
         "pages/admin/mine/changePassword/changePassword",
         "pages/admin/index/checkReservation/checkReservation",
         "pages/admin/index/checkReservation/chooseReservation/chooseReservation",
-        "pages/admin/index/checkReturn/checkReturn",
-        "pages/admin/index/checkOverdue/checkOverdue",
+        "pages/admin/index/checkReservation/chooseReservation/refuseFeedback/refuseFeedback",
         "pages/admin/index/changeDevice/changeDevice",
         "pages/admin/index/changeDevice/changeDetail/changeDetail",
         "pages/admin/index/recordDevice/recordDevice",

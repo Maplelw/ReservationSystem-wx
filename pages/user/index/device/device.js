@@ -12,6 +12,7 @@ Page({
         device: {},
         code: "",
         d_no: "",
+        d_state: ""
     },
 
     //预约设备
@@ -59,7 +60,8 @@ Page({
      */
     onLoad: function (options) {
         this.setData({
-            d_no: options.d_no
+            d_no: options.d_no,
+            d_state: options.d_state
         })
         console.log(this.data.d_no);
         var that = this;

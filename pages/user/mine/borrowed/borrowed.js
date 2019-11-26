@@ -6,7 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        equipment: [
+        borrowed_item: [
         {
             name: "博冠马卡 200/2400",
             workingPrinciple: "三片式马卡",
@@ -41,11 +41,10 @@ Page({
                     'content-type': 'application/x-www-form-urlencoded'
                 },
                 method: 'POST',
-                dataType: 'json',
                 success: function (res) {
                     console.log(res.data)
                     that.setData({
-                        equipment: res.data.borrowed_item
+                        borrowed_item: res.data.borrowed_item
                     })
                 },
                 fail: function (res) {

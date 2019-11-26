@@ -1,0 +1,35 @@
+.main textarea {
+    width: 80%;
+    border: 1rpx solid black;
+    font-size: 32rpx;
+}
+
+.main_view1 {
+    font-size: 35rpx;
+    margin-left: 40rpx
+}
+
+.main_view2 {
+    font-size: 35rpx;
+    margin-left: 40rpx;
+    margin-bottom: 20rpx;
+    color: #222;
+}
+
+.main_textarea {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20rpx;
+}
+
+.main_textarea textarea {
+    padding: 10rpx;
+}
+
+.main_button button{
+    width: 200rpx;
+    height: 100rpx; 
+    font-size: 38rpx;
+    padding: 0;
+}
+

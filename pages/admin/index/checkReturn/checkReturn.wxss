@@ -1,3 +1,25 @@
+.top {
+    height: 80rpx;
+    background-color: #F1F1F1;
+    display: flex;
+    align-items: center;
+}
+.search {
+    display: flex;
+    padding-left: 20rpx;
+    font-size: 35rpx;
+}
+
+.search image {
+    width: 50rpx;
+    height: 50rpx;
+    margin-right: 20rpx;
+}
+
+.search input {
+    width: 400rpx;
+}
+
 .application {
     display: flex;
     justify-content: space-around;

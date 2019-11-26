@@ -1,18 +1,47 @@
-// pages/mine/details/changePassword/changePassword.js
+// pages/admin/index/checkReservation/chooseReservation/refuseFeedback/refuseFeedback.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        r_no:　'',
+        message: ''
+    },
 
+    // 发送反馈信息
+    sendMessage: function(res) {
+        var that = this
+        wx.request({
+            url: xx,
+            data: {
+                r_no: that.data.r_no,
+                message: that.data.message
+            },
+            method: 'POST',
+            header: {
+                "content-type": "application/x-www-form-urlencoded"
+            },
+            success: function(res) {
+                console.log(res.data)
+            }
+        })
+    },
+    // 获取输入内容
+    getInput: function(e) {
+        this.setData({
+            message: e.detail.value
+        })
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        console.log("上个页面传来的预约编号：" + options.r_no);
+        this.setData({
+            r_no:　options.r_no
+        })
     },
 
     /**

@@ -26,8 +26,9 @@ Page({
     getDetails: function(e) {
         var t = e.currentTarget.dataset.index;
         var d_no = this.data.hotDevice[t].d_no;
+        var d_state = this.data.hotDevice[t].d_state;
         wx.navigateTo({
-            url: '/pages/user/index/device/device' + '?d_no=' + d_no,
+            url: '/pages/user/index/device/device' + '?d_no=' + d_no + '&d_state=' + d_state,
         })
     },
 
