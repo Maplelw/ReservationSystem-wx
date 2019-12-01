@@ -1,6 +1,6 @@
 // pages/homepage/user_details/apply_order/apply_order.js
-var getDate = require('../../../../../utils/util.js').formatDate;
-let reserve = require('../../../../../global/global.js').reserve;
+var getDate = require('../../../../../../utils/util.js').formatDate;
+let reserve = require('../../../../../../global/global.js').reserve;
 Page({
 
     /**

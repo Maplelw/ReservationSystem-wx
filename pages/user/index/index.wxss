@@ -1,39 +1,127 @@
-.top {
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    margin-bottom: 20rpx;
-}
-
-.top text {
-    margin: 0 50rpx;
-    color: #aaaaaa;
-    font-size: 35rpx;
-}
-
-.device {
-    display: flex;
-    border-bottom: 2rpx solid #eeeeee;
-}
-
-.device_info {
-    width: 75%;
+.container1 {
+    /* padding: 30rpx; */
+    /* background-color: #F4F4F4; */
+    /*  */
+    width: 750rpx;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-}
-
-.device .img {
-    width:25%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
-.device image {
-    width: 120rpx;
-    height: 100rpx;
+.nav {
+    display: flex;
+}
+
+.nav .left {
+    width: 337rpx;
+    height: 350rpx;
+    background-color: rgba(238,230,227,0.7);
+    margin-right: 10rpx;
+    /* padding-top: 40rpx; */
+    
+}
+
+.nav .left .text1 {
+    font-size: 40rpx; 
+    font-weight: 600;
+    margin-left: 40rpx;
+    margin-top: 40rpx;
+    margin-bottom: 10rpx;
+}
+
+.nav .left .text2 {
+    font-size: 25rpx; 
+    margin-left: 40rpx;
+}
+
+.nav .right {
+    width: 375rpx;
+}
+
+.nav .right .top {
+    height: 200rpx;
+    background-color: rgba(238,230,227,0.7);
+    margin-bottom: 10rpx;
+}
+
+.nav .right .top .text1 {
+    font-size: 40rpx; 
+    margin-left: 40rpx;
+    padding-top: 40rpx;
+}
+
+.nav .right .top .text2 {
+    font-size: 25rpx; 
+    margin-left: 40rpx;
+    margin-top: 10rpx;
+}
+
+.nav .right .down {
+    display: flex;
+}
+
+.nav .right .down .borrow{
+    width: 50%;
+    height: 140rpx;
+    background-color: rgba(238,230,227,0.7);
+    margin-right: 10rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav .right .down .borrow .text1 {
+    font-size: 35rpx; 
+    margin-left: 10rpx;
+}
+
+.nav .right .down .borrow .text2 {
+    font-size: 20rpx; 
+    margin-top: 10rpx;
+}
+
+.nav .right .down .credit{
+    width: 50%;
+    height: 140rpx;
+    background-color: rgba(238,230,227,0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav .right .down .credit .text1 {
+    font-size: 35rpx; 
+}
+
+.nav .right .down .credit .text2 {
+    font-size: 20rpx; 
+    margin-top: 10rpx;
+}
+
+.hot .topic {
+    margin-top: 20rpx;
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+}
+
+.hot .topic image {
+    width: 64rpx;
+    height: 40rpx;
+}
+
+.message .topic {
+    margin-top: 20rpx;
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+}
+
+.message .topic image {
+    width: 64rpx;
+    height: 40rpx;
 }
 
 .footer {

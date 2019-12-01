@@ -1,5 +1,5 @@
-//const host ="http://yapi.demo.qunar.com/mock/35294";
-const host = "http://localhost:8080/CampusDevice_war_exploded"
+const host ="http://yapi.demo.qunar.com/mock/35294";
+//const host = "http://localhost:8080/CampusDevice_war_exploded"
 const datas = {
 // 用户
     //获取用户信息
@@ -15,7 +15,7 @@ const datas = {
     // 预约
     reserve: host +　"/user/reserve",
     // 查看已预约设备
-    booked: host + "/user/reservation",
+    reservation: host + "/user/reservation",
     // 查看已借设备
     borrowed: host + "/user/borrowed",
     // 查看消息

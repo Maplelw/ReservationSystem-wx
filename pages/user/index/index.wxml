@@ -1,37 +1,40 @@
-<!-- 头部选项 -->
-<view class="top">
-    <text bindtap="toHot" style="color:{{hotColor}}">热门</text>
-    <text bindtap="toAll" style="color:{{allColor}}">所有</text>
-</view>
-<!-- 中间数据 -->
-<view wx:if="{{choice === 'hot'}}">
-    <view class="device" data-index="{{index}}" wx:for="{{hotDevice}}" wx:key="{{index}}" bindtap="getDetails">
-        <view class="img">
-            <image src="/img/global/device.png"></image>
+<view class="container1">
+    <view class="nav">
+        <view class="left">
+            <view class="text1">现在预约</view>
+            <view class="text2" >RESERVE NOW</view>
         </view>
-        
-        <view class="device_info">
-            <text style="font-size:32rpx;">{{item.d_no}}</text>
-            <text style="font-size:32rpx;">{{item.d_name}}</text>
-            <text style="color:#aaaaaa;font-size:30rpx;">主要用途:</text>
-            <text style="color:#aaaaaa;font-size:30rpx;">{{item.d_mainUse}}</text>
-        </view>
+       <view class="right">
+            <view class="top">
+                <view class="text1">预约记录</view>
+                <view class="text2">MY RESERVATION</view>
+            </view>
+            <view class="down">
+                <view class="borrow">
+                    <view class="text1">借用设备</view>
+                    <view class="text2">BORROWED</view>
+                </view>
+                <view class="credit">
+                    <view class="text1">信用记录</view>
+                    <view class="text2">CREDIT</view>
+                </view>
+            </view>
+        </view>  
     </view>
 </view>
-<!-- 所有 -->
-<view wx:else> 
-    <view class="device" data-index="{{index}}" wx:for="{{hotDevice}}" wx:key="{{index}}" bindtap="getDetails">
-        <view class="img">
-            <image src="/img/global/device.png"></image>
+<view class="hot">
+        <view class="topic">
+            <image src="/img/user/decoration1.png"></image>
+            <text>TOP</text>
         </view>
-        <view class="device_info">
-            <text style="font-size:32rpx;">{{item.d_no}}</text>
-            <text style="font-size:32rpx;">{{item.d_name}}</text>
-            <text style="color:#aaaaaa;font-size:30rpx;">主要用途:</text>
-            <text style="color:#aaaaaa;font-size:30rpx;">{{item.d_mainUse}}</text>
-        </view>
+</view>
+<view class="message">
+    <view class="topic">
+        <image src="/img/user/decoration1.png"></image>
+        <text>新的消息</text>
     </view>
 </view>
+
 <!-- 底部导航 -->
 <view class="footer">
     <view class="box">

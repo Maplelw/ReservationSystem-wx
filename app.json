@@ -1,13 +1,13 @@
 {
     "pages": [
-        "pages/test/test",
-        "pages/admin/index/index",
         
-        
-        "pages/user/mine/mine",
         "pages/user/index/index",
-        "pages/user/index/device/device",
-        "pages/user/index/device/reserveDevice/reserveDevice",
+
+        "pages/test/test",
+        "pages/user/mine/mine",
+        
+        "pages/user/index/searchDevice/device/device",
+        "pages/user/index/searchDevice/device/reserveDevice/reserveDevice",
         "pages/user/register/register",
         "pages/user/mine/borrowed/borrowed",
         "pages/user/mine/reservation/reservation",
@@ -16,7 +16,7 @@
         "pages/user/mine/userInfo/userInfo",
         
         
-        "pages/admin/mine/changePassword/changePassword",
+        "pages/admin/index/index",
         "pages/admin/index/checkReservation/checkReservation",
         "pages/admin/index/checkReservation/chooseReservation/chooseReservation",
         "pages/admin/index/checkReservation/chooseReservation/refuseFeedback/refuseFeedback",

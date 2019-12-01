@@ -1,4 +1,4 @@
-let deviceDetail = require('../../../../global/global.js').deviceDetail;
+let deviceDetail = require('../../../../../global/global.js').deviceDetail;
 
 Page({
 

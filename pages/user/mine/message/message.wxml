@@ -1,7 +1,11 @@
 <view class="gap">
 </view>
-
-<view class="message" wx:for="{{messages}}" wx:key="{{index}}">
-    <view class="content">{{item.m_content}}</view>
-    <view class="time">{{item.m_date}}</view>
+<view class="bak">
+    <view class="message" wx:for="{{messages}}" wx:key="{{index}}">
+        <view class="topic">
+            {{item.m_topic}}
+        </view>
+        <view class="content">{{item.m_content}}</view>
+        <view class="time">{{item.m_date}}</view>
+    </view>
 </view>
