@@ -23,15 +23,15 @@
     <view class="inputs">
         <text>身份</text>
         <radio-group class="radio-group" bindchange="radioChange" name="u_type">
-            <radio color="#607D8B" class="radio" value="学生">
+            <radio color="#607D8B" class="radio" value="student">
                 <text>学生</text>
             </radio>
-            <radio color="#607D8B" value="老师">
+            <radio color="#607D8B" value="teacher">
                 <text>老师</text>
             </radio>
         </radio-group>
     </view>
-    <view wx:if="{{type}}">
+    <view wx:if="{{type === 'student'}}">
         <view class="inputs">
             <text>班级</text>
             <input type="text" placeholder="例如：软件1703" name="u_major_class"></input>

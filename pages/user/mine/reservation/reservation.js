@@ -6,10 +6,12 @@ Page({
      * 页面的初始数据
      */
     data: {
+        page: 1,// 页数
+        flag: 0,// 是否最后一页
         choice: "ing",
         ingColor: "#89AFD4",
         doneColor: "#bbbbbb",
-        deviceIng: [{
+        reservation: [{
                 d_name: "显微镜",
                 d_no: "EK1005S",
                 r_reservationDate: "2019-01-02",
@@ -24,26 +26,7 @@ Page({
                 r_reservationDate: "2019-01-02",
                 r_startDate: "2019-01-02",
                 r_returnDate: "2019-01-02",
-                r_state: -1,
-                r_no: 0
-            }
-        ],
-        deviceDone: [{
-                d_name: "显微镜",
-                d_no: "EK1005S",
-                r_reservationDate: "2019-01-02",
-                r_startDate: "2019-01-02",
-                r_returnDate: "2019-01-02",
-                r_state: 1,
-                r_no: 0
-            },
-            {
-                d_name: "显微镜",
-                d_no: "EK1005S",
-                r_reservationDate: "2019-01-02",
-                r_startDate: "2019-01-02",
-                r_returnDate: "2019-01-02",
-                r_state: -1,
+                r_state: 0,
                 r_no: 0
             }
         ]
@@ -66,10 +49,9 @@ Page({
     },
     // 取消预约
     cancel: function(e) {
-        console.log(e.currentTarget.dataset.index)
-        var r_no = this.data.deviceIng[e.currentTarget.dataset.index].r_no
-        console.log("被选择的预约编号")
-        console.log(r_no)
+        var that = this;
+        var r_no = this.data.reservationIng[e.currentTarget.dataset.index].r_no
+        console.log("被选择的预约编号" + r_no)
         wx.showModal({
             title: '提示',
             content: '是否取消预约',
@@ -88,7 +70,11 @@ Page({
                                 },
                                 success: function(res) {
                                     console.log(res.data)
-                                    
+                                    // 页面删减一项
+                                    that.data.reservationIng.splice(e.currentTarget.dataset.index, 1)
+                                    that.setData({
+                                        reservationIng: that.data.reservationIng
+                                    })
                                 },
                                 fail: function(res) {
                                     consol.log("请求失败")
@@ -105,7 +91,7 @@ Page({
     //查看反馈
     feedback: function(e) {
         console.log(e.currentTarget.dataset.index)
-        var r_no = this.data.deviceIng[e.currentTarget.dataset.index].r_no
+        var r_no = this.data.reservationIng[e.currentTarget.dataset.index].r_no
         console.log("被选择的预约编号")
         console.log(r_no)
         wx.login({
@@ -140,7 +126,8 @@ onLoad: function(options) {
                 wx.request({
                     url: reservation,
                     data: {
-                        code: res.code
+                        code: res.code,
+                        page: that.data.page
                     },
                     header: {
                         'content-type': 'application/x-www-form-urlencoded'
@@ -148,24 +135,12 @@ onLoad: function(options) {
                     method: 'POST',
                     success: function(res) {
                         console.log(res.data)
-                        var device = res.data.device
-                        var deviceIng = new Array();
-                        var deviceDone = new Array();
-                        for(var i=0;i<device.length;i++) {
-                            if(device[i].state === 0) {
-                                deviceIng.push(device[i])
-                            }
-                            else {
-                                deviceDone.push(device[i])
-                            }
-                        }
                         that.setData({
-                            deviceIng: deviceIng,
-                            deviceDone: deviceDone
+                            reservation: res.data.reservation,
                         })
                     },
                     fail: function(res) {
-                        consolo.log("请求失败")
+                        console.log("请求失败")
                     },
                 })
             }
@@ -211,7 +186,50 @@ onLoad: function(options) {
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function() {
-
+        if (that.data.flag === 1) {// 到最后一页了
+            wx.showToast({
+                title: '已经到最后一个设备',
+                icon: "loading",
+                duration: 500
+            })
+        }
+        else {
+            wx.request({
+                url: reservation,
+                data: {
+                    page: that.data.page,
+                    code: res.code,
+                },
+                method: 'POST',
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded'
+                },
+                success: function (res) {
+                    console.log(res.data)
+                    var oldRecord = that.data.record
+                    var newRecord;
+                    if (res.data.flag === 0) {
+                        that.setData({
+                            flag: 1
+                        })
+                        wx.showToast({
+                            title: '已经到最后一个设备',
+                            icon: "loading",
+                            duration: 500
+                        })
+                    }
+                    else {
+                        newRecord = oldRecord.concat(res.data.record)
+                        console.log(newRecord)
+                        that.setData({
+                            Record: newRecord,
+                            page: that.data.page + 1
+                        })
+                    }
+                },
+                fail: function (res) { console.log("请求失败") },
+            })
+        }
     },
 
     /**

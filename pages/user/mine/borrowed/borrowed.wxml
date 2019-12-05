@@ -1,22 +1,73 @@
-<view wx:for="{{borrowed_item}}"  wx:key="{{index}}">
-    <view class="top">
-        <view class="equipName">{{item.d_name}}</view>
-        <view class="details">
-            <text>设备编号：{{item.d_no}}</text>
-            <text>主要用途：{{item.d_mainUse}}</text>
-        </view>
-        <view class="check">
-            <text>查看具体信息</text>
+<!-- 头部选项 -->
+<view class="header">
+    <text bindtap="toIng" style="color:{{ingColor}}">正在借用</text>
+    <text bindtap="toDone" style="color:{{doneColor}}">已完成</text>
+</view>
+<!-- 正在借用 -->
+<view wx:if="{{choice === 'ing'}}">
+    <view class="all" wx:for="{{borrowed_item}}" wx:key="{{index}}">
+        <view style="border-bottom: 25rpx solid rgb(244, 244, 244);padding-bottom: 20rpx;" 
+            wx:if="{{item.b_state === 0 || item.b_state === -1 }}">
+            <view class="top">
+                <view>
+                    <text>借用日期:</text>
+                    <text>{{item.b_borrowDate}}</text>
+                    <text wx:if="{{item.b_state === 0}}" class="ing">正在借用</text>
+                    <text wx:else class="overdue">逾期未还</text>
+                </view>
+            </view>
+            <view class="down" bindtap="getDeviceDetail" data-index="{{index}}">
+                <view>{{item.d_name}}({{item.d_no}})</view>
+                <view>
+                    <text>归还日期:</text>
+                    <text>{{item.b_returnDate}}</text>
+                </view>
+                <view>
+                    <text>归还地点:</text>
+                    <text>{{item.d_saveSite}}</text>
+                </view>
+            </view>
+            <view class="cancel" >
+                <text bindtap="getQRcode" data-index="{{index}}">生成二维码</text>
+            </view>
         </view>
     </view>
-    <view class="down">
-        <view>
-            <text style="font-size: 35rpx; margin-bottom: 40rpx;">归还日期</text>
-            <text style="font-size: 30rpx;">{{item.b_returnDate}}</text>
+</view>
+<!-- 已完成 -->
+<view wx:else>
+    <view class="all" wx:for="{{borrowed_item}}" wx:key="{{index}}">
+        <view style="border-bottom: 25rpx solid rgb(244, 244, 244); padding-bottom: 20rpx;" 
+            wx:if="{{item.b_state === 1}}">
+            <view class="top">
+                <view>
+                    <text>借用日期:</text>
+                    <text>{{item.b_borrowDate}}</text>
+                    <text wx:if="{{item.b_state === 1}}" class="done">已归还</text>
+                </view>
+            </view>
+            <view class="down">
+                <view>{{item.d_name}}({{item.d_no}})</view>
+                <view>
+                    <text>归还日期</text>
+                    <text>{{item.b_returnDate}}</text>
+                </view>
+                <view>
+                    <text>归还地点:</text>
+                    <text>{{item.d_saveSite}}</text>
+                </view>
+            </view>
+            <view class="cancel" data-index="{{index}}">
+                <text bindtap="showComment" data-index="{{index}}">去评价</text>
+            </view>
         </view>
-        <view style="margin-top: 0rpx;">
-            <text style="font-size: 35rpx; font-weight: 500">归还地点</text>
-            <text style="font-size: 30rpx;">{{item.d_saveSite}}</text>
+    </view>
+</view>
+<!--  二维码  -->
+<view class="window" hidden="{{isQRcode ? '' : true }}">
+    <view class='windowContent'>
+        <view class="icon">
+            <icon type="cancel" color="#fff" bindtap='hideCode'></icon>
         </view>
+        <image src='{{img}}'></image>
     </view>
 </view>

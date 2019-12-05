@@ -4,16 +4,24 @@
     display: flex;
     align-items: center;
 }
+
 .search {
-    display: flex;
     padding-left: 20rpx;
     font-size: 35rpx;
+    display: flex;
+    align-items: center;
 }
 
 .search image {
     width: 50rpx;
     height: 50rpx;
     margin-right: 20rpx;
+}
+
+.search .scan {
+    margin-left: 180rpx;
+    width: 55rpx;
+    height: 55rpx;
 }
 
 .search input {
@@ -25,6 +33,7 @@
     justify-content: space-around;
     margin-top: 20rpx;
 }
+
 .info {
     display: flex;
     flex-direction: column;

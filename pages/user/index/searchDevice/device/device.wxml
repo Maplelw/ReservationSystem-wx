@@ -16,15 +16,14 @@
     <view class="details">
         <view class="texts">设备编号:<text>{{device.d_no}}</text></view>
         <view class="texts">设备名称:<text>{{device.d_name}}</text></view>
-        <view class="texts">主要用途:<text>{{device.d_mainUse}}</text></view>
-        <view class="texts">重要参数:<text>{{device.d_importantParam}}</text></view>
+        <view class="texts">设备型号:<text>{{device.d_model}}</text></view>
         <view class="texts">存放场地:<text>{{device.d_saveSite}}</text></view>
         <view class="texts">保管人姓名:<text>{{device.a_name}}</text></view>
         <view class="texts">保管人电话:<text>{{device.a_phone}}</text></view>
     </view>
     <view class="reservation">
         <button class="button1" bindtap="reserve">预约设备</button>    
-        <button class="button2" bindtap="follow">跟踪设备</button>
+        <button class="button2" bindtap="track">跟踪设备</button>
     </view>
 </view>
 <!-- 评论 -->

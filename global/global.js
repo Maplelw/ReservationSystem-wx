@@ -1,6 +1,9 @@
 const host ="http://yapi.demo.qunar.com/mock/35294";
 //const host = "http://localhost:8080/CampusDevice_war_exploded"
+//const host = "http://49.235.73.29:8083/CampusDevice"
 const datas = {
+// 登录
+    login: host + "/login",
 // 用户
     //获取用户信息
     getUserInfo: host + "/user/getUserInfo",
@@ -10,8 +13,16 @@ const datas = {
     getSecurityCode: host +　"/user/getSecurityCode",
     // 获取热门设备表
     hot: host + "/user/hot",
+    // 获取所有设备表
+    all: host + "/user/all",
+    // 搜索设备
+    searchDevice: host + "/user/searchDevice",
     // 获取具体设备信息
     deviceDetail: host + "/user/deviceDetail",
+    // 获取设备评论
+    deviceComment: host + "/user/deviceComment",
+    // 跟踪设备
+    track: host + "/user/track",
     // 预约
     reserve: host +　"/user/reserve",
     // 查看已预约设备
@@ -24,6 +35,8 @@ const datas = {
     cancelReservation: host + "/user/cancelReservation",
     // 获取信用记录
     getCredit: host + "/user/getCredit",
+    // 生成二维码
+    showQRCode: host + 　"/user/showQRCode",
 
 // 管理员
     // 

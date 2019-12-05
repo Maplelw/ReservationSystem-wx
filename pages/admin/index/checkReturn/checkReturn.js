@@ -24,7 +24,29 @@ Page({
             u_credit_grade: 100
         }]
     },
-
+    // 扫一扫
+    getScancode: function () {
+        var that = this;
+        // 允许从相机和相册扫码
+        wx.scanCode({
+            success: (res) => {
+                console.log(res.result)
+                wx.request({
+                    url: confirmReturn,
+                    data: {
+                        b_no: res.result,
+                    },
+                    method: 'POST',
+                    header: {
+                        "content-type": "application/x-www-form-urlencoded"
+                    },
+                    success: function (res) {
+                        console.log(res.data)
+                    }
+                })
+            }
+        })
+    },
     //确认归还按钮
     confirm: function (e) {
         var that = this
@@ -86,8 +108,7 @@ Page({
                     }
                 })
             }
-        })
-        
+        })   
     },
     /**
      * 生命周期函数--监听页面加载

@@ -7,7 +7,7 @@ Page({
      */
     data: {
         code: "",//临时code，用户后端获取微信唯一标识openid
-        type: false,//账户类型 true:学生 false:老师 
+        type: "student",//账户类型 true:学生 false:老师 
         u_phone: "",
         securityCode: "",//验证码
         errorMsg: ""
@@ -30,10 +30,9 @@ Page({
             }
         })
     },
-
+    // 提交
     formSubmit: function(e) {
         //校验验证码
-        // if(true) {
         //if(e.detail.data.securityCode = this.data.securityCode) {//校验成功
             var that = this;
             wx.login({
@@ -76,10 +75,19 @@ Page({
 
     // 根据学生/老师选项修改type
     radioChange: function (e) {
-        if (e.detail.value == 'student')
-            this.setData({ type: true })
-        else
-            this.setData({ type: false })
+        if (e.detail.value == 'student') {
+            this.setData({
+                type: 'student'
+            })
+            console.log(this.data.type)
+        }
+        else {
+            this.setData({
+                type: 'teacher'
+            })
+            console.log(this.data.type)
+        }
+            
     },
 
     phoneInput: function(e) {

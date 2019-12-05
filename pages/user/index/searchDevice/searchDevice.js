@@ -1,12 +1,16 @@
 let hot = require('../../../../global/global.js').hot;
+let all = require('../../../../global/global.js').all;
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        choice: "hot",
-        hotColor: "#000000",
+        choice: "hot",  // 上侧导航
+        page: 2, // 页数
+        flag: 0, // 已经加载到最后一个设备
+        input: "搜索内容", //搜索框内容
+        hotColor: "#000000", 
         allColor: "#bbbbbb",
         hotDevice: [],
         allDevice: [],
@@ -26,9 +30,8 @@ Page({
     getDetails: function(e) {
         var t = e.currentTarget.dataset.index;
         var d_no = this.data.hotDevice[t].d_no;
-        var d_state = this.data.hotDevice[t].d_state;
         wx.navigateTo({
-            url: '/pages/user/index/device/device' + '?d_no=' + d_no + '&d_state=' + d_state,
+            url: '/pages/user/index/searchDevice/device/device' + '?d_no=' + d_no,
         })
     },
 
@@ -58,6 +61,12 @@ Page({
             })
         }
     },
+    // 提交搜索
+    search: function (e) {
+        wx.navigateTo({
+            url: 'search/search',
+        })
+    },
 
     /**
      * 生命周期函数--监听页面加载
@@ -67,6 +76,9 @@ Page({
         wx.request({
             url: hot,
             method: 'POST',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
             success: function(res) {
                 console.log(res.data)
                 that.setData({
@@ -74,6 +86,23 @@ Page({
                 })
             },
             fail: function(res) {console.log("请求失败")},
+        })
+        wx.request({
+            url: all,
+            method: 'POST',
+            data: { 
+                page: that.data.page
+            },
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (res) {
+                console.log(res.data)
+                that.setData({
+                    allDevice: res.data.device
+                })
+            },
+            fail: function (res) { console.log("请求失败") },
         })
     },
 
@@ -116,7 +145,53 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+        var that = this;
+        if(that.data.choice === "all") {
+            if(that.data.flag === 1) {
+                wx.showToast({
+                    title: '已经到最后一个设备',
+                    icon: "loading",
+                    duration: 500
+                })
+            }
+            else {
+                console.log(that.data.page)
+                wx.request({
+                    url: all,
+                    data: {
+                        page: that.data.page
+                    },
+                    method: 'POST',
+                    header: {
+                        'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    success: function (res) {
+                        console.log(res.data)
+                        var oldDevice = that.data.allDevice
+                        var newDevice
+                        if (res.data.flag === 0) {
+                            that.setData({
+                                flag: 1
+                            })
+                            wx.showToast({
+                                title: '已经到最后一个设备',
+                                icon: "loading",
+                                duration: 500
+                            })
+                        }
+                        else {
+                            newDevice = oldDevice.concat(res.data.device)
+                            console.log(newDevice)
+                            that.setData({
+                                allDevice: newDevice,
+                                page: that.data.page + 1
+                            })
+                        } 
+                    },
+                    fail: function (res) { console.log("请求失败") },
+                })
+            }
+        }
     },
 
     /**

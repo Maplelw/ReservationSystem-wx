@@ -1,0 +1,21 @@
+ <!-- 搜索框 -->
+<view class="searchTop">
+    <view class="search">
+        <view style="display:flex">
+            <image src="/img/admin/search.png"></image>
+            <input placeholder="搜索设备名称或编号" bindinput="input" confirm-type="search" 
+                bindconfirm="search"></input>
+        </view>
+    </view>
+</view>
+<!-- 数据项 -->
+<view class="device" 
+    data-index="{{index}}" wx:for="{{searchDevice}}" wx:key="{{index}}" bindtap="getDetails">
+    <view class="img">
+        <image src="/img/global/device.png"></image>
+    </view>
+    <view class="device_info">
+        <text style="font-size:32rpx;">{{item.d_no}}</text>
+        <text style="font-size:32rpx;">{{item.d_name}}</text>
+    </view>
+</view>

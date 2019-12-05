@@ -27,7 +27,7 @@ Page({
                     method: 'POST',
                     header: {
                             "content-type": "application/x-www-form-urlencoded"
-                        },
+                    },
                     data: {
                         d_no: that.data.d_no,
                         code: res.code,

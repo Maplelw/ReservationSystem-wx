@@ -1,0 +1,17 @@
+<view class="expression">
+        <text style="color:#888">"{{topic}}"</text>
+        <view>
+            <image src="{{satisfied}}" bindtap="satisfied"></image>
+            <image src="{{unsatisfied}}" bindtap="unsatisfied"></image>
+        </view>
+</view>
+
+<!-- 评价内容框 -->
+<view class="comment">
+    <textarea placeholder="请输入评价内容" bindinput="getComment"></textarea>
+</view>
+
+<!-- 提交 -->
+<view class="submit">
+    <button bindtap="submitComment">提交</button>
+</view>

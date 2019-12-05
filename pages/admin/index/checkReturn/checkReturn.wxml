@@ -1,8 +1,12 @@
+
 <view class="top">
     <view class="search">
-        <image src="/img/admin/search.png"></image>
-        <input placeholder="搜索学工号或者设备编号" bindinput="input" confirm-type="search" 
-            bindconfirm="search"></input>
+        <view style="display:flex">
+            <image src="/img/admin/search.png"></image>
+            <input placeholder="搜索学工号或者设备编号" bindinput="input" confirm-type="search" 
+                   bindconfirm="search"></input>
+            <image class="scan" src="/img/admin/scan.png" bindtap="getScancode"></image>
+        </view>
     </view>
 </view>
 

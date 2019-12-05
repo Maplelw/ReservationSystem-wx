@@ -9,26 +9,32 @@
         <view class="img">
             <image src="/img/global/device.png"></image>
         </view>
-        
         <view class="device_info">
             <text style="font-size:32rpx;">{{item.d_no}}</text>
             <text style="font-size:32rpx;">{{item.d_name}}</text>
-            <text style="color:#aaaaaa;font-size:30rpx;">主要用途:</text>
-            <text style="color:#aaaaaa;font-size:30rpx;">{{item.d_mainUse}}</text>
+
         </view>
     </view>
 </view>
 <!-- 所有 -->
-<view wx:else> 
-    <view class="device" data-index="{{index}}" wx:for="{{hotDevice}}" wx:key="{{index}}" bindtap="getDetails">
+<view wx:else>
+    <!-- 搜索框 -->
+    <!-- <view class="searchTop" bindtap="search">
+        <view class="search">
+            <view style="display:flex">
+                <image src="/img/admin/search.png"></image>
+                <text>搜索设备名称或编号</text>
+            </view>
+        </view>
+    </view> -->
+    <!-- 设备列表 -->
+    <view class="device" data-index="{{index}}" wx:for="{{allDevice}}" wx:key="{{index}}" bindtap="getDetails">
         <view class="img">
             <image src="/img/global/device.png"></image>
         </view>
         <view class="device_info">
             <text style="font-size:32rpx;">{{item.d_no}}</text>
             <text style="font-size:32rpx;">{{item.d_name}}</text>
-            <text style="color:#aaaaaa;font-size:30rpx;">主要用途:</text>
-            <text style="color:#aaaaaa;font-size:30rpx;">{{item.d_mainUse}}</text>
         </view>
     </view>
 </view>

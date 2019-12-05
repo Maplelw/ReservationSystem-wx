@@ -1,5 +1,9 @@
-.top {
-    background-color: #F8F8F8;
+page {
+    background-color: rgb(244, 244, 244)
+}
+
+.header {
+    background-color: #fff;
     height: 300rpx;
     width: 100%;
 }
@@ -13,25 +17,62 @@
     margin-left: 40rpx;
 }
 
-.top .score {
+.header .score {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.container1 {
+.mid {
     margin: 20rpx 20rpx 0 20rpx;
+    font-size: 42rpx;
 }
 
-.records {
-    background-color: #F8F8F8;
-    margin: 20rpx 0;
-    padding-bottom: 10rpx;
-    padding-left: 20rpx;
+.all {
+    background-color: #fff;
+    margin-top: 25rpx;
 }
 
-.records view {
-    font-size: 35rpx;
-    margin: 10rpx;
+.all .top {
+    padding: 20rpx;
+    border-bottom: 4rpx solid rgb(244, 244, 244)
+}
+
+.all .top text {
+    font-size: 32rpx;
+    margin-right: 10rpx;
+}
+
+.top .currentScore {
+    color: #888;
+    float:right;
+    line-height:52rpx
+}
+
+
+.all .down {
+    padding: 20rpx 40rpx 10rpx 40rpx;
+    border-color: #fff;
+}
+
+.all .down text {
+    font-size: 32rpx;
+    margin: 5rpx;
+}
+
+.changeScore {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20rpx;
+}
+
+.all .changeScore .add {
+    color: #89AFD4;
+    line-height: 52rpx;
+}
+
+.all .changeScore .minus {
+    color: red;
+    line-height: 52rpx;
 }

@@ -5,44 +5,49 @@
 </view>
 <!-- 正在处理 -->
 <view wx:if="{{choice === 'ing'}}">
-    <view class="all" wx:for="{{deviceIng}}" wx:key="{{index}}">
-        <view class="top">
-            <view>
-                <text>预约日期:</text>
-                <text>{{item.r_reservationDate}}</text>
-                <text style="color: #aaa;float:right;line-height: 52rpx;">正在处理</text>
+    <view class="all" wx:for="{{reservation}}" wx:key="{{index}}">
+        <view wx:if="{{item.r_state === 0}}">
+            <view class="top">
+                <view>
+                    <text>预约日期:</text>
+                    <text>{{item.r_reservationDate}}</text>
+                    <text style="color: #aaa;float:right;line-height: 52rpx;">正在处理</text>
+                </view>
             </view>
-        </view>
-        <view class="down">
-            <view>{{item.d_name}}({{item.d_no}})</view>
-            <view>
-                <text>借用日期</text>
-                <text>{{item.r_startDate}} -- {{item.r_returnDate}}</text>
+            <view class="down">
+                <view>{{item.d_name}}({{item.d_no}})</view>
+                <view>
+                    <text>借用日期</text>
+                    <text>{{item.r_startDate}} -- {{item.r_returnDate}}</text>
+                </view>
             </view>
-        </view>
-        <view class="cancel">
-            <text bindtap="cancel" data-index="{{index}}">取消预约</text>
+            <view class="cancel">
+                <text bindtap="cancel" data-index="{{index}}">取消预约</text>
+            </view>
         </view>
     </view>
 </view>
 <!-- 已完成 -->
 <view wx:else>
-    <view class="all" wx:for="{{deviceDone}}" wx:key="{{index}}">
-        <view class="top">
-            <text>预约日期:</text>
-            <text>{{item.r_reservationDate}}</text>
-            <text wx:if="{{item.r_state === -1}}" class="fail">预约失败</text>
-            <text wx:else class="success">预约成功</text>
-        </view>
-        <view class="down">
-            <view>{{item.d_name}}({{item.d_no}})</view>
-            <view>
-                <text>借用日期</text>
-                <text>{{item.r_startDate}} -- {{item.r_returnDate}}</text>
+    <view class="all" wx:for="{{reservation}}" wx:key="{{index}}">
+        <view wx:if="{{item.r_state === -1 || item.r_state === 1}}">
+            <view class="top">
+                <text>预约日期:</text>
+                <text>{{item.r_reservationDate}}</text>
+                <text wx:if="{{item.r_state === -1}}" class="fail">预约失败</text>
+                <text wx:elif="{{item.r_state === 1}}" class="success">预约成功</text>
+                <text wx:else class="cancelReserve">取消预约</text>
+            </view>
+            <view class="down">
+                <view>{{item.d_name}}({{item.d_no}})</view>
+                <view>
+                    <text>借用日期</text>
+                    <text>{{item.r_startDate}} -- {{item.r_returnDate}}</text>
+                </view>
+            </view>
+            <view class="cancel">
+                    <text bindtap="feedback" data-index="{{index}}">查看反馈</text>
             </view>
         </view>
-        <view class="cancel">
-                <text bindtap="feedback" data-index="{{index}}">查看反馈</text>
-            </view>
     </view>
 </view>

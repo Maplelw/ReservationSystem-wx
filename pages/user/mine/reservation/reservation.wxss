@@ -40,6 +40,12 @@
     line-height: 52rpx;
 }
 
+.top .cancelReserve {
+    color: #aaa;
+    float: right;
+    line-height: 52rpx;
+}
+
 .down {
     padding: 20rpx 40rpx 10rpx 40rpx;
 }

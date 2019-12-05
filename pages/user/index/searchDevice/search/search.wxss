@@ -1,16 +1,3 @@
-.top {
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    margin-bottom: 20rpx;
-}
-
-.top text {
-    margin: 0 50rpx;
-    color: #aaaaaa;
-    font-size: 35rpx;
-}
-
 .device {
     display: flex;
     border-bottom: 2rpx solid #eeeeee;
@@ -59,35 +46,6 @@
     margin-right: 20rpx;
 }
 
-.search text {
+.search input {
     width: 400rpx;
-    color: #888
-}
-
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 750rpx;
-    background-color: #ffffff;  
-    border-top: 2rpx solid #cccccc;
-    padding-top: 20rpx;
-}
-
-.footer .box {
-    display: flex;
-    justify-content: center;
-}
-
-.footer image {
-    width: 60rpx;
-    height: 60rpx;
-}
-
-.footer .choice {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 100rpx;
-    font-size: 30rpx;
 }

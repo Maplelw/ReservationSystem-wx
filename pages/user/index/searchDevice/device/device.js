@@ -1,5 +1,6 @@
 let deviceDetail = require('../../../../../global/global.js').deviceDetail;
-
+let deviceComment = require('../../../../../global/global.js').deviceComment;
+let track = require('../../../../../global/global.js').track;
 Page({
 
     /**
@@ -10,30 +11,49 @@ Page({
         detailColor: "#000000",//设置选中颜色
         commentColor: "#bbbbbb",
         device: {},
-        code: "",
+        comment:{},
         d_no: "",
-        d_state: ""
     },
-
     //预约设备
     reserve: function() {
-        wx.navigateTo({
-            url: '/pages/user/index/device/reserveDevice/reserveDevice' + '?d_no=' + this.data.d_no,
-        })
+        var device = this.data.device
+        console.log(device)
+        if (device.d_state === "在库" ) {
+            wx.navigateTo({
+                url: '/pages/user/index/searchDevice/device/reserveDevice/reserveDevice' +
+                    '?d_no=' + this.data.d_no,
+            })
+        }
+        else {
+            console.log("当前设备无法不允许")
+            wx.showToast({
+                title: '当前设备不在库,无法预约;您可以选择跟踪设备',
+                icon: "none",
+                duration: 3000
+            })
+        }
+        
     },
     //跟踪设备
-    follow: function() {
+    track: function() {
         var that = this;
         wx.login({
             success(res) {
                 wx.request({
-                    url: reserve,
+                    url: track,
                     data: {
                         d_no: that.data.device.d_no,
                         code: res.code
                     },
+                    method: 'POST',
+                    header: {
+                        "content-type": "application/x-www-form-urlencoded"
+                    },
                     success(res) {
                         console.log(res.data)
+                        wx.showToast({
+                            title: '跟踪设备成功',
+                        })
                     }
                 })
             }
@@ -61,7 +81,6 @@ Page({
     onLoad: function (options) {
         this.setData({
             d_no: options.d_no,
-            d_state: options.d_state
         })
         console.log(this.data.d_no);
         var that = this;
@@ -70,10 +89,31 @@ Page({
             data: {
                 d_no: that.data.d_no
             },
+            method: 'POST',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
             success(res) {
                 console.log(res.data)
                 that.setData({
-                    device: 　res.data.device
+                    device: res.data.device,
+                })
+            }
+        }),
+        // 获取评论
+        wx.request({
+            url: deviceComment,
+            data: {
+                d_no: that.data.d_no
+            },
+            method: 'POST',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            success(res) {
+                console.log(res.data)
+                that.setData({
+                    comment: res.data.comment
                 })
             }
         })

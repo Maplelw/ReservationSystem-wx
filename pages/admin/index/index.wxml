@@ -6,7 +6,7 @@
     <view>
         <view class="choice">
             <navigator class="eachChoice" url="/pages/admin/index/checkReservation/checkReservation">
-                <image src="/img/admin/reservation.png" ></image>
+                <image src="/img/admin/reservation.png"></image>
                 <text>预约申请</text>
             </navigator>
             <navigator class="eachChoice" url="/pages/admin/index/checkReturn/checkReturn">
