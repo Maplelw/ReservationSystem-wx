@@ -1,63 +1,50 @@
-.icon_name .icon {
-    display: flex;
-    justify-content: center;
-}
-.icon {
-    display: flex;
-    justify-content: center;
+page {
+    background-color: rgba(244, 244, 244, 0.5);
 }
 
-.icon open-data {
-    width: 150rpx;
-    height: 150rpx;
-    border-radius: 50%;
-}
-
-.username {
-    margin: 20rpx 0;
-    justify-content: center;
+.top {
     display: flex;
-}
-
-.main {
-    margin-top: 50rpx;
-    background-color: #fafafafa;
-}
-
-.edit {
-    display: flex;
-    justify-content: space-between;
-    height: 100rpx;
     align-items: center;
+    height: 200rpx;
+    padding-left: 40rpx;
+    background-color: rgba(51,57,153);
+    border-bottom-right-radius: 10%;
+    border-bottom-left-radius: 10%;
+    color: white;
 }
 
-.edit text {
-    margin: 50rpx;
+.top .heads {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 50%;  
+    overflow: hidden;  
+    margin-right: 20rpx;
 }
 
-.info {
-    margin-top: 50rpx;
-    display: flex;
-    justify-content: center;
+.userInfo {
+    margin-top: 35rpx;
 }
 
-.right_info {
-    margin-left: 40rpx;
-}
-
-.left_info text{
-    /* //width: 200rpx; */
-    height: 60rpx;
-    color: #7B7B7B;
+.userInfo .piece {
+    margin: 0rpx 20rpx;
+    padding: 0 40rpx;
     font-size: 32rpx;
-    display: flex;
-    align-content: center;
+    line-height: 90rpx;
+    background-color: white;
 }
 
-.right_info text{
-    /* width: 200rpx; */
-    height: 60rpx;
-    font-size: 32rpx;
-    display: flex;
-    align-content: center;
+.userInfo .topic {
+    color: #888;
+
+}
+
+.userInfo .content {
+    float: right;
+}
+
+.userInfo .icon {
+    float: right;
+    color: #ddd ;
+    margin-left: 20rpx;
+    font-size: 40rpx;
 }

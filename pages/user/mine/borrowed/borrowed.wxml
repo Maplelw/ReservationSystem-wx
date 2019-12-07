@@ -5,9 +5,8 @@
 </view>
 <!-- 正在借用 -->
 <view wx:if="{{choice === 'ing'}}">
-    <view class="all" wx:for="{{borrowed_item}}" wx:key="{{index}}">
-        <view style="border-bottom: 25rpx solid rgb(244, 244, 244);padding-bottom: 20rpx;" 
-            wx:if="{{item.b_state === 0 || item.b_state === -1 }}">
+    <view class="all" wx:for="{{borrowed_itemIng}}" wx:key="{{index}}">
+        <view style="border-bottom: 25rpx solid rgb(244, 244, 244);padding-bottom: 20rpx;" >
             <view class="top">
                 <view>
                     <text>借用日期:</text>
@@ -35,14 +34,14 @@
 </view>
 <!-- 已完成 -->
 <view wx:else>
-    <view class="all" wx:for="{{borrowed_item}}" wx:key="{{index}}">
-        <view style="border-bottom: 25rpx solid rgb(244, 244, 244); padding-bottom: 20rpx;" 
-            wx:if="{{item.b_state === 1}}">
+    <view class="all" wx:for="{{borrowed_itemDone}}" wx:key="{{index}}">
+        <view style="border-bottom: 25rpx solid rgb(244, 244, 244); padding-bottom: 20rpx;" >
             <view class="top">
                 <view>
                     <text>借用日期:</text>
                     <text>{{item.b_borrowDate}}</text>
                     <text wx:if="{{item.b_state === 1}}" class="done">已归还</text>
+                    <text wx:elif="{{item.b_state === -2}}" class="overdue">逾期归还</text>
                 </view>
             </view>
             <view class="down">

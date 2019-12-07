@@ -1,16 +1,17 @@
-const host ="http://yapi.demo.qunar.com/mock/35294";
+//const host ="http://yapi.demo.qunar.com/mock/35294";
 //const host = "http://localhost:8080/CampusDevice_war_exploded"
-//const host = "http://49.235.73.29:8083/CampusDevice"
+const host = "http://49.235.73.29:8083/CampusDevice"
 const datas = {
 // 登录
     login: host + "/login",
+    // 获取验证码
+    verifyCode: host + 　"/verifyCode",
 // 用户
     //获取用户信息
     getUserInfo: host + "/user/getUserInfo",
     // 注册
     register: host + "/user/register",
-    // 获取验证码
-    getSecurityCode: host +　"/user/getSecurityCode",
+    
     // 获取热门设备表
     hot: host + "/user/hot",
     // 获取所有设备表
@@ -26,9 +27,17 @@ const datas = {
     // 预约
     reserve: host +　"/user/reserve",
     // 查看已预约设备
-    reservation: host + "/user/reservation",
-    // 查看已借设备
-    borrowed: host + "/user/borrowed",
+    finishedReservation: host + "/user/finishedReservation",
+    // 查看已预约设备
+    unfinishedReservation: host + "/user/unfinishedReservation",
+    // 同意修改时间
+    agreeEditReservation: host + "/user/agreeEditReservation",
+    // 查看已借设备 未完成
+    unfinishedBorrow: host + "/user/unfinishedBorrow",
+    // 查看已借设备  已完成
+    finishedBorrow: host + "/user/finishedBorrow",
+    // 提交评价
+    comment: host + "/user/comment",
     // 查看消息
     getMessage: host + "/user/getMessage",
     // 取消预约
@@ -39,10 +48,12 @@ const datas = {
     showQRCode: host + 　"/user/showQRCode",
 
 // 管理员
-    // 
+    // 查看预约信息
     reservationDetail: host + "/admin/reservationDetail",
+    // 编辑预约
+    editReservation: host + "/admin/editReservation",
     // 拒绝租借
-    rejectReservation: host + "/admin/rejectReservation",
+    refuseReservation: host + "/admin/rejectReservation",
     // 确认租借
     confirmReservation: host + "/admin/confirmReservation",
     // 查看被预约的设备

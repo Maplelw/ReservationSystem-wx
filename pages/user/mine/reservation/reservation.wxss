@@ -28,6 +28,18 @@
     margin-right: 10rpx;
 }
 
+.top .ing {
+    color: #aaa;
+    float:right;
+    line-height: 52rpx;
+}
+
+.top .discuss {
+    color: red;
+    float:right;
+    line-height: 52rpx;
+}
+
 .top .success {
     color: #89AFD4;
     float: right;
@@ -67,5 +79,12 @@
     color: #89afd4;
     border: 2rpx solid #89afd4;
     padding: 12rpx;
+    margin-left: 20rpx;
     
+}
+
+.feedback text {
+    font-size: 32rpx;
+    color: #89afd4;
+    margin-left: 40rpx; 
 }

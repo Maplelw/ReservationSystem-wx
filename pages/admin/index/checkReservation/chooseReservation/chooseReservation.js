@@ -1,28 +1,87 @@
 let reservationDetail = require('../../../../../global/global.js').reservationDetail;
 let rejectReservation = require('../../../../../global/global.js').rejectReservation;
 let confirmReservation = require('../../../../../global/global.js').confirmReservation;
+let editReservation = require('../../../../../global/global.js').editReservation; 
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        isShow: false, // 是否弹出修改事件框
+        new_startDate: "",// 修改后借用时间
+        new_returnDate: "",// 修改归还时间
         d_no:"",
-        reservation: [{
-            u_name: "至臻",
-            u_type: "老师",
-            r_reservation_date: "2019/10/01",
-            r_borrow_date: "2019/10/02",
-            r_return_date: "2019/10/04",
-            u_credit_grade: 80
-        },{
-            u_name: "卡莎",
-            u_type: "学生",
-            r_reservation_date: "2019/10/01",
-            r_borrow_date: "2019/10/02",
-            r_return_date: "2019/10/04",
-            u_credit_grade: 100
-        }]
+        d_name: "",
+        feedback: "",
+        reservation: []
+    },
+
+    // 弹窗：管理员修改借用时间
+    changeDate: function(e) {
+        var index = e.currentTarget.dataset.index
+        var that = this
+        this.setData({
+            isShow: true,
+            new_startDate: that.data.reservation[index].r_startDate,
+            new_returnDate: that.data.reservation[index].r_returnDate,
+        })
+    },
+    // 弹窗：取消
+    hideWindow: function (e) {
+        this.setData({
+            isShow: false
+        })
+    },
+    // 修改开始时间
+    startChange: function (e) {
+        console.log(e.detail.value);
+        this.setData({
+            new_startDate: e.detail.value
+        })
+    },
+    // 修改归还时间
+    returnChange: function (e) {
+        console.log(e.detail.value);
+        this.setData({
+            new_returnDate: e.detail.value
+        })
+    },
+    //弹窗： 获取反馈信息
+    getFeedback (e) {
+        this.setData({
+            feedback: e.detail.value
+        })
+    },
+    
+    // 提交修改
+    submitChange: function (e) {
+        var index = e.currentTarget.dataset.index
+        var that = this;
+        wx.login({
+            success(res) {
+                wx.request({
+                    url: editReservation,
+                    method: 'POST',
+                    header: {
+                        "content-type": "application/x-www-form-urlencoded"
+                    },
+                    data: {
+                        r_no: that.data.reservation[index].r_no,
+                        startDate: that.data.new_startDate,
+                        returnDate: that.data.new_returnDate,
+                        feedBack: that.data.feedback,
+                    },
+                    success(res) {
+                        console.log(res.data)
+                        // 关闭弹窗
+                        that.setData({
+                            isShow: false
+                        })
+                    }
+                })
+            }
+        })
     },
 
     //拒绝租借按钮
@@ -73,6 +132,11 @@ Page({
      */
     onLoad: function (options) {
         console.log( "上一页面发送的设备编号:" + options.d_no)
+        console.log("上一页面发送的设备名称:" + options.d_name)
+        this.setData({
+            d_no: options.d_no,
+            d_name : options.d_name
+        })
         var that = this
         wx.request({
             url: reservationDetail,

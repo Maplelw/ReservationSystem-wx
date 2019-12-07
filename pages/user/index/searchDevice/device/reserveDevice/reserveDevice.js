@@ -7,19 +7,15 @@ Page({
      * 页面的初始数据
      */
     data: {
-        startDate: "2019-01-02",
-        returnDate: "2019-01-02",
-        currentDate: "2019-01-02",
+        startDate: "",
+        returnDate: "",
+        currentDate: "",
         d_no: "11",
     },
 
     //确定预约按钮
     reserve: function(e) {
         var that = this;
-        wx.showToast({
-            title: '预约成功',
-            duration: 2000
-        })
         wx.login({
             success(res) {
                 wx.request({
@@ -36,9 +32,23 @@ Page({
                     },
                     success(res) {
                         console.log(res.data)
-                        wx.redirectTo({
-                            url: '/pages/user/index/index',
-                        })
+                        if(res.data.flag === 0) {
+                            wx.showToast({
+                                title: '您已预约该设备',
+                                icon: 'none',
+                                duration: 2000
+                            })
+                        }
+                        else {
+                            wx.reLaunch({
+                                url: '/pages/user/index/index',
+                            })
+                            wx.showToast({
+                                title: '预约成功',
+                                duration: 2000
+                            })
+                        }
+                        
                     }
                 })
             }

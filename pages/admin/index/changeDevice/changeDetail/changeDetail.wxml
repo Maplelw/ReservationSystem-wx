@@ -1,39 +1,45 @@
 <view class="top">
-    <view style="display: flex">
-        <image src="/img/global/device.png"></image>
-        <view class="device_info">
-            <text style="font-size:32rpx;">{{device.m_Dno}}</text>
-            <text style="font-size:32rpx;">{{device.m_Dname}}</text>
-        </view>
+    <view class="heads">
+        <open-data type="userAvatarUrl"></open-data>
     </view>
-    <view class="state">{{device.m_Dstate}}</view>
+    <open-data type="userNickName"></open-data>
 </view>
-<view class="middle">
-    <text bindtap="toDetail" style="color:#3E606F">详细信息</text>
-</view>
-<view wx:if="{{choice === 'detail' }}">
-    <view class="edit" bindtap="editDevice">编辑</view>
-    <view class="details">
-        <view class="texts">设备编号:<text>{{device.m_Dno}}</text></view>
-        <view class="texts">设备名称:<text>{{device.m_Dname}}</text></view>
-        <view class="texts">设备状态:<text>{{device.m_Dstate}}</text></view>
-        <view class="texts">主要用途:<text>{{device.m_DmainUse}}</text></view>
-        <view class="texts">重要参数:<text>{{device.m_DimportantParam}}</text></view>
-        <view class="texts">存放场地:<text>{{device.m_DsaveSite}}</text></view>
-        <view class="texts">保管人姓名:<text>{{device.m_Aname}}</text></view>
-        <view class="texts">保管人电话:<text>{{device.m_Aphone}}</text></view>
+
+<view class="userInfo">
+    <view class="piece" bindtap="changeName">
+        <text class="topic">设备编号</text>
+        <text class="icon">></text>
+        <text class="content">{{device.d_no}}</text>
+    </view>
+    <view class="piece" bindtap="changeNo">
+        <text class="topic">设备名称</text>
+        <text class="icon">></text>
+        <text class="content">{{device.d_name}}</text>
+    </view>
+    <view class="piece" bindtap="changePhone">
+        <text class="topic">设备型号</text>
+        <text class="icon">></text>
+        <text class="content">{{device.d_model}}</text>
+    </view>
+    <view class="piece" bindtap="changeEmail">
+        <text class="topic">存放地点</text>
+        <text class="icon">></text>
+        <text class="content">{{device.d_saveSite}}</text>
+    </view>
+    <view class="piece" bindtap="changeType">
+        <text class="topic">保管人员</text>
+        <text class="icon">></text>
+        <text class="content">{{device.a_name}}</text>
+    </view>
+    <view class="piece" bindtap="changeName">
+        <text class="topic">保管人电话</text>
+        <text class="icon">></text>
+        <text class="content">{{device.a_phone}}</text>
+    </view>
+    <view class="piece" bindtap="changeName">
+        <text class="topic">状态</text>
+        <text class="icon">></text>
+        <text class="content">{{device.d_state}}</text>
     </view>
 </view>
-<view wx:else>
-    <view class="details">
-        <view class="texts">设备编号:<input>{{device.m_Dno}}</input></view>
-        <view class="texts">设备名称:<text>{{device.m_Dname}}</text></view>
-        <view class="texts">设备状态:<text>{{device.m_Dstate}}</text></view>
-        <view class="texts">主要用途:<text>{{device.m_DmainUse}}</text></view>
-        <view class="texts">重要参数:<text>{{device.m_DimportantParam}}</text></view>
-        <view class="texts">存放场地:<text>{{device.m_DsaveSite}}</text></view>
-        <view class="texts">保管人姓名:<text>{{device.m_Aname}}</text></view>
-        <view class="texts">保管人电话:<text>{{device.m_Aphone}}</text></view>
-    </view>
-    <view><button bindtap="confirm">确定</button> </view>
-</view>
+<button bindtap="uploadImageTap">上传图片</button>

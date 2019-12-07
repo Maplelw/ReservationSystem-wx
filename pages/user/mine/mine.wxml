@@ -22,7 +22,7 @@
     <navigator class="options" url="/pages/user/mine/userInfo/userInfo">
         <view class="img_text">
             <image src="/img/mine/userInfo.png" class="icon"></image>
-            <text>个人资料</text>
+            <text>个人信息</text>
         </view>
         <image src="/img/mine/arrow.png" class="arrow"></image>
     </navigator>

@@ -1,4 +1,5 @@
 // pages/admin/index/checkReservation/chooseReservation/refuseFeedback/refuseFeedback.js
+let refuseReservation = require('../../../../../../global/global.js').refuseReservation; 
 Page({
 
     /**
@@ -13,10 +14,10 @@ Page({
     sendMessage: function(res) {
         var that = this
         wx.request({
-            url: xx,
+            url: refuseReservation,
             data: {
                 r_no: that.data.r_no,
-                message: that.data.message
+                r_feedBack: that.data.message
             },
             method: 'POST',
             header: {

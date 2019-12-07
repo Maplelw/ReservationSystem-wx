@@ -12,7 +12,7 @@ Page({
     //获取热门设备中的具体信息
     getDetails: function (e) {
         var t = e.currentTarget.dataset.index;
-        var d_no = this.data.hotDevice[t].m_Dno;
+        var d_no = this.data.allDevice[t].d_no;
         wx.navigateTo({
             url: 'changeDetail/changeDetail' + '?d_no=' + d_no,
         })
@@ -29,7 +29,7 @@ Page({
             success: function (res) {
                 console.log(res.data)
                 that.setData({
-                    hotDevice: res.data.device
+                    allDevice: res.data.device
                 })
             },
             fail: function (res) { console.log("请求失败") },

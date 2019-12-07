@@ -5,14 +5,16 @@ Page({
      * 页面的初始数据
      */
     data: {
-        device: []
+        device: [],
+        page: 1
     },
 
     getDetails: function(e) {
         var param = e.currentTarget.dataset.index;
         var d_no = this.data.device[param].d_no;
+        var d_name = this.data.device[param].d_name;
         wx.navigateTo({
-            url: '/pages/admin/index/checkReservation/chooseReservation/chooseReservation' + '?d_no=' + d_no,
+            url: '/pages/admin/index/checkReservation/chooseReservation/chooseReservation' + '?d_no=' + d_no +　"&d_name=" + d_name
         })
     },
 
@@ -30,12 +32,14 @@ Page({
                         "content-type": "application/x-www-form-urlencoded"
                     },
                     data: {
-                        code: res.code
+                        code: res.code,
+                        page: that.data.page
                     },
                     success(res) {
                         console.log(res.data)
                         that.setData({
-                            device: res.data.device
+                            device: res.data.device,
+                            page: that.data.page + 1
                         })
                     }
                 })

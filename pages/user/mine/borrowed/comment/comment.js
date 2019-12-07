@@ -1,4 +1,4 @@
-let submitComment = require('../../../../../global/global.js').submitComment;
+let comment = require('../../../../../global/global.js').comment;
 Page({
 
     /**
@@ -8,7 +8,7 @@ Page({
         topic: "满意",
         satisfied: "/img/user/select_satisfied.png",
         unsatisfied: "/img/user/unselect_unsatisfied.png",
-        comment: "",
+        commentContent: "",
         d_no: "",
     },
 
@@ -31,21 +31,21 @@ Page({
     // 获取评价
     getComment: function(res) {
         this.setData({
-            comment: res.detail.value
+            commentContent: res.detail.value
         })
     },
 
     // 提交评价
     submitComment: function () {
         var that = this
-        console.log("评价内容：" + that.data.comment)
+        console.log("评价内容：" + that.data.commentContent)
         wx.login({
             success(res) {
                 wx.request({
                     url: comment,
                     data: {
-                        d_no: that.data.d_no,
-                        comment: comment
+                        b_no: that.data.b_no,
+                        comment: that.data.commentContent
                     },
                     method: 'POST',
                     header: {
@@ -63,9 +63,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log("上个页面传来的d_no:" + options.d_no)
+        console.log("上个页面传来的b_no:" + options.b_no)
         this.setData({
-            d_no: options.d_no,
+            b_no: options.b_no,
         })
     },
 

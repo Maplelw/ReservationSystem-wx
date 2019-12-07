@@ -1,32 +1,51 @@
-<view>
-    <view class="icon">
+<view class="top">
+    <view class="heads">
         <open-data type="userAvatarUrl"></open-data>
     </view>
-    <open-data class="username" type="userNickName"></open-data>
+    <open-data type="userNickName"></open-data>
 </view>
 
-<view class="main">
-    <view class="edit">
-        <text style="font-size">基本信息</text>
-        <text style="font-size: 30rpx; color:#868686">编辑</text>
+<view class="userInfo">
+    <view class="piece" bindtap="changeName">
+        <text class="topic">姓名</text>
+        <text class="icon">></text>
+        <text class="content">{{user.u_name}}</text>
     </view>
-    <view class="info">
-        <view class="left_info">
-            <text>姓名\n</text>
-            <text>学号\n</text>
-            <text>手机\n</text>
-            <text>邮箱\n</text>
-            <text>类型\n</text>
-            <text>班级\n</text>
+    <view class="piece" bindtap="changeNo">
+        <text class="topic">学号</text>
+        <text class="icon">></text>
+        <text class="content">{{user.u_no}}</text>
+    </view>
+    <view class="piece" bindtap="changePhone">
+        <text class="topic">手机</text>
+        <text class="icon">></text>
+        <text class="content">{{user.u_phone}}</text>
+    </view>
+    <view class="piece" bindtap="changeEmail">
+        <text class="topic">邮箱</text>
+        <text class="icon">></text>
+        <text class="content">{{user.u_email}}</text>
+    </view>
+    <view class="piece" bindtap="changeType">
+        <text class="topic">类型</text>
+        <text class="icon">></text>
+        <text class="content">{{user.u_type}}</text>
+    </view>
+    <view wx:if="{{user.u_type === '学生'}}">
+        <view class="piece" bindtap="changeName">
+            <text class="topic">专业班级</text>
+            <text class="icon">></text>
+            <text class="content">{{user.u_majorClass}}</text>
         </view>
-        <view class="right_info">
-            <text>{{user.u_name}}\n</text>
-            <text>{{user.u_no}}\n</text>
-            <text>{{user.u_phone}}\n</text>
-            <text>{{user.u_email}}\n</text>
-            <text>{{user.u_type}}\n</text>
-            <text>{{user.u_majorClass}}\n</text>
+        <view class="piece" bindtap="changeName">
+            <text class="topic">导师姓名</text>
+            <text class="icon">></text>
+            <text class="content">{{user.u_mentorName}}</text>
+        </view>
+        <view class="piece" bindtap="changeName">
+            <text class="topic">导师电话</text>
+            <text class="icon">></text>
+            <text class="content">{{user.u_mentorPhone}}</text>
         </view>
     </view>
 </view>
-

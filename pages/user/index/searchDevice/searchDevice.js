@@ -7,7 +7,7 @@ Page({
      */
     data: {
         choice: "hot",  // 上侧导航
-        page: 2, // 页数
+        page: 1, // 页数
         flag: 0, // 已经加载到最后一个设备
         input: "搜索内容", //搜索框内容
         hotColor: "#000000", 
@@ -27,9 +27,16 @@ Page({
     },
 
     //获取热门设备中的具体信息
-    getDetails: function(e) {
+    getHotDetails: function(e) {
         var t = e.currentTarget.dataset.index;
         var d_no = this.data.hotDevice[t].d_no;
+        wx.navigateTo({
+            url: '/pages/user/index/searchDevice/device/device' + '?d_no=' + d_no,
+        })
+    },
+    getAllDetails: function (e) {
+        var t = e.currentTarget.dataset.index;
+        var d_no = this.data.allDevice[t].d_no;
         wx.navigateTo({
             url: '/pages/user/index/searchDevice/device/device' + '?d_no=' + d_no,
         })
@@ -99,7 +106,8 @@ Page({
             success: function (res) {
                 console.log(res.data)
                 that.setData({
-                    allDevice: res.data.device
+                    allDevice: res.data.device,
+                    page: that.data.page + 1,
                 })
             },
             fail: function (res) { console.log("请求失败") },

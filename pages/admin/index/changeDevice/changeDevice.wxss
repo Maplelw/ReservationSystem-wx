@@ -20,6 +20,7 @@
 .device {
     display: flex;
     border-bottom: 2rpx solid #eeeeee;
+    padding: 15rpx 0; 
 }
 
 .device_info {

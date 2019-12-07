@@ -14,6 +14,7 @@
 image {
     width: 120rpx;
     height: 100rpx;
+    margin-right: 20rpx;
 }
 
 .state {

@@ -1,5 +1,6 @@
 // pages/mine/details/borrowed/borrowed.js
-let borrowed = require('../../../../global/global.js').borrowed;
+let finishedBorrow = require('../../../../global/global.js').finishedBorrow;
+let unfinishedBorrow = require('../../../../global/global.js').unfinishedBorrow;
 let showQRCode = require('../../../../global/global.js').showQRCode;
 Page({
 
@@ -7,73 +8,48 @@ Page({
      * 页面的初始数据
      */
     data: {
-        page: 1,// 页数
-        flag: 0,// 是否最后一页
+        pageIng: 1, // 页数
+        pageDone: 1, // 页数
+        flagIng: 0, // 是否最后一页
+        flagDone: 0, // 是否最后一页
         choice: "ing",
         ingColor: "#89AFD4",
         doneColor: "#bbbbbb",
         isQRcode: false,
         isComment: false,
         img: "",
-        borrowed_item: [
-            {
-                d_name: "博冠马卡 200/2400",
-                d_no: "EK100S",
-                b_borrowDate: "2019-10-25",
-                b_returnDate: "2019-10-25",
-                d_saveSite: "物电院B301",
-                b_state: 0,
-                b_no: 2
-            },
-            {
-                d_name: "博冠马卡 200/2400",
-                d_no: "EK100S",
-                b_borrowDate: "2019-10-25",
-                b_returnDate: "2019-10-25",
-                d_saveSite: "物电院B301",
-                b_state: 1,
-                b_no: 2
-            },
-            {
-                d_name: "博冠马卡 200/2400",
-                d_no: "EK100S",
-                b_borrowDate: "2019-10-25",
-                b_returnDate: "2019-10-25",
-                d_savesite: "物电院B301",
-                b_state: -1,
-                b_no: 2
-            }
-        ]
+        borrowed_itemIng: [],
+        borrowed_itemDone: []
     },
     // 获取归还二维码
-    getQRcode: function(e) {
+    getQRcode: function (e) {
         var that = this
         var t = e.currentTarget.dataset.index;
-        var b_no = this.data.borrowed_item[t].b_no;
+        var b_no = that.data.borrowed_itemIng[t].b_no;
         that.setData({
             isQRcode: true
         }),
-        wx.login({
-            success(res) {
-                wx.request({
-                    url: showQRCode,
-                    data: {
-                        b_no: b_no
-                    },
-                    method: 'POST',
-                    header: {
-                        'content-type': 'application/x-www-form-urlencoded'
-                    },
-                    success(res) {
-                        console.log(res.data)
-                        that.setData({
-                            img: res.data,
-                            isTrue: true
-                        })
-                    }
-                })
-            }
-        }) 
+            wx.login({
+                success(res) {
+                    wx.request({
+                        url: showQRCode,
+                        data: {
+                            b_no: b_no
+                        },
+                        method: 'POST',
+                        header: {
+                            'content-type': 'application/x-www-form-urlencoded'
+                        },
+                        success(res) {
+                            console.log(res.data)
+                            that.setData({
+                                img: res.data,
+                                isTrue: true
+                            })
+                        }
+                    })
+                }
+            })
     },
     //关闭二维码
     hideCode: function () {
@@ -83,12 +59,12 @@ Page({
     },
 
     // 跳转到评论界面 
-    showComment: function(e) {
+    showComment: function (e) {
         var t = e.currentTarget.dataset.index
-        var d_no = this.data.borrowed_item[t].d_no
-        console.log("设备编号：" + d_no)
+        var b_no = this.data.borrowed_itemDone[t].b_no
+        console.log("设备编号：" + b_no)
         wx.navigateTo({
-            url: 'comment/comment' + '?d_no=' + d_no,
+            url: 'comment/comment' + '?b_no=' + b_no,
         })
     },
     //设备的具体信息
@@ -116,38 +92,65 @@ Page({
             doneColor: "#89AFD4"
         })
     },
-    
+
     /**
      * 生命周期函数--监听页面加载
      */
-  onLoad: function (options) {
-    var that = this;
-    wx.login({
-        success: function(res){
-            wx.request({
-                url: borrowed,
-                data: {
-                    code: res.code,
-                    page: that.data.page
-                },
-                header: {
-                    'content-type': 'application/x-www-form-urlencoded'
-                },
-                method: 'POST',
-                success: function (res) {
-                    console.log(res.data)
-                    that.setData({
-                        borrowed_item: res.data.borrowed_item
-                    })
-                },
-                fail: function (res) {
-                    console.log("请求失败")
-                },
-
-            }) 
-        }
-    })
-  },
+    onLoad: function (options) {
+        var that = this;
+        wx.login({
+            success: function (res) {
+                // ing
+                wx.request({
+                    url: unfinishedBorrow,
+                    data: {
+                        code: res.code,
+                        page: that.data.pageIng
+                    },
+                    header: {
+                        'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    method: 'POST',
+                    success: function (res) {
+                        console.log("未完成")
+                        console.log(res.data)
+                        that.setData({
+                            borrowed_itemIng: res.data.borrowed_item
+                        })
+                    },
+                    fail: function (res) {
+                        console.log("请求失败")
+                    },
+                })
+            }
+        })
+        wx.login({
+            success: function (res) {
+                // done
+                wx.request({
+                    url: finishedBorrow,
+                    data: {
+                        code: res.code,
+                        page: that.data.pageDone
+                    },
+                    header: {
+                        'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    method: 'POST',
+                    success: function (res) {
+                        console.log("已经完成")
+                        console.log(res.data)
+                        that.setData({
+                            borrowed_itemDone: res.data.borrowed_item
+                        })
+                    },
+                    fail: function (res) {
+                        console.log("请求失败")
+                    },
+                })
+            }
+        })
+    },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -188,50 +191,100 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-        var that = this;
-        if (that.data.flag === 1) {
-            wx.showToast({
-                title: '已经到最后一个设备',
-                icon: "loading",
-                duration: 500
-            })
-        }
-        else {
-            console.log(that.data.page)
-            wx.request({
-                url: all,
-                data: {
-                    code: res.code,
-                    page: that.data.page
-                },
-                method: 'POST',
-                header: {
-                    'content-type': 'application/x-www-form-urlencoded'
-                },
-                success: function (res) {
-                    console.log(res.data)
-                    var oldDevice = that.data.allDevice
-                    var newDevice
-                    if (res.data.flag === 0) {
-                        that.setData({
-                            flag: 1
-                        })
-                        wx.showToast({
-                            title: '已经到最后一个设备',
-                            icon: "loading",
-                            duration: 500
+        var that = this
+        if (that.data.choice === 'ing') {
+            if (that.data.flagIng === 1) { // 到最后一页了
+                wx.showToast({
+                    title: '已经到最后一个设备',
+                    icon: "loading",
+                    duration: 500
+                })
+            } else {
+                wx.login({
+                    success(res) {
+                        wx.request({
+                            url: unfinishedBorrow,
+                            data: {
+                                page: that.data.pageIng,
+                                code: res.code,
+                            },
+                            method: 'POST',
+                            header: {
+                                'content-type': 'application/x-www-form-urlencoded'
+                            },
+                            success: function (res) {
+                                console.log(res.data)
+                                if (res.data.flag === 0) {
+                                    that.setData({
+                                        flagIng: 1
+                                    })
+                                    wx.showToast({
+                                        title: '已经到最后一个设备',
+                                        icon: "loading",
+                                        duration: 500
+                                    })
+                                } else {
+                                    that.setData({
+                                        borrowed_itemIng: that.data.borrowed_itemIng.concat(res.data.borrowed_item),
+                                        pageDone: that.data.pageDone + 1
+                                    })
+                                    console.log(that.data.borrowed_itemIng)
+                                }
+                            },
+                            fail: function (res) {
+                                console.log("请求失败")
+                            },
                         })
                     }
-                    else {
-                        console.log(res.data.borrowed_item)
-                        that.setData({
-                            borrowed_item: borrowed_item.concat(res.data.borrowed_item),
-                            page: that.data.page + 1
+                })
+            }
+        } 
+        else { //done
+            if (that.data.flagDone === 1) { // 到最后一页了
+                wx.showToast({
+                    title: '已经到最后一个设备',
+                    icon: "loading",
+                    duration: 500
+                })
+            } else {
+                wx.login({
+                    success(res) {
+                        wx.request({
+                            url: finishedBorrow,
+                            data: {
+                                page: that.data.pageDone,
+                                code: res.code,
+                            },
+                            method: 'POST',
+                            header: {
+                                'content-type': 'application/x-www-form-urlencoded'
+                            },
+                            success: function (res) {
+                                console.log(res.data)
+                                if (res.data.flag === 0) {
+                                    that.setData({
+                                        flagDone: 1
+                                    })
+                                    wx.showToast({
+                                        title: '已经到最后一个设备',
+                                        icon: "loading",
+                                        duration: 500
+                                    })
+                                } else {
+                                    that.setData({
+                                        borrowed_itemDone: that.data.borrowed_itemDone.concat(res.data.borrowed_item),
+                                        pageDone: that.data.pageDone + 1
+                                    })
+                                    console.log(that.data.borrowed_itemDone)
+                                }
+                            },
+                            fail: function (res) {
+                                console.log("请求失败")
+                            },
                         })
                     }
-                },
-                fail: function (res) { console.log("请求失败") },
-            })
+                })
+            }
         }
     },
 

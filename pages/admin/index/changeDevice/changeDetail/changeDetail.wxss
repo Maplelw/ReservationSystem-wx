@@ -1,109 +1,50 @@
+page {
+    background-color: rgba(244, 244, 244, 0.5);
+}
+
 .top {
     display: flex;
-    justify-content: space-between;
-    padding: 20rpx 50rpx;
-    align-items: center
-}
-
-.device_info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-image {
-    width: 120rpx;
-    height: 100rpx;
-}
-
-.state {
-    color: #1897B9;
-    width: 100rpx;
-}
-
-.middle {
-    display: flex;
-    justify-content:center;
     align-items: center;
-    margin-top: 20rpx;
-    padding-bottom: 20rpx;
-    border-bottom: 2rpx solid #eeeeee;
+    height: 200rpx;
+    padding-left: 40rpx;
+    background-color: rgba(51,57,153);
+    border-bottom-right-radius: 10%;
+    border-bottom-left-radius: 10%;
+    color: white;
 }
 
-.middle text {
-    margin: 0 70rpx;
-    color: #aaaaaa;
-    font-size: 38rpx;
-}
-
-.edit {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 30rpx;
-    margin-top: 20rpx;
-    color: #888888;
-    font-size: 30rpx;
-}
-
-.details {
-    margin-top: 20rpx;
-    font-size: 34rpx;
-    border-bottom: 2rpx solid #eeeeee;
-    padding-bottom: 20rpx;
-}
-
-.details text{
-    margin-left: 20rpx;
-    color: #909090;
-}
-
-.details .texts {
-    margin: 20rpx;
-    margin-left: 40rpx;
-    /* display: flex; */
-}
-
-.comments {
-    margin-top: 20rpx;
-    font-size: 32rpx;
-    padding: 10rpx 40rpx;
-    border-bottom: 2rpx solid #eeeeee;
-}
-
-.comments .iconName {
-    display: flex;
-    align-items: center;
-
-}
-
-.comments image {
-    width: 64rpx;
-    height: 64rpx;
-    border-radius: 50%;
+.top .heads {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 50%;  
+    overflow: hidden;  
     margin-right: 20rpx;
 }
 
-.comments .content {
-    margin-top: 10rpx;
-    color: #909090
+.userInfo {
+    margin-top: 35rpx;
 }
 
-.reservation {
-    display: flex;
-    margin-top: 50rpx;
-}
-
-.reservation .button1{
-    width: 300rpx;
+.userInfo .piece {
+    margin: 0rpx 20rpx;
+    padding: 0 40rpx;
     font-size: 32rpx;
-    background-color: #3E606F;
-    color: #ffffff;
+    line-height: 90rpx;
+    background-color: white;
 }
 
-.reservation .button2{
-    width: 300rpx;
-    font-size: 32rpx;
-    border: 2rpx solid #3E606F;
-    background-color: #ffffff;
-    color: #3E606F;
+.userInfo .topic {
+    color: #888;
+
+}
+
+.userInfo .content {
+    float: right;
+}
+
+.userInfo .icon {
+    float: right;
+    color: #ddd ;
+    margin-left: 20rpx;
+    font-size: 40rpx;
 }

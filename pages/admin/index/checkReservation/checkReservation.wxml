@@ -6,8 +6,6 @@
         <view class="device_info">
             <text style="font-size:32rpx;">{{item.d_no}}</text>
             <text style="font-size:32rpx;">{{item.d_name}}</text>
-            <text style="color:#aaaaaa;font-size:30rpx;">主要用途:</text>
-            <text style="color:#aaaaaa;font-size:30rpx;">{{item.d_mainUse}}</text>
         </view>
     </view>
     <view>

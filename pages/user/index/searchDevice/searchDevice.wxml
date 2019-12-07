@@ -3,43 +3,56 @@
     <text bindtap="toHot" style="color:{{hotColor}}">热门</text>
     <text bindtap="toAll" style="color:{{allColor}}">所有</text>
 </view>
-<!-- 中间数据 -->
+<!-- 热门 -->
 <view wx:if="{{choice === 'hot'}}">
-    <view class="device" data-index="{{index}}" wx:for="{{hotDevice}}" wx:key="{{index}}" bindtap="getDetails">
+    <view class="device" data-index="{{index}}" wx:for="{{hotDevice}}" wx:key="{{index}}" bindtap="getHotDetails">
+        <view wx:if="{{index === 0}}" class="rank" style="background-color:rgb(239,65,52);">
+            <text>{{index+1}}</text>
+        </view>
+        <view wx:elif="{{index === 1}}" class="rank" style="background-color:rgb(237,172,23)">
+            <text>{{index+1}}</text>
+        </view>
+        <view wx:elif="{{index === 2}}" class="rank" style="background-color:rgb(58,174,195)">
+            <text>{{index+1}}</text>
+        </view>
+        <view wx:else class="rank">
+            <text>{{index+1}}</text>
+        </view>
         <view class="img">
-            <image src="/img/global/device.png"></image>
+            <image wx:if="{{item.d_photo != undefined}}" src="{{item.d_photo}}"></image>
+            <image wx:else src="/img/global/device.png"></image>
         </view>
         <view class="device_info">
-            <text style="font-size:32rpx;">{{item.d_no}}</text>
-            <text style="font-size:32rpx;">{{item.d_name}}</text>
-
+            <text style="font-size:32rpx;">{{item.d_name}}({{item.d_no}})</text>
+            <text style="font-size:32rpx;color:#888">设备型号:{{item.d_model}}</text>
         </view>
     </view>
 </view>
 <!-- 所有 -->
 <view wx:else>
     <!-- 搜索框 -->
-    <!-- <view class="searchTop" bindtap="search">
+    <view class="searchTop" bindtap="search">
         <view class="search">
             <view style="display:flex">
                 <image src="/img/admin/search.png"></image>
                 <text>搜索设备名称或编号</text>
             </view>
         </view>
-    </view> -->
+    </view>
     <!-- 设备列表 -->
-    <view class="device" data-index="{{index}}" wx:for="{{allDevice}}" wx:key="{{index}}" bindtap="getDetails">
+    <view class="device" data-index="{{index}}" wx:for="{{allDevice}}" wx:key="{{index}}" bindtap="getAllDetails">
         <view class="img">
-            <image src="/img/global/device.png"></image>
+            <image wx:if="{{item.d_photo != undefined}}" src="{{item.d_photo}}"></image>
+            <image wx:else src="/img/global/device.png"></image>
         </view>
         <view class="device_info">
-            <text style="font-size:32rpx;">{{item.d_no}}</text>
-            <text style="font-size:32rpx;">{{item.d_name}}</text>
+            <text style="font-size:32rpx;">{{item.d_no}}({{item.d_name}})</text>
+            <text style="font-size:32rpx;color:#888">设备型号:{{item.d_model}}</text>
         </view>
     </view>
 </view>
 <!-- 底部导航 -->
-<view class="footer">
+<!-- <view class="footer">
     <view class="box">
         <view data-index="{{index}}" bindtap="navigate" wx:for="{{navigator}}" wx:key="{{index}}">
             <view class="choice">
@@ -48,4 +61,4 @@
             </view>
         </view>
     </view>
-</view>
+</view> -->

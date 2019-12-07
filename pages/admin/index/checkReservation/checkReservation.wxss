@@ -24,7 +24,6 @@
 image {
     width: 120rpx;
     height: 100rpx;
-    /* margin: 30rpx 50rpx; */
 }
 
 .num {

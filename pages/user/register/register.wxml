@@ -14,7 +14,8 @@
     <view class="inputs">
         <text>短信验证码</text>
         <input style="width: 280rpx;" type="text" placeholder="请填写验证码" name="securityCode"></input>
-        <button style="height:62rpx;font-size:30rpx" bindtap="getSecurityCode">获取验证码</button>
+        <button style="height:62rpx;font-size:30rpx" 
+disabled='{{disabled}}' bindtap="getVerificationCode">{{time}}</button>
     </view>
    <view class="inputs">
         <text>邮箱</text>
@@ -23,7 +24,7 @@
     <view class="inputs">
         <text>身份</text>
         <radio-group class="radio-group" bindchange="radioChange" name="u_type">
-            <radio color="#607D8B" class="radio" value="student">
+            <radio color="#607D8B" class="radio" value="student" checked="true">
                 <text>学生</text>
             </radio>
             <radio color="#607D8B" value="teacher">

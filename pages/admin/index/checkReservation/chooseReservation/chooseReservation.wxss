@@ -1,3 +1,31 @@
+/* 设备信息 */
+.device {
+    display: flex;
+    border-bottom: 25rpx solid #eee;
+    padding-bottom: 15rpx;
+}
+
+.device .img {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.device .img image {
+    width: 120rpx;
+    height: 100rpx;
+   
+}
+
+.device_info {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* 申请人 */
 .application {
     display: flex;
     justify-content: space-around;
@@ -28,7 +56,7 @@
     display: flex;
     justify-content: flex-end;
     margin-top: 10rpx;
-    border-bottom: 2rpx solid #eeeeee;
+    border-bottom: 25rpx solid #eee;
     padding-bottom: 20rpx;
 }
 
@@ -36,4 +64,64 @@
     font-size: 30rpx;
     margin-right: 20rpx;
     padding: 12rpx;
+}
+
+/* 弹窗 */
+.window {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.window .windowContent {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+}
+
+.window .windowContent textarea{
+    margin: 40rpx auto;
+    width: 80%;
+    height: 200rpx;
+    background-color: rgba(244, 244, 244, 0.8);
+    padding: 20rpx;
+    font-size: 35rpx;
+}
+
+.window .windowContent .borrow {
+    border-bottom: 1rpx solid #e6e6e6;
+    display: flex;
+    font-size: 40rpx;
+    font-weight: 500;
+    padding: 20rpx 0;
+}
+
+.window .windowContent .borrow text {
+    margin-left: 40rpx;
+}
+
+.window .windowContent .borrow .pickTime text {
+    color: #aaa;
+    margin-left: 50rpx;
+    font-size: 35rpx;
+}
+
+.window .windowContent .buttons2 {
+    display: flex;
+    justify-content: center;
+    padding: 20rpx 0;
+}
+
+.window .windowContent .buttons2 button {
+    width: 200rpx;
+    height: 80rpx;
+    font-size: 35rpx;
 }

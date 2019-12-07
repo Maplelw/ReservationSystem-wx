@@ -1,3 +1,15 @@
+<!-- 设备信息 -->
+<view class="device">
+    <view class="img">
+        <image src="/img/global/device.png"></image>
+    </view>
+    <view class="device_info">
+        <text style="font-size:32rpx;">{{d_no}}</text>
+        <text style="font-size:32rpx;">{{d_name}}</text>
+    </view>
+</view>
+
+<!-- 申请人 -->
 <view wx:for="{{reservation}}" wx:key="index">
     <view class="application">
         <view class="info">
@@ -14,9 +26,35 @@
         </view>
     </view>
     <view class="buttons">
-        <text data-index="{{index}}" bindtap="reject" 
-            style="background-color: #eeeeee; color:#607D8B; border-radius:15%">拒绝租借</text>
-        <text data-index="{{index}}" bindtap="confirm" 
-            style="background-color: #607D8B; color:#ffffff; border-radius:15%">确认租借</text>
+        <text data-index="{{index}}" bindtap="changeDate" style="background-color: #eeeeee; color:#607D8B; border-radius:15%">修改时间</text>
+        <text data-index="{{index}}" bindtap="reject" style="background-color: #eeeeee; color:#607D8B; border-radius:15%">拒绝租借</text>
+        <text data-index="{{index}}" bindtap="confirm" style="background-color: #607D8B; color:#ffffff; border-radius:15%">确认租借</text>
+    </view>
+    <!-- 弹出修改时间框 -->
+    <view class="window" hidden="{{isShow ? '' : true }}">
+        <view class='windowContent'>
+            <view class="borrow">
+                <text>借用时间</text>
+                <picker mode="date" value="{{curentDate}}" bindchange="startChange">
+                    <view class="pickTime">
+                        <text>{{new_startDate}}</text>
+                    </view>
+                </picker>
+            </view>
+            <view class="borrow">
+                <text>归还时间</text>
+                <picker mode="date" value="{{curentDate}}" bindchange="returnChange">
+                    <view class="pickTime">
+                        <text>{{new_returnDate}}</text>
+                    </view>
+                </picker>
+            </view>
+            <textarea bindinput="getFeedback" placeholder="请注明修改原因"></textarea>
+            <view class="buttons2">
+                <button bindtap="hideWindow">取消</button>
+                <button bindtap="submitChange" data-index="{{index}}"
+                    style="background-color:rgb(45, 154, 167);color:white">提交</button>
+            </view>
+        </view>
     </view>
 </view>

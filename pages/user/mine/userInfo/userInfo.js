@@ -5,14 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        user: {
-            u_name: "",
-            u_userno: "",
-            u_phone: "",
-            u_email: "",
-            u_user_type: "",
-            u_classno: ""
-        }
+        user: {}
        
     },
 

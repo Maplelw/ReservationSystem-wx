@@ -8,21 +8,7 @@ Page({
      */
     data: {
         input: "搜索内容",
-        borrow: [{
-            u_name: "至臻",
-            u_type: "老师",
-            r_reservation_date: "2019/10/01",
-            r_borrow_date: "2019/10/02",
-            r_return_date: "2019/10/04",
-            u_credit_grade: 80
-        }, {
-            u_name: "卡莎",
-            u_type: "学生",
-            r_reservation_date: "2019/10/01",
-            r_borrow_date: "2019/10/02",
-            r_return_date: "2019/10/04",
-            u_credit_grade: 100
-        }]
+        borrow: []
     },
     // 扫一扫
     getScancode: function () {
@@ -129,7 +115,7 @@ Page({
                     success: function (res) {
                         console.log(res.data)
                         that.setData({
-                            borrow: res.data.borrow
+                            borrow: res.data.device
                         })
                     },
                     fail: function (res) {
