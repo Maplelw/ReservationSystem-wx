@@ -1,11 +1,17 @@
-.gap {
-    height: 25rpx;
-    background-color: rgb(244, 244, 244);
+page {
+    background-color: rgba(244, 244, 244, 1)
+}
+
+.all {
+    width: 100%;
 }
 
 .message {
     padding: 20rpx 40rpx;
-    border-bottom: 25rpx solid rgb(244, 244, 244);
+    border-radius: 5%;
+    background-color: white;
+    width: 83%;
+    margin: 20rpx auto;
 }
 
 .message .topic {
@@ -16,6 +22,7 @@
 .message .content {
     font-size: 32rpx;
     margin-top: 10rpx;
+    white-space: pre-wrap;
 }
 
 .message .time {

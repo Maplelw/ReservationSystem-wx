@@ -21,6 +21,24 @@ Page({
         borrowed_itemIng: [],
         borrowed_itemDone: []
     },
+//顶部状态改变    
+    //改变页面显示为 ing
+    toIng: function () {
+        this.setData({
+            choice: "ing",
+            ingColor: "#89AFD4",
+            doneColor: "#bbbbbb"
+        })
+    },
+    //改变页面显示为 done
+    toDone: function () {
+        this.setData({
+            choice: "done",
+            ingColor: "#bbbbbb",
+            doneColor: "#89AFD4"
+        })
+    },
+//正在借用    
     // 获取归还二维码
     getQRcode: function (e) {
         var that = this
@@ -57,7 +75,7 @@ Page({
             isQRcode: false
         })
     },
-
+//已完成
     // 跳转到评论界面 
     showComment: function (e) {
         var t = e.currentTarget.dataset.index
@@ -76,27 +94,24 @@ Page({
             url: '/pages/user/index/searchDevice/device/device' + '?d_no=' + d_no,
         })
     },
-    //改变页面显示为 ing
-    toIng: function () {
-        this.setData({
-            choice: "ing",
-            ingColor: "#89AFD4",
-            doneColor: "#bbbbbb"
-        })
-    },
-    //改变页面显示为 done
-    toDone: function () {
-        this.setData({
-            choice: "done",
-            ingColor: "#bbbbbb",
-            doneColor: "#89AFD4"
-        })
-    },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function () {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function () {
         var that = this;
         wx.login({
             success: function (res) {
@@ -150,20 +165,6 @@ Page({
                 })
             }
         })
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
     },
 
     /**

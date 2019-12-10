@@ -17,18 +17,9 @@ Page({
         wx.scanCode({
             success: (res) => {
                 console.log(res.result)
-                wx.request({
-                    url: confirmReturn,
-                    data: {
-                        b_no: res.result,
-                    },
-                    method: 'POST',
-                    header: {
-                        "content-type": "application/x-www-form-urlencoded"
-                    },
-                    success: function (res) {
-                        console.log(res.data)
-                    }
+                var b_no = res.result
+                wx.navigateTo({
+                    url: 'returnFeedback/returnFeedback' + '?b_no=' + b_no,
                 })
             }
         })
@@ -36,36 +27,40 @@ Page({
     //确认归还按钮
     confirm: function (e) {
         var that = this
-        wx.showModal({
-            title: '提示',
-            content: '确认归还',
-            success: (res) => {
-                if (res.confirm) {
-                    wx.request({
-                        url: confirmReturn,
-                        data: {
-                            b_no: that.data.borrow[e.currentTarget.dataset.index].b_no,
-                        },
-                        method: 'POST',
-                        header: {
-                            "content-type": "application/x-www-form-urlencoded"
-                        },
-                        success: function (res) {
-                            that.data.borrow.splice(e.currentTarget.dataset.index, 1)
-                            that.setData({
-                                borrow: that.data.borrow
-                            })
-                            console.log(res.data)
-                        },
-                        fail: function (res) {
-                            consolo.log("请求失败")
-                        },
-                    })
-                } else if (res.cancel) {
-                    console.log('用户点击取消')
-                }
-            }
+        var b_no = that.data.borrow[e.currentTarget.dataset.index].b_no
+        wx.navigateTo({
+            url: 'returnFeedback/returnFeedback' + '?b_no=' + b_no,
         })
+        // wx.showModal({
+        //     title: '提示',
+        //     content: '确认归还',
+        //     success: (res) => {
+        //         if (res.confirm) {
+        //             wx.request({
+        //                 url: confirmReturn,
+        //                 data: {
+        //                     b_no: that.data.borrow[e.currentTarget.dataset.index].b_no,
+        //                 },
+        //                 method: 'POST',
+        //                 header: {
+        //                     "content-type": "application/x-www-form-urlencoded"
+        //                 },
+        //                 success: function (res) {
+        //                     that.data.borrow.splice(e.currentTarget.dataset.index, 1)
+        //                     that.setData({
+        //                         borrow: that.data.borrow
+        //                     })
+        //                     console.log(res.data)
+        //                 },
+        //                 fail: function (res) {
+        //                     consolo.log("请求失败")
+        //                 },
+        //             })
+        //         } else if (res.cancel) {
+        //             console.log('用户点击取消')
+        //         }
+        //     }
+        // })
     },
     // 搜索内容改变
     input: function(e) {

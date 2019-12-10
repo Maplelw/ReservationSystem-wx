@@ -10,7 +10,7 @@ Page({
         page: 1, // 页数
         flag: 0, // 是否最后一页
         record: [{
-            cr_date: "2019-10-1",
+            cr_date: "2019-10-1", 
             cr_changeReason: "用仪器打人",
             cr_changeScore: -1,
             cr_afterGrade: 98

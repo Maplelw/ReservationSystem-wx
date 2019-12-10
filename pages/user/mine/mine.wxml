@@ -5,7 +5,7 @@
     <open-data class="username" type="userNickName"></open-data>
 </view>
 
-<view>
+<view style="margin-bottom: 150rpx;">
     <view class="gap">
         <text>消息</text>
     </view>
@@ -44,6 +44,16 @@
         <view class="img_text">
             <image src="/img/mine/borrowed.png" class="icon"></image>
             <text>已借设备</text>
+        </view>
+        <image src="/img/mine/arrow.png" class="arrow"></image>
+    </navigator>
+    <view class="gap">
+        <text>反馈</text>
+    </view>
+    <navigator class="options" url="/pages/user/mine/feedback/feedback">
+        <view class="img_text">
+            <image src="/img/mine/feedback.png" class="icon"></image>
+            <text>反馈</text>
         </view>
         <image src="/img/mine/arrow.png" class="arrow"></image>
     </navigator>

@@ -1,6 +1,4 @@
-<view class="gap">
-</view>
-<view class="bak">
+<view class="all">
     <view class="message" wx:for="{{messages}}" wx:key="{{index}}">
         <view class="topic">
             {{item.m_topic}}

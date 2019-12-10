@@ -1,5 +1,5 @@
 let deviceDetail = require('../../../../../global/global.js').deviceDetail;
-
+let submit = require('../../../../../global/global.js').hot;
 Page({
 
     /**
@@ -12,25 +12,118 @@ Page({
         d_no: "",
         imgs: [],//本地图片地址数组
         picPaths: [],//网络路径
+        topic: "", //修改框的标题
+        isWindowShow: false, //是否显示弹窗
+        inputValue: "", //输入框的内容
     },
-
-    //修改设备信息
-    editDevice: function() {
-        console.log("修改设备")
+// 弹窗
+    hideWindow: function() {
         this.setData({
-            choice: 'edit'
+            isWindowShow: false
+        })
+    },
+    // 获取修改设备内容
+    getChange(e) {
+        this.setData({
+            inputValue: e.detail.value
+        })    
+    },
+    // 打开弹窗
+    changeName: function() {
+        this.setData({
+            topic: "修改设备名称",
+            isWindowShow: true,
+            inputValue: this.data.device.d_name
+        })
+    },
+    changeModel: function () {
+        this.setData({
+            topic: "修改设备型号",
+            isWindowShow: true,
+            inputValue: this.data.device.d_no
+        })
+
+    },
+    changeSaveSite: function () {
+        this.setData({
+            topic: "修改设备存放地点",
+            isWindowShow: true,
+            inputValue: this.data.device.d_saveSite
+        })
+
+    },
+    changeAdmin: function () {
+        this.setData({
+            topic: "修改保管人员姓名",
+            isWindowShow: true,
+            inputValue: this.data.device.a_name
+        })
+
+    },
+    changeAdminPhone: function () {
+        this.setData({
+            topic: "修改保管人员电话",
+            isWindowShow: true,
+            inputValue: this.data.device.a_phone
+        })
+
+    },
+    changeState: function () {
+        this.setData({
+            topic: "修改设备状态",
+            isWindowShow: true,
+            inputValue: this.data.device.d_state
+        })
+
+    },
+// 提交修改 
+    submitChange: function() {
+        // 判断需要修改的内容是什么
+        if (this.data.topic === "修改设备名称") {
+            console.log("修改设备名称:" + this.data.inputValue)
+        }
+        else if (this.data.topic === "修改设备型号") {
+            console.log("修改设备型号:" + this.data.inputValue)
+        }
+        else if (this.data.topic === "修改设备存放地点") {
+            console.log("修改设备存放地点:" + this.data.inputValue)
+        }
+        else if (this.data.topic === "修改保管人员姓名") {
+            console.log("修改保管人员姓名:" + this.data.inputValue)
+        }
+        else if (this.data.topic === "修改保管人员电话") {
+            console.log("修改保管人员电话:" + this.data.inputValue)
+        }
+        else if (this.data.topic === "修改设备状态") {
+            console.log("修改设备状态:" + this.data.inputValue)
+        }
+        wx.login({
+            success: function (res) {
+                wx.request({
+                    url: submit,
+                    data: {
+                        code: res.code,
+
+                    },
+                    method: 　'POST',
+                    header: {
+                        'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    success: function (res) {
+                        console.log(res.data)
+                        that.setData({
+
+                        })
+                    },
+                    fail: function (res) {
+                        console.log("请求失败")
+                    },
+                })
+            }
         })
     },
 
-    //确定修改信息
-    confirm: function() {
-        console.log("确定修改信息")
-        this.setData({
-            choice: 'detail'
-        })
-    },
-
-    // 上传图片
+// 上传图片
     //添加上传图片
     uploadImageTap: function () {
         var that = this;
@@ -79,6 +172,49 @@ Page({
                 console.log(res.data) //接口返回网络路径
             }
         })
+    },
+//删除设备
+    deleteDevice() {
+        var that = this
+        wx.showModal({
+            title: '提示',
+            content: '确定删除该设备',
+            success(res) {
+                if (res.confirm) {
+                    console.log('用户点击确定')
+                    wx.login({
+                        success(res) {
+                            wx.request({
+                                url: deleteDevice,
+                                method: 'POST',
+                                header: {
+                                    "content-type": "application/x-www-form-urlencoded"
+                                },
+                                data: {
+                                    d_no: that.data.d_no,
+                                    code: res.code
+                                },
+                                success(res) {
+                                    console.log(res.data)
+                                    if (res.data.flag == 1) {
+                                        wx.showToast({
+                                            title: '删除成功',
+                                            icon: 'success',
+                                            duration: 2000
+                                        })
+                                        wx.reLaunch({
+                                            url: '../changeDevice'
+                                        })
+                                    }
+                                }
+                            })
+                        }
+                    })
+                } else if (res.cancel) {
+                    console.log('用户点击取消')
+                }
+            }
+        }) 
     },
 
     /**

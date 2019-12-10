@@ -6,6 +6,7 @@ page {
     background-color: #fff;
     height: 300rpx;
     width: 100%;
+    border-top: 4rpx solid #eee;
 }
 
 .topic {
@@ -27,16 +28,21 @@ page {
 .mid {
     margin: 20rpx 20rpx 0 20rpx;
     font-size: 42rpx;
+    color: #3E606F;
+    font-weight: 500;
 }
 
 .all {
     background-color: #fff;
     margin-top: 25rpx;
+    width: 95%;
+    margin: 20rpx auto;
+    border-radius: 4%;
 }
 
 .all .top {
     padding: 20rpx;
-    border-bottom: 4rpx solid rgb(244, 244, 244)
+    border-bottom: 4rpx solid rgb(244, 244, 244);
 }
 
 .all .top text {
@@ -44,7 +50,7 @@ page {
     margin-right: 10rpx;
 }
 
-.top .currentScore {
+.all .top .currentScore {
     color: #888;
     float:right;
     line-height:52rpx
@@ -54,6 +60,12 @@ page {
 .all .down {
     padding: 20rpx 40rpx 10rpx 40rpx;
     border-color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.all .down .changeReason {
+    width: 90%;
 }
 
 .all .down text {
@@ -61,18 +73,17 @@ page {
     margin: 5rpx;
 }
 
-.changeScore {
+.all .down .changeScore {
     display: flex;
     justify-content: flex-end;
     padding: 20rpx;
+    width: 10%;
 }
 
 .all .changeScore .add {
     color: #89AFD4;
-    line-height: 52rpx;
 }
 
 .all .changeScore .minus {
     color: red;
-    line-height: 52rpx;
 }

@@ -1,3 +1,4 @@
+/* 头部选项 */
 .top {
     display: flex;
     justify-content:center;
@@ -31,7 +32,6 @@
     margin: 0 20rpx;
     border-radius: 15%;
 }
-
 
 .device_info {
     width: 75%;
@@ -80,6 +80,7 @@
     color: #888
 }
 
+/* 底部导航 */
 .footer {
     position: fixed;
     bottom: 0;

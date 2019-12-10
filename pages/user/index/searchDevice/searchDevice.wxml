@@ -46,7 +46,7 @@
             <image wx:else src="/img/global/device.png"></image>
         </view>
         <view class="device_info">
-            <text style="font-size:32rpx;">{{item.d_no}}({{item.d_name}})</text>
+            <text style="font-size:32rpx;">{{item.d_name}}({{item.d_no}})</text>
             <text style="font-size:32rpx;color:#888">设备型号:{{item.d_model}}</text>
         </view>
     </view>

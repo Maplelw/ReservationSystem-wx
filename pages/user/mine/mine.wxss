@@ -48,7 +48,7 @@
 }
 
 .options text {
-    margin-left: 20rpx;
+    margin-left: 40rpx;
     font-size: 32rpx;
 }
 
@@ -65,6 +65,7 @@
     background-color: #ffffff;  
     border-top: 2rpx solid #cccccc;
     padding-top: 20rpx;
+    margin-top: 50rpx;
 }
 
 .footer .box {

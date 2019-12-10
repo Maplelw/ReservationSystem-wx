@@ -56,10 +56,17 @@
     margin-right: 20rpx;
 }
 
-.cancel text {
+.cancel .uncommented {
     font-size: 30rpx;
     color: #89afd4;
     border: 4rpx solid #89afd4;
+    padding: 12rpx 25rpx;
+}
+
+.cancel .commented {
+    font-size: 30rpx;
+    color: #888;
+    border: 4rpx solid #aaa;
     padding: 12rpx 25rpx;
 }
 

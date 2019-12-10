@@ -1,12 +1,13 @@
 {
     "pages": [
-        "pages/login/login",
         "pages/test/test",
+        "pages/admin/index/checkReturn/returnFeedback/returnFeedback",
+        "pages/user/mine/credit/credit",
         
         
-        "pages/user/index/index",
         "pages/user/mine/mine",
-        
+        "pages/user/index/index",
+        "pages/login/login",
         "pages/admin/index/index",
         
 
@@ -18,16 +19,20 @@
         "pages/user/mine/borrowed/borrowed",
         "pages/user/mine/borrowed/comment/comment",
         "pages/user/mine/userInfo/userInfo",
-        "pages/user/mine/credit/credit",
+        
         "pages/user/mine/message/message",
         "pages/user/mine/reservation/reservation",
+        "pages/user/mine/feedback/feedback",
 
-        "pages/admin/index/checkReturn/checkReturn",
+        
+        
         "pages/admin/index/checkReservation/checkReservation",
         "pages/admin/index/checkReservation/chooseReservation/chooseReservation",
+        "pages/admin/index/checkReservation/chooseReservation/refuseFeedback/refuseFeedback",
+        "pages/admin/index/checkReturn/checkReturn",
+        
         "pages/admin/index/checkOverdue/checkOverdue",
         "pages/admin/index/changeDevice/changeDevice",
-        "pages/admin/index/checkReservation/chooseReservation/refuseFeedback/refuseFeedback",
         "pages/admin/index/changeDevice/changeDetail/changeDetail",
         "pages/admin/index/recordDevice/recordDevice",
         "pages/admin/mine/mine"

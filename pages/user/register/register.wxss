@@ -46,11 +46,15 @@ radio {
 }
 
 .bottom {
-    margin: 50rpx;
+    position: fixed;
+    bottom: 40rpx;
+    width: 100%;
 }
 
 .bottom button {
-    background-color: #607D8B;
+    background-color: #89afd4;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .errorMsg {

@@ -18,25 +18,16 @@
         <text class="currentScore">当前分数:{{item.cr_afterGrade}}</text>
     </view>
     <view class="down">
-        <view>
+        <view class="changeReason">
             <text>{{item.cr_changeReason}}</text>
         </view>
-    </view>
-    <view class="changeScore">
-        <view wx:if="{{item.cr_changeScore > 0 }}">
-            <text class="add">+{{item.cr_changeScore}}</text>
-        </view>
-        <view wx:else>
-            <text class="minus">{{item.cr_changeScore}}</text>
+        <view class="changeScore">
+            <view wx:if="{{item.cr_changeScore > 0 }}">
+                <text class="add">+{{item.cr_changeScore}}</text>
+            </view>
+            <view wx:else>
+                <text class="minus">{{item.cr_changeScore}}</text>
+            </view>
         </view>
     </view>
 </view>
-
-<!-- <view class="contianer2">
-    <view wx:for="{{record}}" wx:key="{{index}}" class="records">
-        <view style="font-size: 30rpx; color: #777777">{{item.cr_date}}</view>
-        <view style="font-size: 32rpx;margin-left:40rpx;">{{item.cr_changeReason}}</view>
-        <view style="font-size: 32rpx;color: #777777; margin-left:40rpx;" >
-            变化分: {{item.cr_changeScore}}</view>
-    </view>
-</view> -->

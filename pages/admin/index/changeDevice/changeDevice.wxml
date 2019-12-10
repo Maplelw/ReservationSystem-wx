@@ -7,7 +7,8 @@
 <view>
     <view class="device" data-index="{{index}}" wx:for="{{allDevice}}" wx:key="{{index}}" bindtap="getDetails">
         <view class="img">
-            <image src="/img/global/device.png"></image>
+            <image wx:if="{{item.d_photo != undefined}}" src="{{item.d_photo}}"></image>
+            <image wx:else src="/img/global/device.png"></image>
         </view>
         <view class="device_info">
             <text style="font-size:32rpx;">{{item.d_name}}({{item.d_no}})</text>

@@ -5,19 +5,19 @@
     align-items: center
 }
 
-.device_info {
+.top .device_info {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-image {
+.top image {
     width: 120rpx;
     height: 100rpx;
     margin-right: 20rpx;
 }
 
-.state {
+.top .state {
     color: #1897B9;
     width: 100rpx;
 }

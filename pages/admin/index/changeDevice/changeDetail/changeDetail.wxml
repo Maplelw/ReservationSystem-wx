@@ -1,45 +1,67 @@
 <view class="top">
-    <view class="heads">
-        <open-data type="userAvatarUrl"></open-data>
+    <view style="display: flex">
+        <image wx:if="{{device.d_photo != undefined}}" src="{{device.d_photo}}"></image>
+        <image wx:else src="/img/global/device.png"></image>
+        <view class="device_info">
+            <text style="font-size:32rpx;">{{device.d_no}}</text>
+            <text style="font-size:32rpx;">{{device.d_name}}</text>
+        </view>
     </view>
-    <open-data type="userNickName"></open-data>
+    <view class="state">{{device.d_state}}</view>
 </view>
 
-<view class="userInfo">
-    <view class="piece" bindtap="changeName">
+<view class="deviceInfo">
+    <view class="piece" bindtap="changeNo">
         <text class="topic">设备编号</text>
         <text class="icon">></text>
         <text class="content">{{device.d_no}}</text>
     </view>
-    <view class="piece" bindtap="changeNo">
+    <view class="piece" bindtap="changeName">
         <text class="topic">设备名称</text>
         <text class="icon">></text>
         <text class="content">{{device.d_name}}</text>
     </view>
-    <view class="piece" bindtap="changePhone">
+    <view class="piece" bindtap="changeModel">
         <text class="topic">设备型号</text>
         <text class="icon">></text>
         <text class="content">{{device.d_model}}</text>
     </view>
-    <view class="piece" bindtap="changeEmail">
+    <view class="piece" bindtap="changeSaveSite">
         <text class="topic">存放地点</text>
         <text class="icon">></text>
         <text class="content">{{device.d_saveSite}}</text>
     </view>
-    <view class="piece" bindtap="changeType">
+    <view class="piece" bindtap="changeAdmin">
         <text class="topic">保管人员</text>
         <text class="icon">></text>
         <text class="content">{{device.a_name}}</text>
     </view>
-    <view class="piece" bindtap="changeName">
+    <view class="piece" bindtap="changeAdminPhone">
         <text class="topic">保管人电话</text>
         <text class="icon">></text>
         <text class="content">{{device.a_phone}}</text>
     </view>
-    <view class="piece" bindtap="changeName">
+    <view class="piece" bindtap="changeState">
         <text class="topic">状态</text>
         <text class="icon">></text>
         <text class="content">{{device.d_state}}</text>
     </view>
 </view>
-<button bindtap="uploadImageTap">上传图片</button>
+<view class="bottomButton">
+    <button bindtap="uploadImageTap">上传图片</button>
+    <button type="warn" bindtap="deleteDevice">删除设备</button>
+</view>
+
+
+<!-- 修改框 -->
+<!-- 弹出修改时间框 -->
+<view class="window" hidden="{{isWindowShow ? '' : true}}">
+    <view class='windowContent'>
+        <view class="topic">{{topic}}</view>
+        <input bindinput="getChange" value="{{inputValue}}" ></input>
+        <view class="buttons2">
+            <button bindtap="hideWindow">取消</button>
+            <button bindtap="submitChange" data-index="{{index}}" style="background-color:#6D87C4;color:white">提交</button>
+        </view>
+    </view>
+</view>
