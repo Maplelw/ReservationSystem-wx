@@ -7,7 +7,7 @@
 <view>
     <view class="device" data-index="{{index}}" wx:for="{{allDevice}}" wx:key="{{index}}" bindtap="getDetails">
         <view class="img">
-            <image wx:if="{{item.d_photo != undefined}}" src="{{item.d_photo}}"></image>
+            <image wx:if="{{item.d_photo != undefined && item.d_photo != ''}}" src="{{item.d_photo}}"></image>
             <image wx:else src="/img/global/device.png"></image>
         </view>
         <view class="device_info">
@@ -17,20 +17,3 @@
     </view>
 </view>
 
-<!-- 初始样式 -->
-<!-- <view class="container1" wx:for="{{equipment}}"  wx:key="{{index}}">
-    <view class="main">
-        <view class="head">
-            <text style="font-size: 35rpx; color:#1897b9">{{item.state}}</text>
-        </view>
-        <view class="equipName">{{item.id}}</view>
-        <view class="equipName">{{item.name}}</view>
-        <view class="details">
-            <text>工作原理：{{item.workingPrinciple}}</text>
-            <text>主要参数：{{item.mainParameter}}</text>
-        </view>
-        <view class="check">
-            <text>查看具体信息</text>
-        </view>
-    </view>
-</view> -->

@@ -1,6 +1,6 @@
 <view class="top">
     <view style="display: flex">
-        <image wx:if="{{device.d_photo != undefined}}" src="{{device.d_photo}}"></image>
+        <image wx:if="{{device.d_photo != undefined && item.d_photo != ''}}" src="{{device.d_photo}}"></image>
         <image wx:else src="/img/global/device.png"></image>
         <view class="device_info">
             <text style="font-size:32rpx;">{{device.d_no}}</text>

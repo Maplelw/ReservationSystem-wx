@@ -25,6 +25,8 @@ const datas = {
     track: host + "/user/track",
     // 预约
     reserve: host +　"/user/reserve",
+    // 同意修改 agreeEditReservation
+    agreeEditReservation: host + 　"/user/agreeEditReservation",
     // 查看已预约设备
     finishedReservation: host + "/user/finishedReservation",
     unfinishedReservation: host + "/user/unfinishedReservation",
@@ -55,6 +57,8 @@ const datas = {
     confirmReservation: host + "/admin/confirmReservation",
     // 查看被预约的设备
     handleReservation: host + "/admin/handleReservation",
+    // 修改借用时间
+    editReservation: host + "/admin/editReservation",
     // 确认归还
     confirmReturn: host + "/admin/confirmReturn",
     // 查看反馈内容
@@ -69,6 +73,6 @@ const datas = {
     handleBorrow: host + 　"/admin/handleBorrow",
     // 录入设备
     inputDevice: host + "/admin/inputDevice",
-    batchInputDevice: host + "/admin/batchInputDevice"
+    batchInputDevice: host + "/admin/batchInputDevice",
 }
 module.exports = datas;

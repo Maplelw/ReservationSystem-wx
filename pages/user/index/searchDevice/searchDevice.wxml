@@ -19,7 +19,7 @@
             <text>{{index+1}}</text>
         </view>
         <view class="img">
-            <image wx:if="{{item.d_photo != undefined}}" src="{{item.d_photo}}"></image>
+            <image wx:if="{{item.d_photo != undefined && item.d_photo != ''}}" src="{{item.d_photo}}"></image>
             <image wx:else src="/img/global/device.png"></image>
         </view>
         <view class="device_info">
@@ -34,7 +34,7 @@
     <view class="searchTop" bindtap="search">
         <view class="search">
             <view style="display:flex">
-                <image src="/img/admin/search.png"></image>
+                <image src="/img/admin/search.png" ></image>
                 <text>搜索设备名称或编号</text>
             </view>
         </view>
@@ -42,7 +42,7 @@
     <!-- 设备列表 -->
     <view class="device" data-index="{{index}}" wx:for="{{allDevice}}" wx:key="{{index}}" bindtap="getAllDetails">
         <view class="img">
-            <image wx:if="{{item.d_photo != undefined}}" src="{{item.d_photo}}"></image>
+            <image wx:if="{{item.d_photo != undefined && item.d_photo != ''}}" src="{{item.d_photo}}"></image>
             <image wx:else src="/img/global/device.png"></image>
         </view>
         <view class="device_info">

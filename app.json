@@ -1,15 +1,15 @@
 {
     "pages": [
         "pages/test/test",
-        "pages/admin/index/index",
+        "pages/user/index/searchDevice/searchDevice",
         
-        "pages/user/mine/credit/credit",
-        "pages/user/mine/mine",
-        "pages/login/login",
         "pages/user/index/index",
         
+        "pages/admin/index/index",
+        "pages/user/mine/credit/credit",
+        "pages/login/login",
 
-        "pages/user/index/searchDevice/searchDevice",
+        
         "pages/user/index/searchDevice/search/search",
         "pages/user/index/searchDevice/device/device",
         "pages/user/index/searchDevice/device/reserveDevice/reserveDevice",

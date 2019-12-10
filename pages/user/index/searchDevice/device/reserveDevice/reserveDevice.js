@@ -16,43 +16,51 @@ Page({
     //确定预约按钮
     reserve: function(e) {
         var that = this;
-        wx.login({
-            success(res) {
-                wx.request({
-                    url: reserve,
-                    method: 'POST',
-                    header: {
-                            "content-type": "application/x-www-form-urlencoded"
-                    },
-                    data: {
-                        d_no: that.data.d_no,
-                        code: res.code,
-                        startDate: that.data.startDate,
-                        returnDate: that.data.returnDate
-                    },
-                    success(res) {
-                        console.log(res.data)
-                        if(res.data.flag === 0) {
-                            wx.showToast({
-                                title: '您已预约该设备',
-                                icon: 'none',
-                                duration: 2000
-                            })
-                        }
-                        else {
-                            wx.reLaunch({
-                                url: '/pages/user/index/index',
-                            })
-                            wx.showToast({
-                                title: '预约成功',
-                                duration: 2000
-                            })
-                        }
+        console.log("开始时间：" + that.data.startDate)
+        console.log("开始时间：" + that.data.returnDate)
+        if(that.data.startDate > that.data.returnDate) {
+            wx.showToast({
+                title: '归还时间必须在借用时间之后',
+                icon: "none"
+            })
+        }
+        // wx.login({
+        //     success(res) {
+        //         wx.request({
+        //             url: reserve,
+        //             method: 'POST',
+        //             header: {
+        //                     "content-type": "application/x-www-form-urlencoded"
+        //             },
+        //             data: {
+        //                 d_no: that.data.d_no,
+        //                 code: res.code,
+        //                 startDate: that.data.startDate,
+        //                 returnDate: that.data.returnDate
+        //             },
+        //             success(res) {
+        //                 console.log(res.data)
+        //                 if(res.data.flag === 0) {
+        //                     wx.showToast({
+        //                         title: '您已预约该设备',
+        //                         icon: 'none',
+        //                         duration: 2000
+        //                     })
+        //                 }
+        //                 else {
+        //                     wx.reLaunch({
+        //                         url: '/pages/user/index/index',
+        //                     })
+        //                     wx.showToast({
+        //                         title: '预约成功',
+        //                         duration: 2000
+        //                     })
+        //                 }
                         
-                    }
-                })
-            }
-        })
+        //             }
+        //         })
+        //     }
+        // })
     },
 
     //切换借用开始时间
@@ -75,6 +83,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        // 获取今天
         var date = getDate(new Date());
         this.setData({
             currentDate: date,

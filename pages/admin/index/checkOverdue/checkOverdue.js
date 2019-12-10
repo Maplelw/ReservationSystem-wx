@@ -57,7 +57,8 @@ Page({
                     success: function (res) {
                         console.log(res.data)
                         that.setData({
-                            borrow: res.data.borrow
+                            borrow: res.data.borrow,
+                            page:　that.data.page + 1
                         })
                     },
                     fail: function (res) {
@@ -142,7 +143,7 @@ Page({
                                 })
                             } else {
                                 that.setData({
-                                    messages: that.data.messages.concat(res.data.messages),
+                                    borrow: that.data.borrow.concat(res.data.borrow),
                                     page: that.data.page + 1
                                 })
                             }

@@ -45,29 +45,29 @@ Page({
             },
         })
         // 设置所有消息为已读
-        wx.login({
-            success: function (res) {
-                wx.request({
-                    url: getMessage,
-                    data: {
-                        code: res.code,
-                    },
-                    method: 'POST',
-                    header: {
-                        'content-type': 'application/x-www-form-urlencoded'
-                    },
-                    success(res) {
-                        console.log(res.data)
-                    },
-                    fail() {
-                        console.log("请求失败")
-                    }
-                })
-            },
-            fail: function (res) {
-                console.log("login失败")
-            },
-        })
+        // wx.login({
+        //     success: function (res) {
+        //         wx.request({
+        //             url: getMessage,
+        //             data: {
+        //                 code: res.code,
+        //             },
+        //             method: 'POST',
+        //             header: {
+        //                 'content-type': 'application/x-www-form-urlencoded'
+        //             },
+        //             success(res) {
+        //                 console.log(res.data)
+        //             },
+        //             fail() {
+        //                 console.log("请求失败")
+        //             }
+        //         })
+        //     },
+        //     fail: function (res) {
+        //         console.log("login失败")
+        //     },
+        // })
     },
 
     /**
@@ -110,6 +110,7 @@ Page({
      */
     onReachBottom: function() {
         var that = this
+        console.log(that.data.flag)
         if (that.data.flag === 1) { // 到最后一页了
             wx.showToast({
                 title: '已经到最后一个设备',
