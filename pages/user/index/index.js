@@ -1,3 +1,4 @@
+let getMessage = require('../../../global/global.js').getMessage;
 Page({
 
     /**
@@ -9,7 +10,8 @@ Page({
         allColor: "#bbbbbb",
         hotDevice: [],
         allDevice: [],
-        navigator: [{
+        messages:[], // 用户的消息
+        navigator: [{ // 导航栏
                 img: "/img/global/nv_index_on.png",
                 name: "首页"
             },
@@ -33,7 +35,35 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+        var that = this
+        wx.login({
+            success: function (res) {
+                wx.request({
+                    url: getMessage,
+                    data: {
+                        code: res.code,
+                        page: 1
+                    },
+                    method: 'POST',
+                    header: {
+                        'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    success(res) {
+                        console.log(res.data)
+                        that.setData({
+                            messages: res.data.messages,
+                            page: that.data.page + 1
+                        })
+                    },
+                    fail() {
+                        console.log("请求失败")
+                    }
+                })
+            },
+            fail: function (res) {
+                console.log("login失败")
+            },
+        })
     },
 
     /**

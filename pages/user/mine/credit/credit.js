@@ -1,33 +1,29 @@
 let getCredit = require('../../../../global/global.js').getCredit;
+let getCreditRule = require('../../../../global/global.js').getCreditRule;
 Page({
     /**
      * 页面的初始数据
      */
     data: {
+        isRuleShow: false,
         u_creditScore: "",
         comment: "信用很好，优先借用",
         u_creditScore: 100,
         page: 1, // 页数
         flag: 0, // 是否最后一页
-        record: [{
-            cr_date: "2019-10-1", 
-            cr_changeReason: "用仪器打人",
-            cr_changeScore: -1,
-            cr_afterGrade: 98
-        },
-        {
-            cr_date: "2019-10-1",
-            cr_changeReason: "按时归还仪器设备",
-            cr_changeScore: 8,
-            cr_afterGrade: 98
-        },
-        {
-            cr_date: "2019-10-1",
-            cr_changeReason: "博冠马卡 200/4000",
-            cr_changeScore: -1,
-            cr_afterGrade: 98
-        }
-        ]
+        record: [],
+        creditRule: ["1.按时归还仪器","2.逾期未按时归还仪器（小于等于1个星期，1个星期按7天来算"],
+    },
+    //弹窗打开与关闭
+    showRule: function() {
+        this.setData({
+            isRuleShow: true
+        })
+    },
+    hideRule: function () {
+        this.setData({
+            isRuleShow: false
+        })
     },
 
     /**
@@ -65,6 +61,25 @@ Page({
                         console.log("请求失败")
                     },
                 })
+                // 获取规则
+                // wx.request({
+                //     url: getCreditRule,
+                //     data: {
+                //     },
+                //     header: {
+                //         'content-type': 'application/x-www-form-urlencoded'
+                //     },
+                //     method: 'POST',
+                //     success: function (res) {
+                //         console.log(res.data)
+                //         that.setData({
+                //             creditRule: res.data.creditRule,
+                //         })
+                //     },
+                //     fail: function (res) {
+                //         console.log("请求失败")
+                //     },
+                // })
             }
         })
     },

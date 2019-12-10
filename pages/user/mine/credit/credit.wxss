@@ -6,16 +6,19 @@ page {
     background-color: #fff;
     height: 300rpx;
     width: 100%;
-    border-top: 4rpx solid #eee;
+    border-top: 25rpx solid #eee;
 }
 
-.topic {
+.header .topic {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.topic text{
+.header .topic text{
     margin-top: 40rpx;
     margin-left: 40rpx;
+    margin-right: 40rpx;
 }
 
 .header .score {
@@ -86,4 +89,49 @@ page {
 
 .all .changeScore .minus {
     color: red;
+}
+
+/* 规则弹窗 */
+.window {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.window .windowContent {
+    width: 90%;
+    margin: 0 auto;
+    background-color: white;
+    font-size: 32rpx;
+    border-radius: 5%;
+    color: #666
+}
+
+.window .windowContent .icon {
+    width: 100%;
+    height: 50rpx;
+}
+
+.window .windowContent .icon image {
+    float: right;
+    margin-top: 15rpx;
+    margin-right: 20rpx;
+    background-color: white;
+    width: 43rpx;
+    height: 43rpx;
+    
+}
+.window .windowContent .creditRule {
+    margin-bottom: 60rpx;
+}
+
+.window .windowContent .creditRule view {
+    margin: 10rpx 25rpx;
 }

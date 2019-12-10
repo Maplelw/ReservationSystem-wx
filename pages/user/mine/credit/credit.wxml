@@ -1,17 +1,19 @@
+<!-- 头部分数等 -->
 <view class="header">
     <view class="topic">
         <text style="font-size: 35rpx; color: #3E606F">您的信用评分</text>
+        <text bindtap="showRule" style="font-size: 30rpx; color: #89AFD4">规则</text>
     </view>
     <view class="score">
         <text style="font-size: 80rpx;">{{u_creditScore}}</text>
         <text style="font-size: 30rpx; color: #000">{{comment}}</text>
     </view>
 </view>
-
+<!-- 信用记录标题 -->
 <view class="mid">
     <text>信用记录</text>
 </view>
-
+<!-- 每一条记录 -->
 <view class="all" wx:for="{{record}}" wx:key="{{index}}">
     <view class="top">
         <text style="color: #888;line-height:52rpx">{{item.cr_date}}</text>
@@ -28,6 +30,17 @@
             <view wx:else>
                 <text class="minus">{{item.cr_changeScore}}</text>
             </view>
+        </view>
+    </view>
+</view>
+<!-- 规则弹窗 -->
+<view class="window" hidden="{{isRuleShow ? '' : true }}">
+    <view class='windowContent'>
+        <view class="icon">
+            <image src="/img/user/cancel.png" bindtap='hideRule'></image> 
+        </view>
+        <view class="creditRule">
+            <view wx:for="{{creditRule}}">{{item}}</view>
         </view>
     </view>
 </view>

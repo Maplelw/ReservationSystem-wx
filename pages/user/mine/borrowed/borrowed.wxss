@@ -56,6 +56,13 @@
     margin-right: 20rpx;
 }
 
+.cancel .QRCode {
+    font-size: 30rpx;
+    color: #89afd4;
+    border: 4rpx solid #89afd4;
+    padding: 12rpx 25rpx;
+}
+
 .cancel .uncommented {
     font-size: 30rpx;
     color: #89afd4;

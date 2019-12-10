@@ -20,25 +20,18 @@
 .choice {
     margin: 80rpx 0; 
     display: flex;
-    justify-content: center
+    justify-content: center;
 }
 
-.up .choice .eachChoice {
-    margin: 0 30rpx;
+.choice .eachChoice {
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     font-size: 35rpx;
     justify-content: center;
     align-items: center;
-}
-
-.down .choice .eachChoice {
-    margin: 0 50rpx;
-    display: flex;
-    flex-direction: column;
-    font-size: 35rpx;
-    justify-content: center;
-    align-items: center;
+    width: 200rpx;
+    height: 175rpx;
 }
 
 .choice .eachChoice image{
