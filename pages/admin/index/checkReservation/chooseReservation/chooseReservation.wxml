@@ -30,4 +30,7 @@
         <text data-index="{{index}}" bindtap="reject" style="background-color: #eeeeee; color:#607D8B; border-radius:15%">拒绝租借</text>
         <text data-index="{{index}}" bindtap="confirm" style="background-color: #607D8B; color:#ffffff; border-radius:15%">确认租借</text>
     </view>
+    <!-- <view class="window">
+        
+    </view> -->
 </view>

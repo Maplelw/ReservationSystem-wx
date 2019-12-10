@@ -40,7 +40,7 @@
             <image src="/img/user/cancel.png" bindtap='hideRule'></image> 
         </view>
         <view class="creditRule">
-            <view wx:for="{{creditRule}}">{{item}}</view>
+            <view wx:for="{{creditRule}}" wx:key="{{index}}">{{item}}</view>
         </view>
     </view>
 </view>

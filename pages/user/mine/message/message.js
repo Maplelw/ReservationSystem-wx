@@ -7,17 +7,7 @@ Page({
     data: {
         page: 1, // 页数
         flag: 0, // 是否最后一页
-        messages: [{
-                m_topic: "预约成功",
-                m_content: "您预约的设备望远镜，预约成功了",
-                m_date: "2019-03-05"
-            },
-            {
-                m_topic: "预约成功",
-                m_content: "您预约的设备望远镜，预约成功了",
-                m_date: "2019-03-05"
-            }
-        ]
+        messages: []
     },
 
     /**

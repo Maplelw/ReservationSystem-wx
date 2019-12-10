@@ -48,7 +48,7 @@ Page({
                         that.setData({
                             record: res.data.record,
                             page: that.data.page + 1,
-                            u_creditScore: res.data.u_creditScore
+                            u_creditScore: res.data.score
                         })
                         var scoreInt = parseInt(res.data.score)
                         if (scoreInt < 80) {
@@ -61,25 +61,25 @@ Page({
                         console.log("请求失败")
                     },
                 })
-                // 获取规则
-                // wx.request({
-                //     url: getCreditRule,
-                //     data: {
-                //     },
-                //     header: {
-                //         'content-type': 'application/x-www-form-urlencoded'
-                //     },
-                //     method: 'POST',
-                //     success: function (res) {
-                //         console.log(res.data)
-                //         that.setData({
-                //             creditRule: res.data.creditRule,
-                //         })
-                //     },
-                //     fail: function (res) {
-                //         console.log("请求失败")
-                //     },
-                // })
+                //获取规则
+                wx.request({
+                    url: getCreditRule,
+                    data: {
+                    },
+                    header: {
+                        'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    method: 'POST',
+                    success: function (res) {
+                        console.log(res.data)
+                        that.setData({
+                            creditRule: res.data.creditRule,
+                        })
+                    },
+                    fail: function (res) {
+                        console.log("请求失败")
+                    },
+                })
             }
         })
     },

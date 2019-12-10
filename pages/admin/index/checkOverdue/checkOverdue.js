@@ -6,25 +6,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        borrow: [{
-            u_name: "至臻",
-            u_type: "老师",
-            u_no: "201726010312",
-            r_borrow_date: "2019/10/02",
-            r_return_date: "2019/10/04",
-            u_credit_grade: 80,
-            u_phone: "18847563256",
-            u_email: "lwdawang@qq.com"
-        }, {
-            u_name: "至臻",
-            u_type: "老师",
-            u_no: "201726010312",
-            r_borrow_date: "2019/10/02",
-            r_return_date: "2019/10/04",
-            u_credit_grade: 80,
-            u_phone: "18847563256",
-            u_email: "lwdawang@qq.com"
-        }]
+        page: 1, // 页数
+        flag: 0, // 是否最后一页
+        borrow: []
     },
 
     //提醒按钮
@@ -63,7 +47,8 @@ Page({
                 wx.request({
                     url: overDue,
                     data: {
-                        code: res.code
+                        code: res.code,
+                        page: that.data.page 
                     },
                     method:　'POST',
                     header: {
@@ -123,7 +108,52 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+        var that = this
+        if (that.data.flag === 1) { // 到最后一页了
+            wx.showToast({
+                title: '已经到最后一个设备',
+                icon: "loading",
+                duration: 500
+            })
+        } else {
+            wx.login({
+                success(res) {
+                    wx.request({
+                        rl: overDue,
+                        data: {
+                            code: res.code,
+                            page: that.data.page
+                        },
+                        method: 　'POST',
+                        header: {
+                            'content-type': 'application/x-www-form-urlencoded'
+                        },
+                        success: function (res) {
+                            console.log(that.data.borrow)
+                            console.log("page:" + that.data.page)
+                            if (res.data.flag === 0) {
+                                that.setData({
+                                    flag: 1
+                                })
+                                wx.showToast({
+                                    title: '已经到最后一个设备',
+                                    icon: "loading",
+                                    duration: 500
+                                })
+                            } else {
+                                that.setData({
+                                    messages: that.data.messages.concat(res.data.messages),
+                                    page: that.data.page + 1
+                                })
+                            }
+                        },
+                        fail: function (res) {
+                            console.log("请求失败")
+                        },
+                    })
+                }
+            })
+        }
     },
 
     /**
