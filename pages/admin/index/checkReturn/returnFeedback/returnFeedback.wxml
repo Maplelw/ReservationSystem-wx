@@ -1,0 +1,23 @@
+<view class="topic">
+    归还状态选择
+</view>
+
+<form bindsubmit="submitfeedback">
+    <!-- 选择框 -->
+    <view class="stateChoice">
+        <radio-group class="radio-group" name="state">
+            <radio class="radio" color="#0078D7" checked="true" value="normal">正常</radio>
+            <radio color="#0078D7" value="damaged">损坏</radio>
+            <radio color="#0078D7" value="scrapped">报废</radio>
+            <radio color="#0078D7" value="other">其他</radio>
+        </radio-group>
+    </view>
+    <!-- 评价内容框 -->
+    <view class="feedback">
+        <textarea placeholder="请填写具体情况(可以不填)" name="feedbackContent"></textarea>
+    </view>
+    <!-- 提交 -->
+    <view class="submit">
+        <button form-type="submit">提交</button>
+    </view>
+</form>

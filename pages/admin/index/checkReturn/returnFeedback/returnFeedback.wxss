@@ -1,0 +1,53 @@
+.topic {
+    width: 90%;
+    margin: 40rpx auto;
+    font-size: 36rpx;
+    color: #111;
+    
+}
+
+.stateChoice .radio-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50rpx;
+    margin-left: 100rpx;
+}
+
+.stateChoice .radio-group radio {
+    margin-bottom: 30rpx;
+    width: 200rpx;
+    height: 40rpx;
+    font-size: 36rpx;
+    transform: scale(0.8);
+}
+
+.feedback {
+    height: 200rpx;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50rpx;
+}
+
+.feedback textarea {
+    width: 90%;
+    background-color: rgba(244, 244, 244, 0.5);
+    padding: 15rpx;
+    font-size: 32rpx;
+}
+
+.submit {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.submit button {
+    width: 80%;
+    color: white;
+    background-color: #89afd4;
+    margin: 10rpx;
+    font-size: 38rpx;
+}

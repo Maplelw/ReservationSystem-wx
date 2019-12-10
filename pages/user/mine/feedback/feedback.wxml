@@ -1,0 +1,14 @@
+<view class="topic">
+    非常感谢您能提出建议，如有问题，我们将尽快改正！
+</view>
+
+<!-- 评价内容框 -->
+<view class="feedback">
+    <textarea placeholder="请填写您的建议" bindinput="getfeedback"></textarea>
+</view>
+
+<!-- 提交 -->
+<view class="submit">
+    <button wx:if="{{feedbackContent == ''}}" disabled="true" bindtap="submitfeedback">提交</button>
+    <button wx:else bindtap="submitfeedback">提交</button>
+</view>

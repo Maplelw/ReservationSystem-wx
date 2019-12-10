@@ -1,0 +1,36 @@
+.topic {
+    width: 90%;
+    margin: 40rpx auto;
+    font-size: 36rpx;
+    color: #111
+}
+
+.feedback {
+    height: 200rpx;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.feedback textarea {
+    width: 90%;
+    background-color: rgba(244, 244, 244, 0.5);
+    padding: 15rpx;
+    font-size: 32rpx;
+}
+
+.submit {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.submit button {
+    width: 80%;
+    color: white;
+    background-color: #89afd4;
+    margin: 10rpx;
+    font-size: 38rpx;
+}
