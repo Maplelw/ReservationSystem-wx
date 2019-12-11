@@ -15,7 +15,11 @@ Page({
         time: "获取验证码", //验证码按钮的文字
         errorMsg: "", // 输出错误信息
         currentTime: 61, //倒计时
-        
+        academySpecialty: [], // picker总体内容
+        specialtyList:[],//变化的专业内容
+        academyList: [],//学院表
+        academyIndex: "",//选择的学院
+        specialtyIndex: "",//选择的专业 
     },
 
     // 获取验证码
@@ -64,8 +68,7 @@ Page({
                     })
                 }
             })
-        } 
-        else {
+        } else {
             this.setData({
                 errorMsg: "请输入可用手机号"
             })
@@ -81,7 +84,7 @@ Page({
         } else {
             for (var i = 0; i < phone.length; i++) {
                 if (phone[i] >= '0' && phone[i] <= '9') {
-                    contine;
+                    continue;
                 } else {
                     flag = false;
                     break;
@@ -99,43 +102,35 @@ Page({
             this.setData({
                 errorMsg: "姓名不能为空"
             })
-        } 
-        else if (e.detail.value.u_no == "") {
+        } else if (e.detail.value.u_no == "") {
             this.setData({
                 errorMsg: "学工号不能为空"
             })
-        } 
-        else if (e.detail.value.u_phone == "") {
+        } else if (e.detail.value.u_phone == "") {
             this.setData({
                 errorMsg: "电话不能为空"
             })
-        } 
-        else if (e.detail.value.u_email == "") {
+        } else if (e.detail.value.u_email == "") {
             this.setData({
                 errorMsg: "邮箱不能为空"
             })
-        } 
-        else if (e.detail.value.securityCode == "") {
+        } else if (e.detail.value.securityCode == "") {
             this.setData({
                 errorMsg: "验证码不能为空"
             })
-        }
-        else if (e.detail.value.u_major_class == "") {
+        } else if (e.detail.value.u_major_class == "") {
             this.setData({
                 errorMsg: "专业班级不能为空"
             })
-        } 
-        else if (e.detail.value.u_mentor_name == "") {
+        } else if (e.detail.value.u_mentor_name == "") {
             this.setData({
                 errorMsg: "导师姓名不能为空"
             })
-        } 
-        else if (e.detail.value.u_mentor_phone == "") {
+        } else if (e.detail.value.u_mentor_phone == "") {
             this.setData({
                 errorMsg: "导师手机不能为空"
             })
-        }
-        else {
+        } else {
             // 校验验证码
             console.log("正确验证码：" + this.data.verifyCode);
             console.log("输入验证码：" + e.detail.value.securityCode);
@@ -161,13 +156,22 @@ Page({
                                     u_email: e.detail.value.u_email,
                                     u_phone: e.detail.value.u_phone,
                                     u_type: e.detail.value.u_type,
-                                    u_class_major: e.detail.value.u_major_class,
-                                    u_mentor_name: e.detail.value.u_mentor_name,
-                                    u_mentor_phone: e.detail.value.u_mentor_phone
+                                    s_no: that.data.specialtyList[that.data.academyIndex][that.data.specialtyIndex].s_no,
+                                    u_mentorName: e.detail.value.u_mentor_name,
+                                    u_mentorPhone: e.detail.value.u_mentor_phone
                                 },
-                                success: function (res) {
+                                success: function(res) {
                                     console.log(res.data)
                                     console.log("注册为学生")
+                                    if (res.data.flag === 1) {
+                                        wx.showToast({
+                                            title: '注册成功',
+                                            duration: 2000
+                                        })
+                                        wx.redirectTo({
+                                            url: '../index/index',
+                                        })
+                                    }
                                 }
                             })
                         } else { // 老师
@@ -186,8 +190,16 @@ Page({
                                     u_phone: e.detail.value.u_phone,
                                     u_type: e.detail.value.u_type,
                                 },
-                                success: function (res) {
+                                success: function(res) {
                                     console.log(res.data)
+                                    if(res.data.flag === 1) {
+                                        wx.showToast({
+                                            title: '注册成功',
+                                        })
+                                        wx.redirectTo({
+                                            url: '../index/index',
+                                        })
+                                    }
                                 }
                             })
                         }
@@ -197,8 +209,7 @@ Page({
                         console.log("获取code失败")
                     }
                 })
-            } 
-            else { //验证码不正确
+            } else { //验证码不正确
                 this.setData({
                     errorMsg: "验证码错误"
                 })
@@ -225,11 +236,48 @@ Page({
     phoneInput: function(e) {
         this.data.u_phone = e.detail.value;
     },
+
+//多列选择器
+    // 获取value
+    getPickerValue(e) {
+        var that = this
+        console.log(e.detail.value)
+        this.setData({
+            academyIndex: e.detail.value[0],
+            specialtyIndex: e.detail.value[1],
+        })
+    },
+    //根据学院修改专业的值
+    academyChange(e) {
+        console.log("修改的列：" + e.detail.column)
+        if(e.detail.column === 0) {
+            this.setData({
+                academySpecialty: [this.data.academyList, this.data.specialtyList[e.detail.value]]
+            })
+        }
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+        var datas = JSON.parse(options.academyList)
+        console.log(datas)
+        var academyList = new Array()
+        var specialtyList = new Array()
+        for(var i=0;i<datas.length;i++) {
+            var academy = {
+                s_name: datas[i].am_name,
+                am_no: datas[i].am_no
+            }
+            academyList.push(academy)
+            specialtyList.push(datas[i].specialtyList)
+        }
+        this.setData({
+            academyList: academyList,
+            specialtyList: specialtyList,
+            academySpecialty: [academyList,specialtyList[0]]
+        })
     },
 
     /**

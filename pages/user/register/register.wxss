@@ -26,6 +26,22 @@ radio {
     border-bottom: 2rpx solid #dfdfdf;
     font-size: 32rpx;
 }
+/* 院系专业多加一行 */
+.inputs .specialSpecialty {
+    height: 60rpx;
+    width: 480rpx;
+    border-bottom: 2rpx solid #dfdfdf;
+    font-size: 32rpx;
+    color: #808080
+}
+
+picker {
+    height: 60rpx;
+    width: 480rpx;
+    border-bottom: 2rpx solid #dfdfdf;
+    font-size: 32rpx;
+    color: #808080
+}
 
 .area {
     margin-top: 50rpx;

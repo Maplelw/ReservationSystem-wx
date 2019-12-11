@@ -5,8 +5,8 @@
     <navigator open-type="redirect" url="/pages/user/index/index">
         <button>用户测试</button>
     </navigator>
-    <!-- <navigator open-type="redirect" url="/pages/user/register/register">
+    <navigator open-type="redirect" url="/pages/user/register/register">
         <button>注册</button>
     </navigator>
-    <button bindtap="test">测试</button> -->
+    <button bindtap="test">测试</button>
 </view>

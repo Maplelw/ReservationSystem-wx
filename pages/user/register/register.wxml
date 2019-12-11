@@ -34,8 +34,16 @@ disabled='{{disabled}}' bindtap="getVerificationCode">{{time}}</button>
     </view>
     <view wx:if="{{type === 'student'}}">
         <view class="inputs">
-            <text>班级</text>
-            <input type="text" placeholder="例如：软件1703" name="u_major_class"></input>
+            <text>院系</text>
+            <picker mode="multiSelector" range="{{academySpecialty}}" range-key="s_name"
+bindchange="getPickerValue" bindcolumnchange="academyChange">
+                <view wx:if="{{academyIndex === ''}}">请选择您的院系专业</view>
+                <view wx:else style="color:#000">{{academyList[academyIndex].s_name}}</view>
+            </picker>
+        </view>
+        <view class="inputs">
+            <text>专业</text>
+            <view style="color:#000" class="specialSpecialty">{{specialtyList[academyIndex][specialtyIndex].s_name}}</view>
         </view>
         <view class="inputs">
             <text>导师姓名</text>
@@ -50,9 +58,8 @@ disabled='{{disabled}}' bindtap="getVerificationCode">{{time}}</button>
         <text>{{errorMsg}}</text>
     </view>
     <view class="bottom">
-        <button type="primary" form-type="submit">提交</button>
+        <button form-type="submit">提交</button>
     </view>
-    <!-- <view class="bottom">
-        <button type="primary" bindtap="checkPhone">提交</button>
-    </view> -->
+    <view>
+</view>
 </form>

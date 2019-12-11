@@ -1,19 +1,19 @@
 {
     "pages": [
+        
+        "pages/login/login",
         "pages/test/test",
         "pages/user/index/searchDevice/searchDevice",
-        
+        "pages/user/register/register",
         "pages/user/index/index",
-        
         "pages/admin/index/index",
         "pages/user/mine/credit/credit",
-        "pages/login/login",
-
         
+
         "pages/user/index/searchDevice/search/search",
         "pages/user/index/searchDevice/device/device",
         "pages/user/index/searchDevice/device/reserveDevice/reserveDevice",
-        "pages/user/register/register",
+       
         "pages/user/mine/borrowed/borrowed",
         "pages/user/mine/borrowed/comment/comment",
         "pages/user/mine/userInfo/userInfo",
@@ -22,8 +22,6 @@
         "pages/user/mine/reservation/reservation",
         "pages/user/mine/feedback/feedback",
 
-        
-        
         "pages/admin/index/checkReservation/checkReservation",
         "pages/admin/index/checkReservation/chooseReservation/chooseReservation",
         "pages/admin/index/checkReservation/chooseReservation/refuseFeedback/refuseFeedback",

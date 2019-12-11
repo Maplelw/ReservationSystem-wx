@@ -166,7 +166,7 @@ Page({
                 'content-type': 'multipart/form-data'
             },
             formData: {
-                d_no: '1905399S'
+                d_no: that.data.d_no
             },
             success: function (res) {
                 console.log(res.data) //接口返回网络路径

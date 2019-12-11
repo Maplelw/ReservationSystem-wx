@@ -10,7 +10,7 @@ const datas = {
     // 注册
     register: host + "/user/register",
     // 获取验证码
-    getSecurityCode: host +　"/user/getSecurityCode",
+    verifyCode: host +　"/verifyCode",
     // 获取热门设备表
     hot: host + "/user/hot",
     // 获取所有设备表

@@ -5,13 +5,13 @@ Page({
      * 页面的初始数据
      */
     data: {
-
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        var that = this
         wx.login({
             success(res) {
                 wx.request({
@@ -36,8 +36,10 @@ Page({
                             })
                         }
                         else { // 不存在
-                            wx.redirectTo({
-                                url: '/pages/user/register/register',
+                            console.log(res.data.academyList)
+                            var academyList = JSON.stringify(res.data.academyList)
+                            wx.navigateTo({
+                                url: '/pages/user/register/register?' + "academyList=" + academyList
                             })
                         }
                     }
