@@ -1,7 +1,8 @@
-<!-- 设备信息 -->
+<!-- 头部设备信息 -->
 <view class="device">
     <view class="img">
-        <image src="/img/global/device.png"></image>
+        <image wx:if="{{device.d_photo != undefined && device.d_photo != ''}}" src="{{device.d_photo}}"></image>
+        <image wx:else src="/img/global/device.png"></image>
     </view>
     <view class="device_info">
         <text style="font-size:32rpx;">{{d_no}}</text>
@@ -10,7 +11,63 @@
 </view>
 
 <!-- 申请人 -->
-<view wx:for="{{reservation}}" wx:key="index">
+<view class="all" wx:for="{{reservation}}" wx:key="{{index}}">
+    <view class="top">
+        <view>
+            <text>申请时间:</text>
+            <text>{{item.r_reservationDate}}</text>
+            <text wx:if="{{item.r_state === 0}}" class="ing">正在处理</text>
+            <text wx:elif="{{item.r_state === 3}}" class="discuss">协商同意</text>
+        </view>
+    </view>
+    <view class="application">
+        <view class="info">
+            <view>
+                <text style="color: #000000;font-size:40rpx;margin-right:40rpx;">{{item.u_name}}</text>
+                <text>{{item.u_type}}</text>
+            </view>
+            <text>借用时间：{{item.r_startDate}}--{{item.r_returnDate}}</text>
+        </view>
+        <view class="credit">
+            <text>信用分</text>
+            <text>{{item.u_creditGrade}}</text>
+        </view>
+    </view>
+    <view class="buttons">
+        <text data-index="{{index}}" bindtap="changeDate" style="background-color: #eeeeee; color:#607D8B; border-radius:15%">修改时间</text>
+        <text data-index="{{index}}" bindtap="reject" style="background-color: #eeeeee; color:#607D8B; border-radius:15%">拒绝租借</text>
+        <text data-index="{{index}}" bindtap="confirm" style="background-color: #607D8B; color:#ffffff; border-radius:15%">确认租借</text>
+    </view>
+    <view class="feedback">
+        <text wx:if="{{item.r_state === 2}}">协商原因：{{item.r_feedBack}}</text>
+    </view>
+    <view class="window" hidden="{{isShow ? '':true}}">
+        <view class="windowContent">
+            <view class="borrow">
+                <text>借用时间</text>
+                <picker mode="date" value="{{item.r_startDate}}" bindchange="startChange">
+                    <view class="pickTime">
+                        <text>{{new_startDate}}</text>
+                    </view>
+                </picker>
+            </view>
+            <view class="borrow">
+                <text>归还时间</text>
+                <picker mode="date" value="{{item.r_returnDate}}" bindchange="returnChange">
+                    <view class="pickTime">
+                        <text>{{new_returnDate}}</text>
+                    </view>
+                </picker>
+            </view>
+            <textarea bindinput="getFeedback" placeholder="请填写修改原因"></textarea>
+            <view class="buttons2">
+                <button bindtap="hideWindow">取消</button>
+                <button bindtap="submitChange" data-index="{{index}}" style="background-color:#89afd4;color:white">提交</button>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- <view wx:for="{{reservation}}" wx:key="index">
     <view class="application">
         <view class="info">
             <view>
@@ -51,9 +108,8 @@
             <textarea bindinput="getFeedback" placeholder="请填写修改原因"></textarea>
             <view class="buttons2">
                 <button bindtap="hideWindow">取消</button>
-                <button bindtap="submitChange" data-index="{{index}}" 
-style="background-color:#89afd4;color:white">提交</button>
+                <button bindtap="submitChange" data-index="{{index}}" style="background-color:#89afd4;color:white">提交</button>
             </view>
         </view>
     </view>
-</view>
+</view> -->

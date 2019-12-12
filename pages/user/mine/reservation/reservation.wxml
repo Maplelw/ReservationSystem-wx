@@ -12,6 +12,7 @@
                 <text>{{item.r_reservationDate}}</text>
                 <text wx:if="{{item.r_state === 0}}" class="ing">正在处理</text>
                 <text wx:elif="{{item.r_state === 2}}" class="discuss">协商处理</text>
+                <text wx:elif="{{item.r_state === 3}}" class="discuss">同意协商修改</text>
             </view>
         </view>
         <view class="down">
@@ -21,12 +22,12 @@
                 <text>{{item.r_startDate}} -- {{item.r_returnDate}}</text>
             </view>
         </view>
+        <view class="feedback">
+            <text wx:if="{{item.r_state === 2 || item.r_state === 3}}">协商原因：{{item.r_feedBack}}</text>
+        </view>
         <view class="cancel">
             <text wx:if="{{item.r_state === 2}}" bindtap="agree" data-index="{{index}}">同意修改</text>
             <text bindtap="cancel" data-index="{{index}}">取消预约</text>
-        </view>
-        <view class="feedback">
-            <text wx:if="{{item.r_state === -1}}">协商原因：{{item.r_feedBack}}</text>
         </view>
     </view>
 </view>

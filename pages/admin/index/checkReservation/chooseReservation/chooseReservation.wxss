@@ -1,8 +1,12 @@
+page {
+    background-color: rgba(244, 244, 244,1)
+}
 /* 设备信息 */
 .device {
     display: flex;
-    border-bottom: 25rpx solid #eee;
+    margin-bottom: 25rpx;
     padding-bottom: 15rpx;
+    background-color: white;
 }
 
 .device .img {
@@ -24,27 +28,81 @@
     flex-direction: column;
     justify-content: center;
 }
+/* 具体申请信息 */
+.all {
+    margin-bottom: 25rpx;
+    padding-bottom: 20rpx;
+    background-color: white;
+}
+
+.all .top {
+    padding: 20rpx;
+    border-bottom: 4rpx solid #eeee;
+
+}
+
+.all .top text {
+    font-size: 32rpx;
+    margin-right: 10rpx;
+}
+
+.all .top .ing {
+    color: #aaa;
+    float:right;
+    line-height: 52rpx;
+}
+
+.all .top .discuss {
+    color: red;
+    float:right;
+    line-height: 52rpx;
+}
+
+.all .top .success {
+    color: #89AFD4;
+    float: right;
+    line-height: 52rpx;
+}
+
+.all .top .fail {
+    color: red;
+    float: right;
+    line-height: 52rpx;
+}
+
+.all .top .cancelReserve {
+    color: #aaa;
+    float: right;
+    line-height: 52rpx;
+}
+
+.all .feedback text {
+    font-size: 32rpx;
+    color: #89afd4;
+    margin-left: 40rpx; 
+}
 
 /* 申请人 */
-.application {
+.all .application {
     display: flex;
     justify-content: space-around;
     margin-top: 20rpx;
 }
-.info {
+
+.all .application .info {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 550rpx;
 }
 
-.info text {
+.all .application .info text {
     font-size:32rpx;
     color: #5e5e5e;
     margin: 5rpx;
 }
 
-.credit {
+.all .application  .credit {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,15 +110,15 @@
     color: rgb(45, 154, 167)
 }
 
-.buttons {
+.all .buttons {
     display: flex;
     justify-content: flex-end;
     margin-top: 10rpx;
-    border-bottom: 25rpx solid #eee;
+    /* border-bottom: 25rpx solid #eee; */
     padding-bottom: 20rpx;
 }
 
-.buttons text {
+.all .buttons text {
     font-size: 30rpx;
     margin-right: 20rpx;
     padding: 12rpx;

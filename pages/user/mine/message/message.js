@@ -44,30 +44,6 @@ Page({
                 console.log("login失败")
             },
         })
-        // 设置所有消息为已读
-        // wx.login({
-        //     success: function (res) {
-        //         wx.request({
-        //             url: getMessage,
-        //             data: {
-        //                 code: res.code,
-        //             },
-        //             method: 'POST',
-        //             header: {
-        //                 'content-type': 'application/x-www-form-urlencoded'
-        //             },
-        //             success(res) {
-        //                 console.log(res.data)
-        //             },
-        //             fail() {
-        //                 console.log("请求失败")
-        //             }
-        //         })
-        //     },
-        //     fail: function (res) {
-        //         console.log("login失败")
-        //     },
-        // })
     },
 
     /**

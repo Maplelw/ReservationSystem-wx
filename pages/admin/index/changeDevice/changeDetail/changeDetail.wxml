@@ -13,7 +13,7 @@
 <view class="deviceInfo">
     <view class="piece" bindtap="changeNo">
         <text class="topic">设备编号</text>
-        <text class="icon">></text>
+        <text class="icon" style="color:white">></text>
         <text class="content">{{device.d_no}}</text>
     </view>
     <view class="piece" bindtap="changeName">
@@ -28,17 +28,17 @@
     </view>
     <view class="piece" bindtap="changeSaveSite">
         <text class="topic">存放地点</text>
-        <text class="icon">></text>
+        <text class="icon" style="color:white">></text>
         <text class="content">{{device.d_saveSite}}</text>
     </view>
     <view class="piece" bindtap="changeAdmin">
         <text class="topic">保管人员</text>
-        <text class="icon">></text>
+        <text class="icon" style="color:white">></text>
         <text class="content">{{device.a_name}}</text>
     </view>
     <view class="piece" bindtap="changeAdminPhone">
         <text class="topic">保管人电话</text>
-        <text class="icon">></text>
+        <text class="icon" style="color:white">></text>
         <text class="content">{{device.a_phone}}</text>
     </view>
     <view class="piece" bindtap="changeState">
@@ -50,6 +50,7 @@
 <view class="bottomButton">
     <button bindtap="uploadImageTap">上传图片</button>
     <button type="warn" bindtap="deleteDevice">删除设备</button>
+    <button bindtap="refresh">刷新</button>
 </view>
 
 

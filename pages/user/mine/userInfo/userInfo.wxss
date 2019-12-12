@@ -48,3 +48,52 @@ page {
     margin-left: 20rpx;
     font-size: 40rpx;
 }
+
+/* 弹窗 */
+.window {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.window .windowContent {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+}
+
+.window .windowContent .topic {
+    background-color: rgba(244, 244, 244, 0.8);
+    width: 100%;
+    text-align: center;
+    padding: 20rpx;
+    font-size: 36rpx;
+}
+
+.window .windowContent input{
+    margin: 40rpx auto;
+    width: 80%;
+    background-color: rgba(244, 244, 244, 0.8);
+    padding: 20rpx;
+    font-size: 35rpx;
+}
+
+.window .windowContent .buttons2 {
+    display: flex;
+    justify-content: center;
+    padding: 20rpx 0;
+}
+
+.window .windowContent .buttons2 button {
+    width: 200rpx;
+    height: 80rpx;
+    font-size: 35rpx;
+}

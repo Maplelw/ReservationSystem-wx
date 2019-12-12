@@ -1,4 +1,4 @@
-let getMessage = require('../../../global/global.js').getMessage;
+let getUnReadMessage = require('../../../global/global.js').getUnReadMessage;
 Page({
 
     /**
@@ -35,14 +35,14 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        // 获取未读消息
         var that = this
         wx.login({
             success: function (res) {
                 wx.request({
-                    url: getMessage,
+                    url: getUnReadMessage,
                     data: {
                         code: res.code,
-                        page: 1
                     },
                     method: 'POST',
                     header: {
@@ -51,8 +51,7 @@ Page({
                     success(res) {
                         console.log(res.data)
                         that.setData({
-                            messages: res.data.messages,
-                            page: that.data.page + 1
+                            messages: res.data.messageList,
                         })
                     },
                     fail() {

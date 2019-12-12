@@ -13,7 +13,7 @@
     </view>
     <view class="piece" bindtap="changeNo">
         <text class="topic">学号</text>
-        <text class="icon">></text>
+        <text class="icon" style="color:white">></text>
         <text class="content">{{user.u_no}}</text>
     </view>
     <view class="piece" bindtap="changePhone">
@@ -27,25 +27,42 @@
         <text class="content">{{user.u_email}}</text>
     </view>
     <view class="piece" bindtap="changeType">
-        <text class="topic">类型</text>
-        <text class="icon">></text>
+        <text class="topic" >类型</text>
+        <text class="icon" style="color:white">></text>
         <text class="content">{{user.u_type}}</text>
     </view>
     <view wx:if="{{user.u_type === '学生'}}">
-        <view class="piece" bindtap="changeName">
-            <text class="topic">专业班级</text>
-            <text class="icon">></text>
-            <text class="content">{{user.u_majorClass}}</text>
+        <view class="piece" bindtap="changeAcademySpecialty">
+            <text class="topic">院系</text>
+            <text class="icon" style="color:white">></text>
+            <text class="content">{{user.am_name}}</text>
         </view>
-        <view class="piece" bindtap="changeName">
+        <view class="piece" bindtap="changeAcademySpecialty">
+            <text class="topic">专业</text>
+            <text class="icon" style="color:white">></text>
+            <text class="content">{{user.s_name}}</text>
+        </view>
+        <view class="piece" bindtap="changeMentorName">
             <text class="topic">导师姓名</text>
             <text class="icon">></text>
             <text class="content">{{user.u_mentorName}}</text>
         </view>
-        <view class="piece" bindtap="changeName">
+        <view class="piece" bindtap="changeMentorPhone">
             <text class="topic">导师电话</text>
             <text class="icon">></text>
             <text class="content">{{user.u_mentorPhone}}</text>
+        </view>
+    </view>
+</view>
+<!-- 修改框 -->
+<!-- 弹出修改时间框 -->
+<view class="window" hidden="{{isWindowShow ? '' : true}}">
+    <view class='windowContent'>
+        <view class="topic">{{topic}}</view>
+        <input bindinput="getChange" value="{{inputValue}}" ></input>
+        <view class="buttons2">
+            <button bindtap="hideWindow">取消</button>
+            <button bindtap="submitChange" data-index="{{index}}" style="background-color:#6D87C4;color:white">提交</button>
         </view>
     </view>
 </view>

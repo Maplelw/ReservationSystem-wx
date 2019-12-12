@@ -34,7 +34,7 @@ disabled='{{disabled}}' bindtap="getVerificationCode">{{time}}</button>
     </view>
     <view wx:if="{{type === 'student'}}">
         <view class="inputs">
-            <text>院系</text>
+            <text>院系专业</text>
             <picker mode="multiSelector" range="{{academySpecialty}}" range-key="s_name"
 bindchange="getPickerValue" bindcolumnchange="academyChange">
                 <view wx:if="{{academyIndex === ''}}">请选择您的院系专业</view>
@@ -42,7 +42,7 @@ bindchange="getPickerValue" bindcolumnchange="academyChange">
             </picker>
         </view>
         <view class="inputs">
-            <text>专业</text>
+            <text></text>
             <view style="color:#000" class="specialSpecialty">{{specialtyList[academyIndex][specialtyIndex].s_name}}</view>
         </view>
         <view class="inputs">

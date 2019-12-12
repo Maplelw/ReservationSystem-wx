@@ -24,43 +24,43 @@ Page({
                 icon: "none"
             })
         }
-        // wx.login({
-        //     success(res) {
-        //         wx.request({
-        //             url: reserve,
-        //             method: 'POST',
-        //             header: {
-        //                     "content-type": "application/x-www-form-urlencoded"
-        //             },
-        //             data: {
-        //                 d_no: that.data.d_no,
-        //                 code: res.code,
-        //                 startDate: that.data.startDate,
-        //                 returnDate: that.data.returnDate
-        //             },
-        //             success(res) {
-        //                 console.log(res.data)
-        //                 if(res.data.flag === 0) {
-        //                     wx.showToast({
-        //                         title: '您已预约该设备',
-        //                         icon: 'none',
-        //                         duration: 2000
-        //                     })
-        //                 }
-        //                 else {
-        //                     wx.reLaunch({
-        //                         url: '/pages/user/index/index',
-        //                     })
-        //                     wx.showToast({
-        //                         title: '预约成功',
-        //                         duration: 2000
-        //                     })
-        //                 }
+        wx.login({
+            success(res) {
+                wx.request({
+                    url: reserve,
+                    method: 'POST',
+                    header: {
+                            "content-type": "application/x-www-form-urlencoded"
+                    },
+                    data: {
+                        d_no: that.data.d_no,
+                        code: res.code,
+                        startDate: that.data.startDate,
+                        returnDate: that.data.returnDate
+                    },
+                    success(res) {
+                        console.log(res.data)
+                        if(res.data.flag === 0) {
+                            wx.showToast({
+                                title: '您已预约该设备',
+                                icon: 'none',
+                                duration: 2000
+                            })
+                        }
+                        else {
+                            wx.reLaunch({
+                                url: '/pages/user/index/index',
+                            })
+                            wx.showToast({
+                                title: '预约成功',
+                                duration: 2000
+                            })
+                        }
                         
-        //             }
-        //         })
-        //     }
-        // })
+                    }
+                })
+            }
+        })
     },
 
     //切换借用开始时间

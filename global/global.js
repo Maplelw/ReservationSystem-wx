@@ -7,6 +7,8 @@ const datas = {
 // 用户
     //获取用户信息
     getUserInfo: host + "/user/getUserInfo",
+    // 修改个人信息
+    editUserInfo: host + "/user/editUserInfo",
     // 注册
     register: host + "/user/register",
     // 获取验证码
@@ -37,6 +39,8 @@ const datas = {
     comment : host + "/user/comment",
     // 查看消息
     getMessage: host + "/user/getMessage",
+    // 查看未读消息
+    getUnReadMessage: host + "/user/getUnReadMessage",
     // 反馈
     feedbackToAdmin: host + "/user/feedbackToAdmin",
     // 取消预约
@@ -74,5 +78,7 @@ const datas = {
     // 录入设备
     inputDevice: host + "/admin/inputDevice",
     batchInputDevice: host + "/admin/batchInputDevice",
+    // 修改设备
+    editDevice: host + "/admin/editDevice"
 }
 module.exports = datas;
