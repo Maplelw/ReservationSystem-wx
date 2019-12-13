@@ -36,6 +36,14 @@ Page({
             }
         })
     },
+// 回复反馈
+    reply(e) {
+        var index = e.currentTarget.dataset.index
+        wx.navigateTo({
+            url: 'reply/reply?' + "fb_no=" + this.data.feedback[index].fb_no + "&fb_content=" + this.data.feedback[index].fb_content,
+        })
+    },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -86,7 +94,7 @@ Page({
             wx.login({
                 success(res) {
                     wx.request({
-                        url: getMessage,
+                        url: getFeedbackContent,
                         data: {
                             page: that.data.page,
                             code: res.code

@@ -1,0 +1,18 @@
+<view class="content">
+    {{fb_content}}
+</view>
+
+<view class="topic">
+    您的回复：
+</view>
+
+<!-- 评价内容框 -->
+<view class="feedback">
+    <textarea placeholder="请填写您的回复" bindinput="getreply"></textarea>
+</view>
+
+<!-- 提交 -->
+<view class="submit">
+    <button wx:if="{{replyContent == ''}}" disabled="true" bindtap="submitreply">提交</button>
+    <button wx:else bindtap="submitreply">提交</button>
+</view>

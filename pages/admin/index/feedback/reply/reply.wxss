@@ -1,0 +1,51 @@
+page {
+    background-color: rgba(244, 244, 244,1)
+}
+
+.topic {
+    width: 85%;
+    margin: 40rpx auto;
+    font-size: 36rpx;
+    color: #111;
+}
+
+.content {
+    width: 85%;
+    margin: 40rpx auto;
+    font-size: 32rpx;
+    color: #111;
+    background-color: white;
+    padding: 20rpx;
+    border-radius: 5%;
+}
+
+.feedback {
+    height: 200rpx;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.feedback textarea {
+    width: 85%;
+    background-color: white;
+    padding: 15rpx;
+    font-size: 32rpx;
+    border-radius: 5%;
+}
+
+.submit {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.submit button {
+    width: 80%;
+    color: white;
+    background-color: #89afd4;
+    margin: 10rpx;
+    font-size: 38rpx;
+}

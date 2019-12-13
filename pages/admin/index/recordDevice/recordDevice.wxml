@@ -8,8 +8,8 @@
         <input type="text" placeholder="请输入设备名称"></input>
     </view>
     <view class="inputs">
-        <text>主要用途</text>
-        <input type="text" placeholder="请输入主要用途"></input>
+        <text>主要型号</text>
+        <input type="text" placeholder="请输入设备型号"></input>
     </view>
     <view class="inputs">
         <text>存放场地</text>

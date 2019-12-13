@@ -1,9 +1,12 @@
 <view class="all">
     <view class="message" wx:for="{{feedback}}" wx:key="{{index}}">
-        <view class="topic">
-            {{item.m_topic}}
+        <view bindtap="reply" data-index="{{index}}">
+            <view class="topic">
+                {{item.m_topic}}
+            </view>
+            <view class="content">{{item.fb_content}}</view>
+            <view class="time">{{item.fb_date}}</view>
         </view>
-        <view class="content">{{item.fb_content}}</view>
-        <view class="time">{{item.fb_date}}</view>
+
     </view>
 </view>

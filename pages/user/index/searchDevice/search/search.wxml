@@ -1,5 +1,5 @@
  <!-- 搜索框 -->
-<view class="searchTop">
+<!-- <view class="searchTop">
     <view class="search">
         <view style="display:flex">
             <image src="/img/admin/search.png"></image>
@@ -7,9 +7,9 @@
                 bindconfirm="search"></input>
         </view>
     </view>
-</view>
+</view> -->
 <!-- 数据项 -->
-<view class="device" 
+<!-- <view class="device" 
     data-index="{{index}}" wx:for="{{searchDevice}}" wx:key="{{index}}" bindtap="getDetails">
     <view class="img">
         <image src="/img/global/device.png"></image>
@@ -17,5 +17,44 @@
     <view class="device_info">
         <text style="font-size:32rpx;">{{item.d_no}}</text>
         <text style="font-size:32rpx;">{{item.d_name}}</text>
+    </view>
+</view> -->
+<!-- 搜索框 -->
+<view class="allSearch">
+    <view class="searchTop">
+        <view class="search">
+            <view style="display:flex">
+                <image src="/img/admin/search.png"></image>
+                <input placeholder="搜索设备名称或编号" bindinput="input" confirm-type="search" bindconfirm="search"></input>
+            </view>
+        </view>
+    </view>
+    <view class="showAll" bindtap="showAll">显示全部</view>
+</view>
+
+
+<!-- 中间数据 -->
+<view wx:if="{{choice === 'search'}}">
+    <view class="device" data-index="{{index}}" wx:for="{{searchDevice}}" wx:key="{{index}}" bindtap="getDetails">
+        <view class="img">
+            <image wx:if="{{item.d_photo != undefined && item.d_photo != ''}}" src="{{item.d_photo}}"></image>
+            <image wx:else src="/img/global/device.png"></image>
+        </view>
+        <view class="device_info">
+            <text style="font-size:32rpx;">{{item.d_name}}({{item.d_no}})</text>
+            <text style="color:#aaaaaa;font-size:30rpx;">设备型号:{{item.d_model}}</text>
+        </view>
+    </view>
+</view>
+<view wx:else>
+    <view class="device" data-index="{{index}}" wx:for="{{allDevice}}" wx:key="{{index}}" bindtap="getDetails">
+        <view class="img">
+            <image wx:if="{{item.d_photo != undefined && item.d_photo != ''}}" src="{{item.d_photo}}"></image>
+            <image wx:else src="/img/global/device.png"></image>
+        </view>
+        <view class="device_info">
+            <text style="font-size:32rpx;">{{item.d_name}}({{item.d_no}})</text>
+            <text style="color:#aaaaaa;font-size:30rpx;">设备型号:{{item.d_model}}</text>
+        </view>
     </view>
 </view>

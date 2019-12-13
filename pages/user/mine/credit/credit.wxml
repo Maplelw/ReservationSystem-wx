@@ -37,10 +37,19 @@
 <view class="window" hidden="{{isRuleShow ? '' : true }}">
     <view class='windowContent'>
         <view class="icon">
-            <image src="/img/user/cancel.png" bindtap='hideRule'></image> 
+            <image src="/img/user/cancel.png" bindtap='hideRule'></image>
         </view>
         <view class="creditRule">
-            <view wx:for="{{creditRule}}" wx:key="{{index}}">{{item}}</view>
+            <view style="margin: 15rpx 40rpx;" wx:for="{{creditRule}}" wx:key="{{index}}">
+                <view style="display:flex">
+                    <text class="num">{{item.cr_no}}. </text>
+                    <view class="content">
+                        {{item.cr_content}}
+                        <text wx:if="{{item.cr_score >= 0}}" class="add">+{{item.cr_score}}</text>
+                        <text wx:elif="{{item.cr_score < 0}}" class="minus">{{item.cr_score}}</text>
+                    </view>
+                </view>
+            </view>
         </view>
     </view>
 </view>

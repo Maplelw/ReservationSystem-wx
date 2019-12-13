@@ -1,36 +1,18 @@
-.device {
-    display: flex;
-    border-bottom: 2rpx solid #eeeeee;
-    padding: 15rpx;
-}
-
-.device_info {
-    width: 75%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.device .img {
-    width:25%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.device image {
-    width: 120rpx;
-    height: 100rpx;
-}
-
 /* 搜索框 */
+.allSearch {
+    display: flex;
+    justify-content: space-around;
+}
+
 .searchTop {
     height: 80rpx;
     background-color: #F1F1F1;
     display: flex;
     align-items: center;
-    /* background-color: rgba(244, 244, 244, 1); */
+    width: 70%;
+    border-radius: 20px;
+    margin-left: 40rpx;
+    
 }
 
 .search {
@@ -46,6 +28,76 @@
     margin-right: 20rpx;
 }
 
-.search input {
+.search text {
     width: 400rpx;
+    color: #888
+}
+
+.showAll {
+    line-height: 80rpx;
+    font-size: 32rpx;
+    color: rgba(18, 150, 219, 1);
+    display: inline-block;
+}
+
+.device {
+    display: flex;
+    border-bottom: 2rpx solid #eeeeee;
+    padding: 15rpx 0; 
+}
+
+.device_info {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.device .img {
+    width:25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center；
+}
+
+.device image {
+    width: 120rpx;
+    height: 100rpx;
+    margin-left: 40rpx;
+}
+
+/* 初始样式 */
+.main {
+    border-bottom: 10rpx solid #eeeeee;
+    padding: 20rpx;
+}
+.main .head {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  
+}
+
+.main .equipName {
+    display: flex;
+    justify-content: center;
+    font-size: 40rpx;
+    margin: 10rpx; 
+}
+
+.main .details {
+    display: flex;
+    flex-direction: column;
+    font-size: 32rpx;
+    color: #959595;
+    margin-left: 50rpx;
+    margin-top: 50rpx;
+}
+
+.main .check {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20rpx 40rpx;
+    color: #3E606F;
+    font-size: 35rpx;
 }

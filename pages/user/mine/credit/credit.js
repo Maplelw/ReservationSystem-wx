@@ -73,7 +73,7 @@ Page({
                     success: function (res) {
                         console.log(res.data)
                         that.setData({
-                            creditRule: res.data.creditRule,
+                            creditRule: res.data.creditRuleList,
                         })
                     },
                     fail: function (res) {

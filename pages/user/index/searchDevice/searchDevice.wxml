@@ -35,7 +35,7 @@
         <view class="search">
             <view style="display:flex">
                 <image src="/img/admin/search.png" ></image>
-                <text>搜索设备名称或编号</text>
+                <text>搜索</text>
             </view>
         </view>
     </view>

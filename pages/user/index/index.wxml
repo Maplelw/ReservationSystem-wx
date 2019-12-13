@@ -18,7 +18,7 @@
         </navigator>
         <view class="right">
             <navigator class="top" url="/pages/user/mine/reservation/reservation">
-                <view class="text1">预约记录</view>
+                <view class="text1">我的预约</view>
                 <view class="text2">MY RESERVATION</view>
             </navigator>
             <view class="down">
@@ -27,20 +27,13 @@
                     <view class="text2">BORROWED</view>
                 </navigator>
                 <navigator class="credit" url="/pages/user/mine/credit/credit">
-                    <view class="text1">信用记录</view>
+                    <view class="text1">信用评分</view>
                     <view class="text2">CREDIT</view>
                 </navigator>
             </view>
         </view>
     </view>
 </view>
-<!-- <view class="hot">
-    <view class="topic">
-        <image src="/img/user/decoration1.png"></image>
-        <text>TOP</text>
-    </view>
-   
-</view> -->
 <!-- 新消息提示 -->
 <view class="message">
     <view class="topic">

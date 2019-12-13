@@ -50,7 +50,6 @@
 <view class="bottomButton">
     <button bindtap="uploadImageTap">上传图片</button>
     <button type="warn" bindtap="deleteDevice">删除设备</button>
-    <button bindtap="refresh">刷新</button>
 </view>
 
 

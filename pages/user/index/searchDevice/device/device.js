@@ -24,10 +24,18 @@ Page({
                     '?d_no=' + this.data.d_no,
             })
         }
-        else {
+        else if (device.d_state === "外借"){
             console.log("当前设备无法不允许")
             wx.showToast({
                 title: '当前设备不在库,无法预约;您可以选择跟踪设备',
+                icon: "none",
+                duration: 3000
+            })
+        }
+        else{
+            console.log("当前设备无法不允许")
+            wx.showToast({
+                title: '当前设备已损坏,无法预约;您可以选择跟踪设备',
                 icon: "none",
                 duration: 3000
             })

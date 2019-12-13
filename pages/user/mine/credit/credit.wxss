@@ -129,9 +129,21 @@ page {
     
 }
 .window .windowContent .creditRule {
+    width: 95%;
+    margin: 0 auto;
     margin-bottom: 60rpx;
 }
 
-.window .windowContent .creditRule view {
-    margin: 10rpx 25rpx;
+.window .windowContent .creditRule .content{
+    width: 90%
+}
+
+.window .windowContent .creditRule .add{
+    text-align: center;
+    color: #89AFD4
+}
+
+.window .windowContent .creditRule .minus{
+    text-align: center;
+    color: red
 }

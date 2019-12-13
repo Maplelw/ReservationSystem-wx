@@ -67,6 +67,8 @@ const datas = {
     confirmReturn: host + "/admin/confirmReturn",
     // 查看反馈内容
     getFeedbackContent: host + "/admin/getFeedbackContent", 
+    // 查看反馈内容
+    respondToFeedback: host + "/admin/respondToFeedback", 
     // 查看逾期未归的记录
     overDue: host + "/admin/overDue",
     // 提醒逾期未还的借用人

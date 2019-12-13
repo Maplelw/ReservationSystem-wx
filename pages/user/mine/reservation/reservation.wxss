@@ -19,7 +19,7 @@
 
 .top {
     padding: 20rpx;
-    border-bottom: 4rpx solid #eeee;
+    border-bottom: 2rpx solid #eee;
 
 }
 
