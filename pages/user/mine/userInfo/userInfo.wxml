@@ -12,7 +12,7 @@
         <text class="content">{{user.u_name}}</text>
     </view>
     <view class="piece" bindtap="changeNo">
-        <text class="topic">学号</text>
+        <text class="topic">学号/工号</text>
         <text class="icon" style="color:white">></text>
         <text class="content">{{user.u_no}}</text>
     </view>

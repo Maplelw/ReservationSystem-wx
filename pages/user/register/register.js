@@ -75,7 +75,7 @@ Page({
         }
     },
 
-    // 校验
+// 校验
     // 校验手机号
     checkPhone(phone) {
         var flag = true;

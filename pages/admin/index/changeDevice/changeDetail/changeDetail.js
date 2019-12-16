@@ -1,5 +1,7 @@
 let deviceDetail = require('../../../../../global/global.js').deviceDetail;
-let editDevice = require('../../../../../global/global.js').editDevice;
+let editDevice = require('../../../../../global/global.js').editDevice; 
+let deleteDevice = require('../../../../../global/global.js').deleteDevice; 
+let uploadImg = require('../../../../../global/global.js').uploadImg;
 Page({
 
     /**
@@ -181,7 +183,7 @@ Page({
     upImgs: function (imgurl, index) {
         var that = this;
         wx.uploadFile({
-            url: 'http://49.235.73.29:8083/CampusDevice/admin/upload',
+            url: uploadImg,
             filePath: imgurl,
             name: 'file',
             method: 'POST',
@@ -244,11 +246,10 @@ Page({
                                 },
                                 data: {
                                     d_no: that.data.d_no,
-                                    code: res.code
                                 },
                                 success(res) {
                                     console.log(res.data)
-                                    if (res.data.flag == 1) {
+                                    if (res.data.flag === 1) {
                                         wx.showToast({
                                             title: '删除成功',
                                             icon: 'success',

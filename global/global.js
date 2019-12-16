@@ -1,6 +1,7 @@
 //const host ="http://yapi.demo.qunar.com/mock/35294";
 //const host = "http://localhost:8080/CampusDevice_war_exploded"
-const host = "http://49.235.73.29:8083/CampusDevice"
+//const host = "http://49.235.73.29:8083/CampusDevice"
+const host = "https://www.tozsy.com/CampusDevice"
 const datas = {
 // 登录
     login: host + "/login",
@@ -81,6 +82,18 @@ const datas = {
     inputDevice: host + "/admin/inputDevice",
     batchInputDevice: host + "/admin/batchInputDevice",
     // 修改设备
-    editDevice: host + "/admin/editDevice"
+    editDevice: host + "/admin/editDevice",
+    // 删除设备
+    deleteDevice: host + "/admin/deleteDevice", 
+    // 删除设备
+    addDevice: host + "/admin/addDevice",
+    // 上传图片
+    uploadImg: host + "/admin/upload",
+    // 获取用户和管理员
+    getUserAndNormalAdmin: host + "/admin/getUserAndNormalAdmin",
+    // 设置为管理员
+    setUserAsAdmin: host + "/admin/setUserAsAdmin",
+    // 移除管理员
+    deleteAdmin: host + "/admin/deleteAdmin",
 }
 module.exports = datas;

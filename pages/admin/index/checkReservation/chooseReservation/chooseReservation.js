@@ -16,7 +16,7 @@ Page({
         feedback: "",
         reservation: []
     },
-
+//弹窗
     // 弹窗：管理员修改借用时间
     changeDate: function(e) {
         var index = e.currentTarget.dataset.index

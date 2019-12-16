@@ -1,29 +1,41 @@
-<form>
+<form bindsubmit="submit">
     <view class="inputs">
         <text>设备ID</text>
-        <input type="text" placeholder="请输入设备ID" placeholder-class="placeholder"></input>
+        <input type="text" placeholder="请填写设备ID" placeholder-class="placeholder" name="d_no"></input>
     </view>
     <view class="inputs">
         <text>设备名称</text>
-        <input type="text" placeholder="请输入设备名称"></input>
+        <input type="text" placeholder="请填写设备名称" name="d_name"></input>
     </view>
     <view class="inputs">
-        <text>主要型号</text>
-        <input type="text" placeholder="请输入设备型号"></input>
+        <text>设备型号</text>
+        <input type="text" placeholder="请填写设备型号" name="d_model"></input>
+    </view>
+    <view class="inputs">
+        <text>设备状态</text>
+        <input type="text" placeholder="请填写设备状态" name="d_state"></input>
     </view>
     <view class="inputs">
         <text>存放场地</text>
-        <input type="text" placeholder="请输入存放场地"></input>
-    </view>
-    <view class="area">
-        <text>详细描述</text>
-        <textarea placeholder="详细描述设备的用途，参数等"></textarea>
+        <input type="text" placeholder="请填写存放场地" name="d_saveSite"></input>
     </view>
     <view class="inputs">
-        <text>上传照片</text>
+        <text>工厂编号</text>
+        <input type="text" placeholder="请填写工厂编号" name="d_factoryNo"></input>
+    </view>
+    <view class="inputs">
+        <text>入库日期</text>
+        <picker mode="date" name="d_storeDate" bindchange="changeDate">
+            <view wx:if="{{d_storeDate === '请填写入库日期'}}" style="color:#808080">{{d_storeDate}}</view>
+            <view wx:else >{{d_storeDate}}</view>
+        </picker>
+    </view>
+
+    <view class="inputs">
+        <text>上传图片</text>
         <button size="mini" bindtap="uploadImg">选择图片</button>
     </view>
     <view class="bottom">
-        <button type="primary">提交</button>
+        <button type="primary" form-type="submit">提交</button>
     </view>
 </form>

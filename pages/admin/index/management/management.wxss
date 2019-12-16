@@ -1,0 +1,67 @@
+page {
+    background-color: rgba(244, 244, 244, 1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20rpx 0;
+    border-top: 4rpx solid rgb(244, 244, 244);
+    background-color: white;
+}
+
+.header text {
+    margin: 0 50rpx;
+    color: #aaa;
+}
+
+
+.all {
+    width: 85%;
+    background-color: white;
+    margin: 20rpx auto;
+    display: flex;
+    align-items: center;
+    border-radius: 5%;
+    padding: 20rpx 40rpx;
+}
+
+.all .info {
+    width: 70%;
+    font-size: 32rpx;
+}
+
+.all .info .text1 {
+    margin-right: 40rpx;
+    font-size: 42rpx;
+}
+
+.all .info .text2 {
+    font-size: 32rpx;
+}
+
+.all .button-add {
+    width: 30%;
+}
+
+.all .button-add button {
+    width: 200rpx;
+    font-size: 30rpx;
+    height: 65rpx;
+    padding: 0;
+    background-color: #89AFD4;
+    color: white;
+}
+
+.all .button-delete {
+    width: 30%;
+}
+
+.all .button-delete button {
+    width: 200rpx;
+    font-size: 30rpx;
+    height: 65rpx;
+    padding: 0;
+    color: white;
+}

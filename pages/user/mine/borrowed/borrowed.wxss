@@ -14,7 +14,7 @@
 
 .top {
     padding: 20rpx;
-    border-bottom: 2rpx solid #ddd;
+    border-bottom: 2rpx solid #eee;
 }
 
 .top text {

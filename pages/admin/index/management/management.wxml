@@ -1,0 +1,38 @@
+<!-- 头部选项 -->
+<view class="header">
+    <text bindtap="toAdmin" style="color:{{adminColor}}">管理员</text>
+    <text bindtap="toUser" style="color:{{userColor}}">用户</text>
+</view>
+<!-- 用户或管理员内容 -->
+<!-- 管理员列表 -->
+<view wx:if="{{choice == 'admin'}}">
+    <view class="all" wx:for="{{adminList}}" wx:key="{{index}}">
+        <view class="info">
+            <view>
+                <text class="text1">{{item.u_name}}</text>
+                <text class="text2">{{item.u_type}}</text>
+            </view>
+            <view>学号/工号:{{item.u_no}}</view>
+            <view>信用分:{{item.u_creditGrade}}</view>
+        </view>
+        <view class="button-delete">
+            <button type="warn" data-index="{{index}}" bindtap="deleteAdmin">移除管理员</button>
+        </view>
+    </view>
+</view>
+<!-- 用户列表 -->
+<view wx:elif="{{choice == 'user'}}">
+    <view class="all" wx:for="{{userList}}" wx:key="{{index}}">
+        <view class="info">
+            <view>
+                <text class="text1">{{item.u_name}}</text>
+                <text class="text2">{{item.u_type}}</text>
+            </view>
+            <view>学号/工号:{{item.u_no}}</view>
+            <view>信用分:{{item.u_creditGrade}}</view>
+        </view>
+        <view class="button-add">
+            <button data-index="{{index}}" bindtap="addAdmin">添加为管理员</button>
+        </view>
+    </view>
+</view>

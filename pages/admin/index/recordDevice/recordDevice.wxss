@@ -23,6 +23,13 @@
     font-size: 32rpx;
 }
 
+.inputs picker {
+    height: 60rpx;
+    width: 480rpx;
+    border-bottom: 2rpx solid #dfdfdf;
+    font-size: 32rpx;
+}
+
 .area {
     margin-top: 50rpx;
     display: flex;
@@ -42,9 +49,12 @@
 }
 
 .bottom {
-    margin: 50rpx;
+    position: fixed;
+    bottom: 40rpx;
+    width: 100%;
 }
 
 .bottom button {
-    background-color: #607D8B; 
+    background-color: #89AFD4; 
+    width: 90%;
 }

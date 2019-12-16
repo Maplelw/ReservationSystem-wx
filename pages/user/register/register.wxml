@@ -4,7 +4,7 @@
         <input type="text" placeholder="请填写姓名" name="u_name"></input>
     </view>
     <view class="inputs">
-        <text>学工号</text>
+        <text>学号/工号</text>
         <input type="text" placeholder="请填写学工号" name="u_no"></input>
     </view>
     <view class="inputs">
@@ -36,7 +36,7 @@ disabled='{{disabled}}' bindtap="getVerificationCode">{{time}}</button>
         <view class="inputs">
             <text>院系专业</text>
             <picker mode="multiSelector" range="{{academySpecialty}}" range-key="s_name"
-bindchange="getPickerValue" bindcolumnchange="academyChange">
+bindchange="getPickerValue" bindcolumnchange="academyChange" name="u_major_class">
                 <view wx:if="{{academyIndex === ''}}">请选择您的院系专业</view>
                 <view wx:else style="color:#000">{{academyList[academyIndex].s_name}}</view>
             </picker>

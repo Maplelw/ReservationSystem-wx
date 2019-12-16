@@ -13,11 +13,19 @@
                 <image src="/img/admin/return.png"></image>
                 <text>归还确认</text>
             </navigator>
-        </view>
-        <view class="choice">
-            <navigator class="eachChoice" url="/pages/admin/index/checkOverdue/checkOverdue">
+            <navigator wx:if="{{superAdmin == 1}}" class="eachChoice" url="/pages/admin/index/checkOverdue/checkOverdue">
                 <image src="/img/admin/overdue.png"></image>
                 <text>逾期未还</text>
+            </navigator>
+        </view>
+        <view class="choice">
+            <navigator wx:if="{{superAdmin == 0}}" class="eachChoice" url="/pages/admin/index/checkOverdue/checkOverdue">
+                <image src="/img/admin/overdue.png"></image>
+                <text>逾期未还</text>
+            </navigator>
+            <navigator wx:if="{{superAdmin == 1}}" class="eachChoice" url="/pages/admin/index/management/management">
+                <image src="/img/admin/admin.png"></image>
+                <text>人员管理</text>
             </navigator>
             <navigator class="eachChoice" url="/pages/admin/index/feedback/feedback">
                 <image src="/img/admin/feedback.png"></image>

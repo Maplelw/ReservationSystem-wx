@@ -25,15 +25,17 @@ Page({
                     },
                     success(res) {
                         console.log(res.data)
-                        if(res.data.identity === 0) {//用户
+                        if (res.data.identity === 0) {//用户
                             wx.redirectTo({
                                 url: '/pages/user/index/index',
                             })
                         }
                         else if (res.data.identity === 1) {// 管理员
                             wx.redirectTo({
-                                url: '/pages/admin/index/index',
+                                url: '/pages/admin/index/index?' + "superAdmin=" + res.data.superAdmin,
                             })
+
+
                         }
                         else { // 不存在
                             console.log(res.data.academyList)
