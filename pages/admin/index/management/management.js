@@ -12,7 +12,7 @@ Page({
         adminColor: "#89AFD4",//头部颜色
         userList: [],
         adminList: [{
-            a_name: "ss"
+            a_name: ""
         }]
     },
     //顶部状态改变    
@@ -122,7 +122,7 @@ Page({
                 console.log(res.data)
                 that.setData({
                     userList: res.data.userList,
-                    //adminList: res.data.adminList,
+                    adminList: res.data.adminList,
                 })
             },
             fail() {

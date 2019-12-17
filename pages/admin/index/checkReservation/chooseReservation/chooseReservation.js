@@ -11,8 +11,9 @@ Page({
         isShow: false, // 是否弹出修改事件框
         new_startDate: "",// 修改后借用时间
         new_returnDate: "",// 修改归还时间
-        d_no:"",
-        d_name: "",
+        d_no:"",//上个页面的参数
+        d_name: "",//上个页面的参数
+        d_photo: "",//上个页面的参数
         feedback: "",
         reservation: []
     },
@@ -133,9 +134,11 @@ Page({
     onLoad: function (options) {
         console.log( "上一页面发送的设备编号:" + options.d_no)
         console.log("上一页面发送的设备名称:" + options.d_name)
+        console.log("上一页面发送的设备名称:" + options.d_photo)
         this.setData({
             d_no: options.d_no,
-            d_name : options.d_name
+            d_name : options.d_name,
+            d_photo: options.d_photo
         })
         var that = this
         wx.request({

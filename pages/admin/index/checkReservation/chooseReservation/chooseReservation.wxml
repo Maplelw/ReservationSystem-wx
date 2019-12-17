@@ -1,7 +1,7 @@
 <!-- 头部设备信息 -->
 <view class="device">
     <view class="img">
-        <image wx:if="{{device.d_photo != undefined && device.d_photo != ''}}" src="{{device.d_photo}}"></image>
+        <image wx:if="{{d_photo != undefined && d_photo != ''}}" src="{{d_photo}}"></image>
         <image wx:else src="/img/global/device.png"></image>
     </view>
     <view class="device_info">

@@ -1,7 +1,7 @@
 //const host ="http://yapi.demo.qunar.com/mock/35294";
 //const host = "http://localhost:8080/CampusDevice_war_exploded"
-//const host = "http://49.235.73.29:8083/CampusDevice"
-const host = "https://www.tozsy.com/CampusDevice"
+const host = "http://49.235.73.29:8083/CampusDevice"
+//const host = "https://www.tozsy.com/CampusDevice"
 const datas = {
 // 登录
     login: host + "/login",
@@ -26,6 +26,8 @@ const datas = {
     deviceComment: host + "/user/deviceComment",
     // 跟踪设备
     track: host + "/user/track",
+    // 取消跟踪设备
+    cancelTrack: host + "/user/cancelTrack",
     // 预约
     reserve: host +　"/user/reserve",
     // 同意修改 agreeEditReservation

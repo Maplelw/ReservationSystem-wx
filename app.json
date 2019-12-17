@@ -1,12 +1,14 @@
 {
     "pages": [
-        "pages/login/login",
         "pages/test/test",
+        "pages/user/mine/message/message",
+        
+        "pages/login/login",
+        
         "pages/admin/index/recordDevice/recordDevice",
         "pages/admin/index/management/management",
         "pages/user/index/index",
         "pages/admin/index/index",
-        
         
     
         "pages/user/mine/credit/credit",
@@ -18,7 +20,7 @@
         "pages/user/mine/borrowed/borrowed",
         "pages/user/mine/borrowed/comment/comment",
         "pages/user/mine/mine",
-        "pages/user/mine/message/message",
+        
         "pages/user/mine/reservation/reservation",
         "pages/user/mine/feedback/feedback",
         "pages/user/register/register",
@@ -33,7 +35,6 @@
         "pages/admin/index/checkOverdue/checkOverdue",
         "pages/admin/index/checkReservation/checkReservation",
         "pages/admin/index/changeDevice/changeDetail/changeDetail",
-        
         "pages/admin/mine/mine"
         
     ],
@@ -42,7 +43,7 @@
         "navigationBarBackgroundColor": "#fff",
         "navigationBarTitleText": "WeChat",
         "navigationBarTextStyle": "black",
-        "enablePullDownRefresh": true
+        "enablePullDownRefresh": false
     },
     "sitemapLocation": "sitemap.json"
 }

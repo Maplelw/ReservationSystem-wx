@@ -49,9 +49,8 @@
 </view>
 <view class="bottomButton">
     <button bindtap="uploadImageTap">上传图片</button>
-    <button type="warn" bindtap="deleteDevice">删除设备</button>
+    <!-- <button type="warn" bindtap="deleteDevice">删除设备</button> -->
 </view>
-
 
 <!-- 修改框 -->
 <!-- 弹出修改时间框 -->

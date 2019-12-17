@@ -280,22 +280,28 @@ Page({
         var that = this;
         console.log("上一页面传来的编号")
         console.log(this.data.d_no)
-        wx.request({
-            url: deviceDetail,
-            method: 'POST',
-            header: {
-                "content-type": "application/x-www-form-urlencoded"
-            },
-            data: {
-                d_no: that.data.d_no
-            },
+        wx.login({
             success(res) {
-                console.log(res.data)
-                that.setData({
-                    device: 　res.data.device
+                wx.request({
+                    url: deviceDetail,
+                    method: 'POST',
+                    header: {
+                        "content-type": "application/x-www-form-urlencoded"
+                    },
+                    data: {
+                        d_no: that.data.d_no,
+                        code: res.code
+                    },
+                    success(res) {
+                        console.log(res.data)
+                        that.setData({
+                            device: res.data.device
+                        })
+                    }
                 })
             }
         })
+        
     },
 
     /**

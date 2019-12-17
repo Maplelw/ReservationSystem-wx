@@ -34,7 +34,7 @@ page {
 
 .all .info .text1 {
     margin-right: 40rpx;
-    font-size: 42rpx;
+    font-size: 38rpx;
 }
 
 .all .info .text2 {
