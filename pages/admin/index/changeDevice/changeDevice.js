@@ -1,4 +1,4 @@
-let all = require('../../../../global/global.js').all;
+let all = require('../../../../global/global.js').adminAll;
 let searchDevice = require('../../../../global/global.js').searchDevice;
 Page({
     /**
@@ -81,26 +81,32 @@ Page({
      */
     onLoad: function(options) {
         var that = this;
-        wx.request({
-            url: all,
-            method: 'POST',
-            data: {
-                page: that.data.allPage
-            },
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            success: function (res) {
-                console.log(res.data)
-                that.setData({
-                    allDevice: res.data.device,
-                    allPage: that.data.allPage + 1,
+        wx.login({
+            success(res) {
+                wx.request({
+                    url: all,
+                    method: 'POST',
+                    data: {
+                        page: that.data.allPage,
+                        code: res.code
+                    },
+                    header: {
+                        'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    success: function (res) {
+                        console.log(res.data)
+                        that.setData({
+                            allDevice: res.data.device,
+                            allPage: that.data.allPage + 1,
+                        })
+                    },
+                    fail: function (res) {
+                        console.log("请求失败")
+                    },
                 })
-            },
-            fail: function (res) {
-                console.log("请求失败")
-            },
+            }
         })
+        
     },
 
     /**
@@ -152,41 +158,47 @@ Page({
                 })
             } else {
                 console.log(that.data.allPage)
-                wx.request({
-                    url: all,
-                    data: {
-                        page: that.data.allPage
-                    },
-                    method: 'POST',
-                    header: {
-                        'content-type': 'application/x-www-form-urlencoded'
-                    },
-                    success: function (res) {
-                        console.log(res.data)
-                        var oldDevice = that.data.allDevice
-                        var newDevice
-                        if (res.data.flag === 0) {
-                            that.setData({
-                                allFlag: 1
-                            })
-                            wx.showToast({
-                                title: '已经到最后一个设备',
-                                icon: "loading",
-                                duration: 500
-                            })
-                        } else {
-                            newDevice = oldDevice.concat(res.data.device)
-                            console.log(newDevice)
-                            that.setData({
-                                allDevice: newDevice,
-                                allPage: that.data.allPage + 1
-                            })
-                        }
-                    },
-                    fail: function (res) {
-                        console.log("请求失败")
-                    },
+                wx.login({
+                    success(res) {
+                        wx.request({
+                            url: all,
+                            data: {
+                                page: that.data.allPage,
+                                code: res.code
+                            },
+                            method: 'POST',
+                            header: {
+                                'content-type': 'application/x-www-form-urlencoded'
+                            },
+                            success: function (res) {
+                                console.log(res.data)
+                                var oldDevice = that.data.allDevice
+                                var newDevice
+                                if (res.data.flag === 0) {
+                                    that.setData({
+                                        allFlag: 1
+                                    })
+                                    wx.showToast({
+                                        title: '已经到最后一个设备',
+                                        icon: "loading",
+                                        duration: 500
+                                    })
+                                } else {
+                                    newDevice = oldDevice.concat(res.data.device)
+                                    console.log(newDevice)
+                                    that.setData({
+                                        allDevice: newDevice,
+                                        allPage: that.data.allPage + 1
+                                    })
+                                }
+                            },
+                            fail: function (res) {
+                                console.log("请求失败")
+                            },
+                        })
+                    }
                 })
+               
             }
         } 
         else if(that.data.choice === 'search') {

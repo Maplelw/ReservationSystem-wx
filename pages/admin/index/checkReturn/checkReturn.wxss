@@ -1,31 +1,43 @@
 .top {
     height: 80rpx;
-    background-color: #F1F1F1;
     display: flex;
     align-items: center;
 }
 
-.search {
+.top .search {
     padding-left: 20rpx;
     font-size: 35rpx;
     display: flex;
     align-items: center;
+    width: 75%;
+    height: 100%;
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    margin-left: 20rpx;
 }
 
-.search image {
+.top .search image {
     width: 50rpx;
     height: 50rpx;
     margin-right: 20rpx;
 }
 
-.search .scan {
-    margin-left: 180rpx;
+.top .search input {
+    width: 80%;
+    font-size: 32rpx;
+}
+
+.top .search .scan {
     width: 55rpx;
     height: 55rpx;
 }
 
-.search input {
-    width: 400rpx;
+.top .showAll {
+    line-height: 80rpx;
+    font-size: 32rpx;
+    color: rgba(18, 150, 219, 1);
+    display: inline-block;
+    margin-left: 20rpx;
 }
 
 .application {
@@ -42,7 +54,7 @@
 }
 
 .info text {
-    font-size:32rpx;
+    font-size: 32rpx;
     color: #5e5e5e;
     margin: 5rpx;
 }
@@ -52,14 +64,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: rgb(45, 154, 167)
+    color: rgb(45, 154, 167);
 }
 
 .buttons {
     display: flex;
     justify-content: flex-end;
     margin-top: 10rpx;
-    border-bottom: 2rpx solid #eeeeee;
+    border-bottom: 2rpx solid #eee;
     padding-bottom: 20rpx;
 }
 

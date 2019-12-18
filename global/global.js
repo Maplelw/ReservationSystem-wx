@@ -1,7 +1,7 @@
 //const host ="http://yapi.demo.qunar.com/mock/35294";
 //const host = "http://localhost:8080/CampusDevice_war_exploded"
-const host = "http://49.235.73.29:8083/CampusDevice"
-//const host = "https://www.tozsy.com/CampusDevice"
+//const host = "http://49.235.73.29:8083/CampusDevice"
+const host = "https://www.tozsy.com/CampusDevice"
 const datas = {
 // 登录
     login: host + "/login",
@@ -56,7 +56,7 @@ const datas = {
     showQRCode: host + "/user/showQRCode",
 
 // 管理员
-    // 
+    //具体预约信息
     reservationDetail: host + "/admin/reservationDetail",
     // 拒绝租借
     rejectReservation: host + "/admin/rejectReservation",
@@ -85,6 +85,8 @@ const datas = {
     batchInputDevice: host + "/admin/batchInputDevice",
     // 修改设备
     editDevice: host + "/admin/editDevice",
+    // 修改设备
+    adminAll: host + "/admin/all",
     // 删除设备
     deleteDevice: host + "/admin/deleteDevice", 
     // 删除设备

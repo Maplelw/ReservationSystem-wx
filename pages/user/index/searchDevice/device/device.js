@@ -68,7 +68,7 @@ Page({
         })
     },
     // 取消跟踪
-    distrack: function () {
+    disTrack: function () {
         var that = this;
         wx.login({
             success(res) {

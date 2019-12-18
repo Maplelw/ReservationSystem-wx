@@ -2,10 +2,9 @@
     "pages": [
         "pages/test/test",
         "pages/user/mine/message/message",
-        
         "pages/login/login",
         
-        "pages/admin/index/recordDevice/recordDevice",
+        
         "pages/admin/index/management/management",
         "pages/user/index/index",
         "pages/admin/index/index",
@@ -34,7 +33,9 @@
         "pages/admin/index/checkReturn/returnFeedback/returnFeedback",
         "pages/admin/index/checkOverdue/checkOverdue",
         "pages/admin/index/checkReservation/checkReservation",
+        "pages/admin/index/changeDevice/changeDevice",
         "pages/admin/index/changeDevice/changeDetail/changeDetail",
+        "pages/admin/index/recordDevice/recordDevice",
         "pages/admin/mine/mine"
         
     ],

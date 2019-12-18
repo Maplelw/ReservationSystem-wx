@@ -1,16 +1,13 @@
-
 <view class="top">
     <view class="search">
-        <view style="display:flex">
-            <image src="/img/admin/search.png"></image>
-            <input placeholder="搜索学工号或者设备编号" bindinput="input" confirm-type="search" 
-                   bindconfirm="search"></input>
-            <image class="scan" src="/img/admin/scan.png" bindtap="getScancode"></image>
-        </view>
+        <image src="/img/admin/search.png"></image>
+        <input placeholder="搜索设备或用户(名称、编号)" bindinput="input" confirm-type="search" bindconfirm="search"></input>
+        <image class="scan" src="/img/admin/scan.png" bindtap="getScancode"></image>
     </view>
+    <view class="showAll" bindtap="showAll">显示全部</view>
 </view>
 
-<view wx:for="{{borrow}}" wx:key="index">
+<view wx:for="{{showList}}" wx:key="index">
     <view class="application">
         <view class="info">
             <view>
@@ -27,7 +24,6 @@
         </view>
     </view>
     <view class="buttons">
-        <text bindtap="confirm" data-index="{{index}}"
-        style="background-color: #607D8B; color:#ffffff; border-radius:15%">确认归还</text>
+        <text bindtap="confirm" data-index="{{index}}" style="background-color: #607D8B; color:#ffffff; border-radius:15%">确认归还</text>
     </view>
 </view>

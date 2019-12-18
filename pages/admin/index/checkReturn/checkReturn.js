@@ -8,7 +8,8 @@ Page({
      */
     data: {
         input: "搜索内容",
-        borrow: []
+        borrow: [],//所有归还设备列表
+        showList:[], //显示的列表
     },
     // 扫一扫
     getScancode: function () {
@@ -31,36 +32,6 @@ Page({
         wx.navigateTo({
             url: 'returnFeedback/returnFeedback' + '?b_no=' + b_no,
         })
-        // wx.showModal({
-        //     title: '提示',
-        //     content: '确认归还',
-        //     success: (res) => {
-        //         if (res.confirm) {
-        //             wx.request({
-        //                 url: confirmReturn,
-        //                 data: {
-        //                     b_no: that.data.borrow[e.currentTarget.dataset.index].b_no,
-        //                 },
-        //                 method: 'POST',
-        //                 header: {
-        //                     "content-type": "application/x-www-form-urlencoded"
-        //                 },
-        //                 success: function (res) {
-        //                     that.data.borrow.splice(e.currentTarget.dataset.index, 1)
-        //                     that.setData({
-        //                         borrow: that.data.borrow
-        //                     })
-        //                     console.log(res.data)
-        //                 },
-        //                 fail: function (res) {
-        //                     consolo.log("请求失败")
-        //                 },
-        //             })
-        //         } else if (res.cancel) {
-        //             console.log('用户点击取消')
-        //         }
-        //     }
-        // })
     },
     // 搜索内容改变
     input: function(e) {
@@ -68,28 +39,28 @@ Page({
             input: e.detail.value
         })
     },
-    // 提交搜索
+    // 搜索功能
     search: function(e) {
         console.log("提交内容:")
         console.log(e.detail.value)
-        wx.login({
-            success: function(res) {
-                wx: wx.request({
-                    url: '',
-                    data: {
-                        content: e.detail.value,
-                        code: res.code
-                    },
-                    success: function(res) {
-                        console.log(res.data)
-
-                    },
-                    fail: function(res) {
-                        console.log("请求失败")
-                    }
-                })
+        var input = e.detail.value
+        var borrow = this.data.borrow
+        var searchResult = new Array()
+        for(var i=0;i<borrow.length;i++) {
+            if (borrow[i].d_name.indexOf(input) != -1 || borrow[i].d_no.indexOf(input) != -1
+|| borrow[i].u_no.indexOf(input) != -1 || borrow[i].u_name.indexOf(input) != -1 ) {
+                searchResult.push(borrow[i])
             }
-        })   
+        }
+        this.setData({
+            showList: searchResult
+        })
+    },
+    // 显示所有设备
+    showAll() {
+        this.setData({
+            showList: this.data.borrow
+        })
     },
     /**
      * 生命周期函数--监听页面加载
@@ -110,7 +81,8 @@ Page({
                     success: function (res) {
                         console.log(res.data)
                         that.setData({
-                            borrow: res.data.device
+                            borrow: res.data.device,
+                            showList: res.data.device
                         })
                     },
                     fail: function (res) {

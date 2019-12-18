@@ -1,6 +1,9 @@
 <!-- 轮播图 -->
 <swiper class="header" autoplay="true" interval="2000" duration="800" circular="true">
     <swiper-item>
+        <image src="/img/user/index1.jpg"></image>
+    </swiper-item>
+    <swiper-item>
         <image src="/img/user/index2.jpg"></image>
     </swiper-item>
     <swiper-item>
