@@ -50,14 +50,12 @@ Page({
                                 })
                                 if (res.data.flag === 0) {
                                     wx.showToast({
-                                        title: '您已预约该设备',
+                                        title: res.data.errMsg,
                                         icon: 'none',
-                                        duration: 2000
                                     })
                                 } else {
                                     wx.showToast({
                                         title: '预约成功',
-                                        duration: 2000
                                     })
                                     wx.reLaunch({
                                         url: '/pages/user/index/index',

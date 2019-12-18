@@ -10,10 +10,32 @@ Page({
         feedback: []
     },
 
+    // 回复反馈
+    reply(e) {
+        var index = e.currentTarget.dataset.index
+        wx.navigateTo({
+            url: 'reply/reply?' + "fb_no=" + this.data.feedback[index].fb_no + "&fb_content=" + this.data.feedback[index].fb_content,
+        })
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function() {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function() {
         var that = this;
         wx.request({
             url: getFeedbackContent,
@@ -35,27 +57,6 @@ Page({
                 console.log("请求失败")
             }
         })
-    },
-// 回复反馈
-    reply(e) {
-        var index = e.currentTarget.dataset.index
-        wx.navigateTo({
-            url: 'reply/reply?' + "fb_no=" + this.data.feedback[index].fb_no + "&fb_content=" + this.data.feedback[index].fb_content,
-        })
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function() {
-
     },
 
     /**

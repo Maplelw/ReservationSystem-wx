@@ -35,6 +35,20 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+       
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function() {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function() {
         // 获取未读消息
         var that = this
         wx.login({
@@ -63,20 +77,6 @@ Page({
                 console.log("login失败")
             },
         })
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function() {
-
     },
 
     /**

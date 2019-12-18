@@ -44,8 +44,12 @@ Page({
                                 title: '感谢您的反馈',
                                 duration: 2000
                             })
-                            wx.redirectTo({
-                                url: '../mine',
+                            wx.navigateBack({})
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg,
+                                icon: "none"
                             })
                         }
                     }

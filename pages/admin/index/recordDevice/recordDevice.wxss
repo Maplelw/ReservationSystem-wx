@@ -67,4 +67,5 @@
 .bottom button {
     background-color: #89AFD4; 
     width: 90%;
+    color: white;
 }

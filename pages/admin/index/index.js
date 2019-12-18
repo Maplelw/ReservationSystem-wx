@@ -9,7 +9,7 @@ Page({
     },
 
     toUser() {
-        wx.redirectTo({
+        wx.reLaunch({
             url: '/pages/user/index/index',
         })
     },

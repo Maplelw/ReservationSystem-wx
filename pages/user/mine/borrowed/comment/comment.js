@@ -39,6 +39,10 @@ Page({
     submitComment: function () {
         var that = this
         console.log("评价内容：" + that.data.commentContent)
+        wx.showLoading({
+            title: '提交中',
+            mask: true
+        })
         wx.login({
             success(res) {
                 wx.request({
@@ -53,7 +57,20 @@ Page({
                     },
                     success(res) {
                         console.log(res.data)
-                        wx.navigateBack({})
+                        if (res.data.flag == 1) {
+                            wx.hideLoading()
+                            wx.showToast({
+                                title: '感谢您的反馈',
+                                duration: 2000
+                            })
+                            wx.navigateBack({})
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg,
+                                icon: "none"
+                            })
+                        }
                     }
                 })
             }

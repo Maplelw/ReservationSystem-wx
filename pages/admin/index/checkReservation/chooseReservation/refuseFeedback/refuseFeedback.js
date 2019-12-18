@@ -25,7 +25,9 @@ Page({
             },
             success: function(res) {
                 console.log(res.data)
-                wx.navigateBack({})
+                if(res.data.flag == 1) {
+                    wx.navigateBack({})
+                }
             }
         })
     },

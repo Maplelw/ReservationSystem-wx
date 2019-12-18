@@ -20,6 +20,10 @@ Page({
         console.log(e.detail.value)
         var datas = e.detail.value
         if (datas.d_no != '' && datas.d_name != '' && datas.d_model != '' && datas.d_state != '' && datas.d_saveSite != '' && datas.d_storeDate != '' && datas.d_factoryNo != '') {
+            wx.showLoading({
+                title: '提交中',
+                mask: true
+            })
             wx.login({
                 success(res) {
                     wx.request({
@@ -39,14 +43,19 @@ Page({
                             d_storeDate: e.detail.value.d_storeDate
                         },
                         success: function (res) {
+                            wx.hideLoading()
                             console.log(res.data)
                             if (res.data.flag === 1) {
                                 wx.showToast({
                                     title: '添加成功',
                                     duration: 2000
                                 })
-                                wx.navigateBack({
-                                    
+                                wx.navigateBack({})
+                            }
+                            else {
+                                wx.showToast({
+                                    title: res.flag.errMsg,
+                                    icon: "none"
                                 })
                             }
                         }

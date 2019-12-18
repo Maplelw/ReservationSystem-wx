@@ -130,7 +130,7 @@ Page({
             }
         })
     },
-    //查看反馈
+    //预约其他设备
     reserveElse: function(e) {
         wx.reLaunch({
             url: '/pages/user/index/index',

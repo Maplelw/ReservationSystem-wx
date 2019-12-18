@@ -21,6 +21,10 @@ Page({
     submitreply: function () {
         var that = this
         console.log("反馈：" + that.data.replyContent)
+        wx.showLoading({
+            title: '正在提交',
+            mask: true
+        })
         wx.login({
             success(res) {
                 wx.request({
@@ -36,8 +40,13 @@ Page({
                     success(res) {
                         console.log(res.data)
                         if (res.data.flag == 1) {
-                            wx.reLaunch({
-                                url: '../feedback',
+                            wx.hideLoading()
+                            wx.navigateBack({})
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.flag.errMsg,
+                                icon: "none"
                             })
                         }
                     }
