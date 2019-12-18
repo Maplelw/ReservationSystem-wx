@@ -11,6 +11,7 @@ Page({
         returnDate: "",
         currentDate: "",
         d_no: "11",
+        lock: 0, //提交的锁
     },
 
     //确定预约按钮
@@ -18,49 +19,59 @@ Page({
         var that = this;
         console.log("开始时间：" + that.data.startDate)
         console.log("开始时间：" + that.data.returnDate)
-        if(that.data.startDate > that.data.returnDate) {
+        if (that.data.startDate > that.data.returnDate) {
             wx.showToast({
                 title: '归还时间必须在借用时间之后',
                 icon: "none"
             })
-        }
-        wx.login({
-            success(res) {
-                wx.request({
-                    url: reserve,
-                    method: 'POST',
-                    header: {
-                            "content-type": "application/x-www-form-urlencoded"
-                    },
-                    data: {
-                        d_no: that.data.d_no,
-                        code: res.code,
-                        startDate: that.data.startDate,
-                        returnDate: that.data.returnDate
-                    },
+        } else {
+            if (that.data.lock == 0) {
+                that.setData({ // 锁
+                    lock: 1
+                })
+                wx.login({
                     success(res) {
-                        console.log(res.data)
-                        if(res.data.flag === 0) {
-                            wx.showToast({
-                                title: '您已预约该设备',
-                                icon: 'none',
-                                duration: 2000
-                            })
-                        }
-                        else {
-                            wx.reLaunch({
-                                url: '/pages/user/index/index',
-                            })
-                            wx.showToast({
-                                title: '预约成功',
-                                duration: 2000
-                            })
-                        }
-                        
+                        wx.request({
+                            url: reserve,
+                            method: 'POST',
+                            header: {
+                                "content-type": "application/x-www-form-urlencoded"
+                            },
+                            data: {
+                                d_no: that.data.d_no,
+                                code: res.code,
+                                startDate: that.data.startDate,
+                                returnDate: that.data.returnDate
+                            },
+                            success(res) {
+                                console.log(res.data)
+                                that.setData({ // 释放锁
+                                    lock: 0
+                                })
+                                if (res.data.flag === 0) {
+                                    wx.showToast({
+                                        title: '您已预约该设备',
+                                        icon: 'none',
+                                        duration: 2000
+                                    })
+                                } else {
+                                    wx.showToast({
+                                        title: '预约成功',
+                                        duration: 2000
+                                    })
+                                    wx.reLaunch({
+                                        url: '/pages/user/index/index',
+                                    })
+                                }
+                            }
+                        })
                     }
                 })
             }
-        })
+            else {
+                console.log("已经提交过了，还没返回")
+            }
+        }
     },
 
     //切换借用开始时间
@@ -72,7 +83,7 @@ Page({
     },
 
     //切换归还时间
-    returnChange: function (e) {
+    returnChange: function(e) {
         console.log(e.detail.value);
         this.setData({
             returnDate: e.detail.value
@@ -91,7 +102,7 @@ Page({
             returnDate: date,
             d_no: options.d_no
         })
-        console.log('上个页面传来的设备编号' +  this.data.d_no)
+        console.log('上个页面传来的设备编号' + this.data.d_no)
     },
 
     /**

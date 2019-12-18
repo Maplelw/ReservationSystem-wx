@@ -14,7 +14,8 @@ Page({
         device: {},
         comment: {},
         d_no: "",
-        track: 0
+        track: 0,// 是否跟踪设备 0：没有跟踪该设备 1：正在跟踪该设备
+        lock: 0 //跟踪锁
     },
     //预约设备
     reserve: function() {
@@ -45,54 +46,77 @@ Page({
     //跟踪设备
     track: function() {
         var that = this;
-        wx.login({
-            success(res) {
-                wx.request({
-                    url: track,
-                    data: {
-                        d_no: that.data.device.d_no,
-                        code: res.code
-                    },
-                    method: 'POST',
-                    header: {
-                        "content-type": "application/x-www-form-urlencoded"
-                    },
-                    success(res) {
-                        console.log(res.data)
-                        wx.showToast({
-                            title: '跟踪设备成功',
-                        })
-                    }
-                })
-            }
-        })
+        if(that.data.lock == 0 ) {
+            that.setData({
+                lock: 1
+            })
+            wx.login({
+                success(res) {
+                    wx.request({
+                        url: track,
+                        data: {
+                            d_no: that.data.device.d_no,
+                            code: res.code
+                        },
+                        method: 'POST',
+                        header: {
+                            "content-type": "application/x-www-form-urlencoded"
+                        },
+                        success(res) {
+                            console.log(res.data)
+                            if (res.data.flag == 1) {
+                                console.log(res.data)
+                                wx.showToast({
+                                    title: '跟踪设备成功',
+                                })
+                                that.setData({
+                                    track: 1,
+                                    lock: 0 //释放锁
+                                })
+                            }
+                        }
+                    })
+                }
+            })
+        }
+        
     },
     // 取消跟踪
     disTrack: function () {
         var that = this;
-        wx.login({
-            success(res) {
-                wx.request({
-                    url: cancelTrack,
-                    data: {
-                        d_no: that.data.device.d_no,
-                        code: res.code
-                    },
-                    method: 'POST',
-                    header: {
-                        "content-type": "application/x-www-form-urlencoded"
-                    },
-                    success(res) {
-                        console.log(res.data)
-                        if(res.data.flag == 1) {
-                            that.setData({
-                                track: 0
-                            })
+        if(that.data.lock == 0) {
+            that.setData({
+                lock: 1
+            })
+            wx.login({
+                success(res) {
+                    wx.request({
+                        url: cancelTrack,
+                        data: {
+                            d_no: that.data.device.d_no,
+                            code: res.code
+                        },
+                        method: 'POST',
+                        header: {
+                            "content-type": "application/x-www-form-urlencoded"
+                        },
+                        success(res) {
+                            if (res.data.flag == 1) {
+                                console.log(res.data)
+                                wx.showToast({
+                                    title: '取消跟踪成功',
+                                })
+                                that.setData({
+                                    track: 0,
+                                    lock: 0
+                                })
+                            }
                         }
-                    }
-                })
-            }
-        })
+                    })
+                }
+            })
+        }
+        
     },
     //改变页面显示为 详细信息
     toDetail: function() {
