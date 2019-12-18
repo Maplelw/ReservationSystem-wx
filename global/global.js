@@ -12,6 +12,8 @@ const datas = {
     editUserInfo: host + "/user/editUserInfo",
     // 注册
     register: host + "/user/register",
+    // 获取院系信息
+    getAcademy: host + "/user/getAcademy",
     // 获取验证码
     verifyCode: host +　"/verifyCode",
     // 获取热门设备表
@@ -59,7 +61,7 @@ const datas = {
     //具体预约信息
     reservationDetail: host + "/admin/reservationDetail",
     // 拒绝租借
-    rejectReservation: host + "/admin/rejectReservation",
+    refuseReservation: host + "/admin/rejectReservation",
     // 确认租借
     confirmReservation: host + "/admin/confirmReservation",
     // 查看被预约的设备
@@ -83,13 +85,15 @@ const datas = {
     // 录入设备
     inputDevice: host + "/admin/inputDevice",
     batchInputDevice: host + "/admin/batchInputDevice",
+    // 搜索设备
+    adminSearchDevice: host + "/admin/searchDevice",
     // 修改设备
     editDevice: host + "/admin/editDevice",
     // 修改设备
     adminAll: host + "/admin/all",
     // 删除设备
     deleteDevice: host + "/admin/deleteDevice", 
-    // 删除设备
+    // 添加设备
     addDevice: host + "/admin/addDevice",
     // 上传图片
     uploadImg: host + "/admin/upload",

@@ -16,8 +16,8 @@ page {
 }
 
 .message .topic {
-    width: 14rpx;
-    height: 14rpx;
+    width: 15rpx;
+    height: 15rpx;
     background-color: #89AFD4;
     border-radius: 50%;
     float: right;

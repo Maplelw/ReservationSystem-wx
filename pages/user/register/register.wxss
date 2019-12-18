@@ -71,10 +71,11 @@ picker {
     background-color: #89afd4;
     width: 80%;
     margin: 0 auto;
+    color: white;
 }
 
 .errorMsg {
     font-size: 32rpx;
-    color: #aaaaaa;
+    color: #FA3436;
     margin: 50rpx;
 }

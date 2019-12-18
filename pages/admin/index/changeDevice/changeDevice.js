@@ -1,5 +1,5 @@
 let all = require('../../../../global/global.js').adminAll;
-let searchDevice = require('../../../../global/global.js').searchDevice;
+let searchDevice = require('../../../../global/global.js').adminSearchDevice;
 Page({
     /**
      * 页面的初始数据
@@ -39,7 +39,8 @@ Page({
                     },
                     data: {
                         keyword: that.data.input,
-                        page: that.data.searchPage
+                        page: that.data.searchPage,
+                        code: res.code
                     },
                     success: function (res) {
                         console.log(res.data)

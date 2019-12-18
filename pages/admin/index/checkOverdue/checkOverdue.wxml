@@ -6,9 +6,9 @@
                 <text>{{item.u_type}}</text>
             </view>
             <text>学号：{{item.u_no}}</text>
-            <text>设备名称：{{item.d_name}}</text>
-            <text>借用时间：{{item.b_borrowDate}}--{{item.b_returnDate}}</text>
+            <text>设备名称：{{item.d_name}}({{item.d_no}})</text>
             <text>手机：{{item.u_phone}}</text>
+            <text>借用时间：{{item.b_borrowDate}}--{{item.b_returnDate}}</text>
         </view>
         <view class="credit">
             <text>信用分</text>

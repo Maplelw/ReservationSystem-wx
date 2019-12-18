@@ -20,6 +20,10 @@ Page({
     submitfeedback: function () {
         var that = this
         console.log("反馈：" + that.data.feedbackContent)
+        wx.showLoading({
+            title: '正在提交',
+            mask: true
+        })
         wx.login({
             success(res) {
                 wx.request({
@@ -35,11 +39,12 @@ Page({
                     success(res) {
                         console.log(res.data)
                         if (res.data.flag == 1) {
+                            wx.hideLoading()
                             wx.showToast({
                                 title: '感谢您的反馈',
                                 duration: 2000
                             })
-                            wx.reLaunch({
+                            wx.redirectTo({
                                 url: '../mine',
                             })
                         }

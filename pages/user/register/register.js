@@ -1,4 +1,5 @@
 let register = require('../../../global/global.js').register
+let getAcademy = require('../../../global/global.js').getAcademy
 let verifyCode = require('../../../global/global.js').verifyCode
 var interval = null //倒计时函数
 Page({
@@ -142,6 +143,10 @@ Page({
                         that.setData({
                             code: res.code
                         });
+                        wx.showLoading({
+                            title: '正在注册中',
+                            mask: true
+                        })
                         if (e.detail.value.u_type === "student") { // 学生
                             wx.request({
                                 url: register,
@@ -164,6 +169,7 @@ Page({
                                     console.log(res.data)
                                     console.log("注册为学生")
                                     if (res.data.flag === 1) {
+                                        wx.hideLoading()
                                         wx.showToast({
                                             title: '注册成功',
                                             duration: 2000
@@ -192,6 +198,7 @@ Page({
                                 },
                                 success: function(res) {
                                     console.log(res.data)
+                                    wx.hideLoading()
                                     if(res.data.flag === 1) {
                                         wx.showToast({
                                             title: '注册成功',
@@ -261,22 +268,41 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        var datas = JSON.parse(options.academyList)
-        console.log(datas)
-        var academyList = new Array()
-        var specialtyList = new Array()
-        for(var i=0;i<datas.length;i++) {
-            var academy = {
-                s_name: datas[i].am_name,
-                am_no: datas[i].am_no
+        var that = this
+        var datas = new Array()
+        wx.login({
+            success(res) {
+                wx.request({
+                    url: getAcademy,
+                    method: 'POST',
+                    header: {
+                        "content-type": "application/x-www-form-urlencoded"
+                    },
+                    data: {
+                        code: res.code,
+                    },
+                    success(res) {
+                        console.log(res.data)
+                        datas = res.data.academyList
+                        console.log(datas)
+                        var academyList = new Array()
+                        var specialtyList = new Array()
+                        for (var i = 0; i < datas.length; i++) {
+                            var academy = {
+                                s_name: datas[i].am_name,
+                                am_no: datas[i].am_no
+                            }
+                            academyList.push(academy)
+                            specialtyList.push(datas[i].specialtyList)
+                        }
+                        that.setData({
+                            academyList: academyList,
+                            specialtyList: specialtyList,
+                            academySpecialty: [academyList, specialtyList[0]]
+                        })
+                    }
+                })
             }
-            academyList.push(academy)
-            specialtyList.push(datas[i].specialtyList)
-        }
-        this.setData({
-            academyList: academyList,
-            specialtyList: specialtyList,
-            academySpecialty: [academyList,specialtyList[0]]
         })
     },
 

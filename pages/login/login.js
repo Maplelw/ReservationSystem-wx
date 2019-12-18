@@ -35,13 +35,12 @@ Page({
                                 url: '/pages/admin/index/index?' + "superAdmin=" + res.data.superAdmin,
                             })
 
-
                         }
                         else { // 不存在
                             console.log(res.data.academyList)
                             var academyList = JSON.stringify(res.data.academyList)
                             wx.navigateTo({
-                                url: '/pages/user/register/register?' + "academyList=" + academyList
+                                url: '/pages/user/register/register'
                             })
                         }
                     }

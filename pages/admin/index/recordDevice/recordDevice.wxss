@@ -30,6 +30,16 @@
     font-size: 32rpx;
 }
 
+.inputs .radio-group {
+    font-size: 32rpx;
+}
+
+.inputs .radio-group radio{
+    margin: 0 10rpx;
+}
+
+
+
 .area {
     margin-top: 50rpx;
     display: flex;

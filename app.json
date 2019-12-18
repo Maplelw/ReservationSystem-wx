@@ -1,11 +1,10 @@
 {
     "pages": [
+        
         "pages/login/login",
+
         "pages/test/test",
         "pages/user/mine/message/message",
-        
-        
-        
         "pages/admin/index/management/management",
         "pages/user/index/index",
         "pages/admin/index/index",
@@ -20,10 +19,10 @@
         "pages/user/mine/borrowed/borrowed",
         "pages/user/mine/borrowed/comment/comment",
         "pages/user/mine/mine",
-        
+        "pages/user/register/register",
         "pages/user/mine/reservation/reservation",
         "pages/user/mine/feedback/feedback",
-        "pages/user/register/register",
+        
 
 
         "pages/admin/index/feedback/feedback",

@@ -13,7 +13,11 @@
     </view>
     <view class="inputs">
         <text>设备状态</text>
-        <input type="text" placeholder="请填写设备状态" name="d_state"></input>
+        <radio-group class="radio-group" name="d_state">
+            <radio class="radio" color="#0078D7" value="inStore" checked="true">在库</radio>
+            <radio color="#0078D7" value="damaged">损坏</radio>
+            <radio color="#0078D7" value="scrapped">报废</radio>
+        </radio-group>
     </view>
     <view class="inputs">
         <text>存放场地</text>
@@ -27,15 +31,15 @@
         <text>入库日期</text>
         <picker mode="date" name="d_storeDate" bindchange="changeDate">
             <view wx:if="{{d_storeDate === '请填写入库日期'}}" style="color:#808080">{{d_storeDate}}</view>
-            <view wx:else >{{d_storeDate}}</view>
+            <view wx:else>{{d_storeDate}}</view>
         </picker>
     </view>
 
-    <view class="inputs">
+    <!-- <view class="inputs">
         <text>上传图片</text>
         <button size="mini" bindtap="uploadImg">选择图片</button>
-    </view>
+    </view> -->
     <view class="bottom">
-        <button type="primary" form-type="submit">提交</button>
+        <button form-type="submit">提交</button>
     </view>
 </form>

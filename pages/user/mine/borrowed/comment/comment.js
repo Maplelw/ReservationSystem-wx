@@ -53,11 +53,7 @@ Page({
                     },
                     success(res) {
                         console.log(res.data)
-                        if(res.data.flag == 1) {
-                            wx.reLaunch({
-                                url: '../borrowed',
-                            })
-                        }
+                        wx.navigateBack({})
                     }
                 })
             }

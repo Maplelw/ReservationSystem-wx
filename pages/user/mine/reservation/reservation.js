@@ -58,13 +58,23 @@ Page({
                                 success: function(res) {
                                     console.log(res.data)
                                     // 页面删减一项
-                                    that.data.reservationIng.splice(e.currentTarget.dataset.index, 1)
-                                    that.setData({
-                                        reservationIng: that.data.reservationIng
-                                    })
+                                    if(res.data.flag == 1) {
+                                        that.data.reservationIng.splice(e.currentTarget.dataset.index, 1)
+                                        that.setData({
+                                            reservationIng: that.data.reservationIng
+                                        })
+                                        that.refreshDone()
+                                    }
+                                    else {
+                                        wx.showToast({
+                                            title: res.errMsg,
+                                            icon: "none"
+                                        })
+                                    }
+                                   
                                 },
                                 fail: function(res) {
-                                    consol.log("请求失败")
+                                    console.log("请求失败")
                                 },
                             })
                         }
@@ -99,6 +109,14 @@ Page({
                                 },
                                 success: function (res) {
                                     console.log(res.data)
+                                    var t = that.data.reservationIng
+                                    t[e.currentTarget.dataset.index].r_state = 3
+                                    console.log(t)
+                                    if(res.data.flag == 1) {
+                                        that.setData({
+                                            reservationIng: t
+                                        })
+                                    }
                                 },
                                 fail: function (res) {
                                     consol.log("请求失败")
@@ -118,12 +136,104 @@ Page({
             url: '/pages/user/index/index',
         })
     },
-
+    refreshIng() {
+        var that = this
+        that.setData({
+            pageIng: 1
+        })
+        wx.login({
+            success(res) {
+                // 正在处理的预约
+                wx.request({
+                    url: unfinishedReservation,
+                    data: {
+                        code: res.code,
+                        page: that.data.pageIng
+                    },
+                    header: {
+                        'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    method: 'POST',
+                    success: function (res) {
+                        console.log("未完成")
+                        console.log(res.data)
+                        that.setData({
+                            reservationIng: res.data.reservation,
+                            pageIng: that.data.pageIng + 1
+                        })
+                    },
+                    fail: function (res) {
+                        console.log("请求失败")
+                    },
+                })
+            }
+        })
+    },
+    refreshDone() {
+        var that = this
+        that.setData({
+            pageDone: 1
+        })
+        wx.login({
+            success: function (res) {
+                // 已经完成
+                wx.request({
+                    url: finishedReservation,
+                    data: {
+                        code: res.code,
+                        page: that.data.pageDone
+                    },
+                    header: {
+                        'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    method: 'POST',
+                    success: function (res) {
+                        console.log("已经完成")
+                        console.log(res.data)
+                        that.setData({
+                            reservationDone: res.data.reservation,
+                            pageDone: that.data.pageDone + 1
+                        })
+                    },
+                    fail: function (res) {
+                        console.log("请求失败")
+                    },
+                })
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
         var that = this;
+        wx.login({
+            success: function (res) {
+                // 已经完成
+                wx.request({
+                    url: finishedReservation,
+                    data: {
+                        code: res.code,
+                        page: that.data.pageDone
+                    },
+                    header: {
+                        'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    method: 'POST',
+                    success: function (res) {
+                        console.log("已经完成")
+                        console.log(res.data)
+                        that.setData({
+                            reservationDone: res.data.reservation,
+                            pageDone: that.data.pageDone + 1
+                        })
+                    },
+                    fail: function (res) {
+                        console.log("请求失败")
+                    },
+                })
+            }
+        })
         wx.login({
             success(res) {
                 // 正在处理的预约
@@ -164,37 +274,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-        var that = this
-        this.setData({
-            pageDone: 1
-        })
-        wx.login({
-            success: function (res) {
-                // 已经完成
-                wx.request({
-                    url: finishedReservation,
-                    data: {
-                        code: res.code,
-                        page: that.data.pageDone
-                    },
-                    header: {
-                        'content-type': 'application/x-www-form-urlencoded'
-                    },
-                    method: 'POST',
-                    success: function (res) {
-                        console.log("已经完成")
-                        console.log(res.data)
-                        that.setData({
-                            reservationDone: res.data.reservation,
-                            pageDone: that.data.pageDone + 1
-                        })
-                    },
-                    fail: function (res) {
-                        console.log("请求失败")
-                    },
-                })
-            }
-        })
+       
     },
 
     /**

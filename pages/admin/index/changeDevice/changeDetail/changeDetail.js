@@ -31,6 +31,12 @@ Page({
             inputValue: e.detail.value
         })    
     },
+    // 获取状态单选框内容
+    getRadio(e) {
+        this.setData({
+            inputValue: e.detail.value
+        })
+    },
     // 打开弹窗
     changeName: function() {
         this.setData({
@@ -43,7 +49,7 @@ Page({
         this.setData({
             topic: "修改设备型号",
             isWindowShow: true,
-            inputValue: this.data.device.d_no
+            inputValue: this.data.device.d_model
         })
 
     },
@@ -94,6 +100,36 @@ Page({
                         data: {
                             d_no: that.data.d_no,
                             d_name: that.data.inputValue
+                        },
+                        method: 'POST',
+                        header: {
+                            'content-type': 'application/x-www-form-urlencoded'
+                        },
+                        success: function (res) {
+                            console.log(res.data)
+                            if (res.data.flag === 1) {
+                                that.refresh()
+                            }
+                            that.setData({
+                                isWindowShow: false
+                            })
+                        },
+                        fail: function (res) {
+                            console.log("请求失败")
+                        },
+                    })
+                }
+            })
+        }
+        else if (this.data.topic === "修改设备型号") {
+            console.log("修改设备型号:" + this.data.inputValue)
+            wx.login({
+                success: function (res) {
+                    wx.request({
+                        url: editDevice,
+                        data: {
+                            d_no: that.data.d_no,
+                            d_model: that.data.inputValue
                         },
                         method: 'POST',
                         header: {
@@ -197,9 +233,6 @@ Page({
                 console.log(res.data) //接口返回网络路径
                 var tData = JSON.parse(res.data)
                 if(tData.flag === 1) {
-                    that.setData({
-                        device: 0
-                    })
                     that.refresh()
                 }
                 
@@ -209,23 +242,29 @@ Page({
 // 重新加载内容    
     refresh() {
         var that = this
-        wx.request({
-            url: deviceDetail,
-            method: 'POST',
-            header: {
-                "content-type": "application/x-www-form-urlencoded"
-            },
-            data: {
-                d_no: that.data.d_no
-            },
+        wx.login({
             success(res) {
-                console.log(res.data)
-                that.setData({
-                    device: res.data.device
-                })
-                console.log(res.data.device)
+                wx.request({
+                    url: deviceDetail,
+                    method: 'POST',
+                    header: {
+                        "content-type": "application/x-www-form-urlencoded"
+                    },
+                    data: {
+                        d_no: that.data.d_no,
+                        code: res.code
+                    },
+                    success(res) {
+                        console.log(res.data)
+                        that.setData({
+                            device: res.data.device
+                        })
+                        console.log(res.data.device)
+                    }
+                }) 
             }
-        }) 
+        })
+        
     },
 //删除设备
     deleteDevice() {

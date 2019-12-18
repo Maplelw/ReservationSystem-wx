@@ -57,7 +57,15 @@
 <view class="window" hidden="{{isWindowShow ? '' : true}}">
     <view class='windowContent'>
         <view class="topic">{{topic}}</view>
-        <input bindinput="getChange" value="{{inputValue}}" ></input>
+        <!-- 状态选择 -->
+        <view wx:if="{{topic == '修改设备状态'}}">
+            <radio-group class="radio-group" name="state" bindchange="getRadio">
+                <radio class="radio" color="#0078D7" value="inStore" checked="{{device.d_state == '在库'?true:false}}" >在库</radio>
+                <radio color="#0078D7" value="damaged" checked="{{device.d_state == '损坏'?true:false}}" >损坏</radio>
+                <radio color="#0078D7" value="scrapped" checked="{{device.d_state == '报废'?true:false}}" >报废</radio>
+            </radio-group>
+        </view>
+        <input wx:else bindinput="getChange" value="{{inputValue}}" ></input>
         <view class="buttons2">
             <button bindtap="hideWindow">取消</button>
             <button bindtap="submitChange" data-index="{{index}}" style="background-color:#6D87C4;color:white">提交</button>

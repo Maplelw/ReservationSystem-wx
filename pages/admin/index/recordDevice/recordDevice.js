@@ -18,39 +18,49 @@ Page({
     submit(e) {
         var that = this
         console.log(e.detail.value)
-        wx.login({
-            success(res) {
-                wx.request({
-                    url: addDevice,
-                    method: "POST",
-                    header: {
-                        "content-type": "application/x-www-form-urlencoded"
-                    },
-                    data: {
-                        code: res.code,
-                        d_factoryNo: e.detail.value.d_factoryNo,
-                        d_model: e.detail.value.d_model,
-                        d_name: e.detail.value.d_name,
-                        d_no: e.detail.value.d_no,
-                        d_saveSite: e.detail.value.d_saveSite,
-                        d_state: e.detail.value.d_state,
-                        d_storeDate: e.detail.value.d_storeDate
-                    },
-                    success: function (res) {
-                        console.log(res.data)
-                        if (res.data.flag === 1) {
-                            wx.showToast({
-                                title: '添加成功',
-                                duration: 2000
-                            })
-                            wx.redirectTo({
-                                url: '../index',
-                            })
+        var datas = e.detail.value
+        if (datas.d_no != '' && datas.d_name != '' && datas.d_model != '' && datas.d_state != '' && datas.d_saveSite != '' && datas.d_storeDate != '' && datas.d_factoryNo != '') {
+            wx.login({
+                success(res) {
+                    wx.request({
+                        url: addDevice,
+                        method: "POST",
+                        header: {
+                            "content-type": "application/x-www-form-urlencoded"
+                        },
+                        data: {
+                            code: res.code,
+                            d_factoryNo: e.detail.value.d_factoryNo,
+                            d_model: e.detail.value.d_model,
+                            d_name: e.detail.value.d_name,
+                            d_no: e.detail.value.d_no,
+                            d_saveSite: e.detail.value.d_saveSite,
+                            d_state: e.detail.value.d_state,
+                            d_storeDate: e.detail.value.d_storeDate
+                        },
+                        success: function (res) {
+                            console.log(res.data)
+                            if (res.data.flag === 1) {
+                                wx.showToast({
+                                    title: '添加成功',
+                                    duration: 2000
+                                })
+                                wx.navigateBack({
+                                    
+                                })
+                            }
                         }
-                    }
-                })
-            }
-        })
+                    })
+                }
+            })
+        }
+        else {
+            wx.showToast({
+                title: '信息不能为空',
+                icon: "none"
+            })
+        }
+        
     },
     uploadImg: function () {
         wx.chooseImage({

@@ -107,6 +107,15 @@ page {
     font-size: 35rpx;
 }
 
+.window .windowContent .radio-group{
+    margin: 20rpx 40rpx;
+    font-size: 35rpx;
+}
+
+.window .windowContent .radio-group radio{
+    margin: 0 40rpx;
+}
+
 .window .windowContent .buttons2 {
     display: flex;
     justify-content: center;

@@ -12,6 +12,7 @@
                 <text class="text2">{{item.a_type}}</text>
             </view>
             <view>学号/工号:{{item.a_no}}</view>
+            <view>手机号:{{item.a_phone}}</view>
         </view>
         <!-- <view class="button-delete">
             <button type="warn" data-index="{{index}}" bindtap="deleteAdmin">移除管理员</button>
@@ -27,6 +28,7 @@
                 <text class="text2">{{item.u_type}}</text>
             </view>
             <view>学号/工号:{{item.u_no}}</view>
+            <view>手机号:{{item.u_phone}}</view>
         </view>
         <view class="button-add">
             <button data-index="{{index}}" bindtap="addAdmin">添加为管理员</button>

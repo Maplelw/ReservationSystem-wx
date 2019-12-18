@@ -79,6 +79,7 @@ Page({
                         that.setData({
                             isShow: false
                         })
+                        that.onShow()
                     }
                 })
             }
@@ -113,10 +114,19 @@ Page({
                         },
                         success: function (res) {
                             console.log(res.data)
-                            that.data.reservation.splice(e.currentTarget.dataset.index, 1)
-                            that.setData({
-                                reservation: that.data.reservation
-                            })
+                            if(res.data.flag == 1) {
+                                that.data.reservation.splice(e.currentTarget.dataset.index, 1)
+                                that.setData({
+                                    reservation: that.data.reservation
+                                })
+                            }
+                            else {
+                                wx.showToast({
+                                    title: res.data.errMsg[0],
+                                    icon: "none",
+                                })
+                            }
+                            
                         },
                         fail: function (res) {
                             console.log("请求失败")
@@ -140,23 +150,6 @@ Page({
             d_name : options.d_name,
             d_photo: options.d_photo
         })
-        var that = this
-        wx.request({
-            url: reservationDetail,
-            data: {
-                d_no: options.d_no
-            },
-            success: function(res) {
-               console.log("获取具体设备的申请信息\n")
-                console.log(res.data)
-               that.setData({
-                    reservation: res.data.reservation,
-                })
-            },
-            fail: function(res) {
-                consolo.log("请求失败")
-            },
-        })
     },
 
     /**
@@ -170,7 +163,23 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        var that = this
+        wx.request({
+            url: reservationDetail,
+            data: {
+                d_no: that.data.d_no
+            },
+            success: function (res) {
+                console.log("获取具体设备的申请信息\n")
+                console.log(res.data)
+                that.setData({
+                    reservation: res.data.reservation,
+                })
+            },
+            fail: function (res) {
+                consolo.log("请求失败")
+            },
+        })
     },
 
     /**

@@ -96,6 +96,7 @@ Page({
     onLoad: function(options) {
         // 获取今天
         var date = getDate(new Date());
+        console.log(date + 1)
         this.setData({
             currentDate: date,
             startDate: date,

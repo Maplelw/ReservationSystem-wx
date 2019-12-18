@@ -41,7 +41,7 @@
                     <text>借用日期:</text>
                     <text>{{item.b_borrowDate}}</text>
                     <text wx:if="{{item.b_state === 1 || item.b_state === 2}}" class="done">已归还</text>
-                    <text wx:elif="{{item.b_state === -2}}" class="overdue">逾期归还</text>
+                    <text wx:elif="{{item.b_state === -2 || item.b_state === -3}}" class="overdue">逾期归还</text>
                 </view>
             </view>
             <view class="down">
@@ -56,8 +56,8 @@
                 </view>
             </view>
             <view class="cancel" data-index="{{index}}">
-                <text wx:if="{{item.b_state === 1}}" bindtap="showComment" data-index="{{index}}" class="uncommented">去评价 </text>
-                <text class="commented" wx:else data-index="{{index}}">已评价</text>
+                <text wx:if="{{item.b_state === 1 || item.b_state === -2}}" bindtap="showComment" data-index="{{index}}" class="uncommented">去评价 </text>
+                <text wx:else class="commented"  data-index="{{index}}">已评价</text>
             </view>
         </view>
     </view>
