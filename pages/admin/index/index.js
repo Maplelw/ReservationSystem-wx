@@ -8,6 +8,12 @@ Page({
         superAdmin: 0
     },
 
+    toUser() {
+        wx.redirectTo({
+            url: '/pages/user/index/index',
+        })
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */

@@ -1,3 +1,10 @@
+.toUser {
+    color: rgba(18, 150, 219, 1);
+    position: fixed;
+    top: 10rpx;
+    right: 20rpx;
+    font-size: 32rpx;
+}
 .top {
     margin-top: 50rpx;
 }
