@@ -10,15 +10,15 @@ Page({
         allColor: "#bbbbbb",
         hotDevice: [],
         allDevice: [],
-        messages:[], // 用户的消息
+        messages: [], // 用户的消息
         navigator: [{ // 导航栏
-                img: "/img/global/nv_index_on.png",
-                name: "首页"
-            },
-            {
-                img: "/img/global/nv_mine_off.png",
-                name: "我的"
-            }
+            img: "/img/global/nv_index_on.png",
+            name: "首页"
+        },
+        {
+            img: "/img/global/nv_mine_off.png",
+            name: "我的"
+        }
         ]
     },
 
@@ -34,21 +34,21 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
-       
+    onLoad: function (options) {
+
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
         // 获取未读消息
         var that = this
         wx.login({
@@ -64,9 +64,17 @@ Page({
                     },
                     success(res) {
                         console.log(res.data)
-                        that.setData({
-                            messages: res.data.messageList,
-                        })
+                        if (res.data.flag === 1) {
+                            that.setData({
+                                messages: res.data.messageList,
+                            })
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }
                     },
                     fail() {
                         console.log("请求失败")
@@ -82,35 +90,35 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
+    onHide: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+    onUnload: function () {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+    onReachBottom: function () {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     }
 })

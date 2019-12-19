@@ -12,10 +12,10 @@ Page({
         page: 1, // 页数
         flag: 0, // 是否最后一页
         record: [],
-        creditRule: ["1.按时归还仪器","2.逾期未按时归还仪器（小于等于1个星期，1个星期按7天来算"],
+        creditRule: ["1.按时归还仪器", "2.逾期未按时归还仪器（小于等于1个星期，1个星期按7天来算"],
     },
     //弹窗打开与关闭
-    showRule: function() {
+    showRule: function () {
         this.setData({
             isRuleShow: true
         })
@@ -45,15 +45,23 @@ Page({
                     method: 'POST',
                     success: function (res) {
                         console.log(res.data)
-                        that.setData({
-                            record: res.data.record,
-                            page: that.data.page + 1,
-                            u_creditScore: res.data.score
-                        })
-                        var scoreInt = parseInt(res.data.score)
-                        if (scoreInt < 80) {
+                        if (res.data.flag === 1) {
                             that.setData({
-                                comment: '信用分不足啦，请注意准守规则'
+                                record: res.data.record,
+                                page: that.data.page + 1,
+                                u_creditScore: res.data.score
+                            })
+                            var scoreInt = parseInt(res.data.score)
+                            if (scoreInt < 80) {
+                                that.setData({
+                                    comment: '信用分不足啦，请注意准守规则'
+                                })
+                            }
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
                             })
                         }
                     },
@@ -72,9 +80,17 @@ Page({
                     method: 'POST',
                     success: function (res) {
                         console.log(res.data)
-                        that.setData({
-                            creditRule: res.data.creditRuleList,
-                        })
+                        if (res.data.flag === 1) {
+                            that.setData({
+                                creditRule: res.data.creditRuleList,
+                            })
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }
                     },
                     fail: function (res) {
                         console.log("请求失败")
@@ -130,7 +146,7 @@ Page({
                 icon: "loading",
                 duration: 500
             })
-        } 
+        }
         else {
             wx.login({
                 success(res) {
@@ -147,7 +163,7 @@ Page({
                         success: function (res) {
                             console.log(that.data.record)
                             console.log("page:" + that.data.page)
-                            if (res.data.flag === 0) {
+                            if (res.data.flag == 0) {
                                 that.setData({
                                     flag: 1
                                 })
@@ -174,7 +190,7 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     }
 })

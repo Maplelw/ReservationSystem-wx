@@ -28,6 +28,12 @@ Page({
                 if(res.data.flag == 1) {
                     wx.navigateBack({})
                 }
+                else {
+                    wx.showToast({
+                        title: res.data.errMsg[0],
+                        icon: "none"
+                    })
+                }
             }
         })
     },

@@ -21,7 +21,7 @@ Page({
         borrowed_itemIng: [],
         borrowed_itemDone: []
     },
-//顶部状态改变    
+    //顶部状态改变    
     //改变页面显示为 ing
     toIng: function () {
         this.setData({
@@ -38,7 +38,7 @@ Page({
             doneColor: "#89AFD4"
         })
     },
-//正在借用    
+    //正在借用    
     // 获取归还二维码
     getQRcode: function (e) {
         var that = this
@@ -60,10 +60,18 @@ Page({
                         },
                         success(res) {
                             console.log(res.data)
-                            that.setData({
-                                img: res.data,
-                                isTrue: true
-                            })
+                            if (res.data.flag === 1) {
+                                that.setData({
+                                    img: res.data,
+                                    isTrue: true
+                                })
+                            }
+                            else {
+                                wx.showToast({
+                                    title: res.data.errMsg[0],
+                                    icon: "none"
+                                })
+                            }
                         }
                     })
                 }
@@ -75,7 +83,7 @@ Page({
             isQRcode: false
         })
     },
-//已完成
+    //已完成
     // 跳转到评论界面 
     showComment: function (e) {
         var t = e.currentTarget.dataset.index
@@ -129,9 +137,17 @@ Page({
                     success: function (res) {
                         console.log("未完成")
                         console.log(res.data)
-                        that.setData({
-                            borrowed_itemIng: res.data.borrowed_item
-                        })
+                        if (res.data.flag === 1) {
+                            that.setData({
+                                borrowed_itemIng: res.data.borrowed_item
+                            })
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }
                     },
                     fail: function (res) {
                         console.log("请求失败")
@@ -155,9 +171,17 @@ Page({
                     success: function (res) {
                         console.log("已经完成")
                         console.log(res.data)
-                        that.setData({
-                            borrowed_itemDone: res.data.borrowed_item
-                        })
+                        if (res.data.flag === 1) {
+                            that.setData({
+                                borrowed_itemDone: res.data.borrowed_item
+                            })
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }
                     },
                     fail: function (res) {
                         console.log("请求失败")
@@ -239,7 +263,7 @@ Page({
                     }
                 })
             }
-        } 
+        }
         else { //done
             if (that.data.flagDone === 1) { // 到最后一页了
                 wx.showToast({

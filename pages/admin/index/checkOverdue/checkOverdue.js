@@ -25,7 +25,15 @@ Page({
                             b_no: this.data.borrow[e.currentTarget.dataset.index].b_no
                         },
                         success: function (res) {
-                            console.log(res.data)
+                            if(res.data.flag === 1) {
+                                console.log(res.data)
+                            }
+                            else {
+                                wx.showToast({
+                                    title: res.data.errMsg[0],
+                                    icon: "none"
+                                })
+                            }
                         },
                         fail: function (res) {
                             console.log("请求失败")
@@ -55,11 +63,19 @@ Page({
                         'content-type': 'application/x-www-form-urlencoded'
                     },
                     success: function (res) {
-                        console.log(res.data)
-                        that.setData({
-                            borrow: res.data.borrow,
-                            page:　that.data.page + 1
-                        })
+                        if(res.data.flag === 1) {
+                            console.log(res.data)
+                            that.setData({
+                                borrow: res.data.borrow,
+                                page: 　that.data.page + 1
+                            })
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }
                     },
                     fail: function (res) {
                         console.log("请求失败")

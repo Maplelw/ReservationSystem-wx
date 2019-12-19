@@ -80,12 +80,18 @@ Page({
                         },
                         success: function(res) {
                             console.log(res.data)
-                            if (res.data.flag === 1) {
+                            if (res.data.flag == 1) {
                                 that.refresh() //重新加载
+                                that.setData({
+                                    isWindowShow: false
+                                })
                             }
-                            that.setData({
-                                isWindowShow: false
-                            })
+                            else {
+                                wx.showToast({
+                                    title: res.data.errMsg[0],
+                                    icon: "none"
+                                })
+                            } 
                         },
                         fail: function(res) {
                             console.log("请求失败")
@@ -111,10 +117,16 @@ Page({
                             console.log(res.data)
                             if (res.data.flag === 1) {
                                 that.refresh() //重新加载
+                                that.setData({
+                                    isWindowShow: false
+                                })
                             }
-                            that.setData({
-                                isWindowShow: false
-                            })
+                            else {
+                                wx.showToast({
+                                    title: res.data.errMsg[0],
+                                    icon: "none"
+                                })
+                            }
                         },
                         fail: function(res) {
                             console.log("请求失败")
@@ -140,10 +152,17 @@ Page({
                             console.log(res.data)
                             if (res.data.flag === 1) {
                                 that.refresh() //重新加载
+                                that.setData({
+                                    isWindowShow: false
+                                })
                             }
-                            that.setData({
-                                isWindowShow: false
-                            })
+                            else {
+                                wx.showToast({
+                                    title: res.data.errMsg[0],
+                                    icon: "none"
+                                })
+                            }
+                            
                         },
                         fail: function(res) {
                             console.log("请求失败")
@@ -167,12 +186,18 @@ Page({
                         },
                         success: function(res) {
                             console.log(res.data)
-                            if (res.data.flag === 1) {
+                            if (res.data.flag == 1) {
                                 that.refresh() //重新加载
+                                that.setData({
+                                    isWindowShow: false
+                                })
                             }
-                            that.setData({
-                                isWindowShow: false
-                            })
+                            else {
+                                wx.showToast({
+                                    title: res.data.errMsg[0],
+                                    icon: "none"
+                                })
+                            }
                         },
                         fail: function(res) {
                             console.log("请求失败")
@@ -196,12 +221,18 @@ Page({
                         },
                         success: function(res) {
                             console.log(res.data)
-                            if (res.data.flag === 1) {
+                            if (res.data.flag == 1) {
                                 that.refresh() //重新加载
+                                that.setData({
+                                    isWindowShow: false
+                                })
                             }
-                            that.setData({
-                                isWindowShow: false
-                            })
+                            else {
+                                wx.showToast({
+                                    title: res.data.errMsg[0],
+                                    icon: "none"
+                                })
+                            }
                         },
                         fail: function(res) {
                             console.log("请求失败")
@@ -227,12 +258,20 @@ Page({
                     method: 'POST',
                     success: function (res) {
                         console.log(res.data)
-                        that.setData({
-                            user: res.data.user
-                        })
+                        if(res.data.flag == 1) {
+                            that.setData({
+                                user: res.data.user
+                            })
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }                       
                     },
                     fail: function (res) {
-                        consolo.log("请求失败")
+                        console.log("请求失败")
                     },
                 })
             },
@@ -260,12 +299,20 @@ Page({
                     method: 'POST',
                     success: function(res) {
                         console.log(res.data)
-                        that.setData({
-                            user: res.data.user
-                        })
+                        if(res.data.flag == 1) {
+                            that.setData({
+                                user: res.data.user
+                            })
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }   
                     },
                     fail: function(res) {
-                        consolo.log("请求失败")
+                        console.log("请求失败")
                     },
                 })
             },

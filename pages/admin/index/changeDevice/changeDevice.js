@@ -44,11 +44,19 @@ Page({
                     },
                     success: function (res) {
                         console.log(res.data)
-                        that.setData({
-                            searchDevice: res.data.device,
-                            searchPage: that.data.searchPage + 1,
-                            choice: "search",
-                        })
+                        if(res.data.flag === 1 ) {
+                            that.setData({
+                                searchDevice: res.data.device,
+                                searchPage: that.data.searchPage + 1,
+                                choice: "search",
+                            })
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }
                     },
                     fail: function (res) {
                         console.log("请求失败")
@@ -96,10 +104,18 @@ Page({
                     },
                     success: function (res) {
                         console.log(res.data)
-                        that.setData({
-                            allDevice: res.data.device,
-                            allPage: that.data.allPage + 1,
-                        })
+                        if(res.data.flag === 1) {
+                            that.setData({
+                                allDevice: res.data.device,
+                                allPage: that.data.allPage + 1,
+                            })
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        } 
                     },
                     fail: function (res) {
                         console.log("请求失败")

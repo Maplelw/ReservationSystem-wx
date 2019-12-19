@@ -63,10 +63,18 @@ Page({
                 },
                 success(res) {
                     console.log(res.data)
-                    that.setData({
-                        verifyCode: res.data.verifyCode,
-                        correctPhone: that.data.u_phone
-                    })
+                    if(res.data.flag == 1) {
+                        that.setData({
+                            verifyCode: res.data.verifyCode,
+                            correctPhone: that.data.u_phone
+                        })
+                    }
+                    else {
+                        wx.showToast({
+                            title: res.data.errMsg[0],
+                            icon: "none"
+                        })
+                    }     
                 }
             })
         } else {
@@ -97,6 +105,7 @@ Page({
 
     // 提交
     formSubmit: function(e) {
+        var  a = new RegExp
         var that = this;
         // 校验不能为空
         if (e.detail.value.u_name == "") {
@@ -168,7 +177,7 @@ Page({
                                 success: function(res) {
                                     console.log(res.data)
                                     console.log("注册为学生")
-                                    if (res.data.flag === 1) {
+                                    if (res.data.flag == 1) {
                                         wx.hideLoading()
                                         wx.showToast({
                                             title: '注册成功',
@@ -178,6 +187,12 @@ Page({
                                             url: '../index/index',
                                         })
                                     }
+                                    else {
+                                        wx.showToast({
+                                            title: res.data.errMsg[0],
+                                            icon: "none"
+                                        })
+                                    }    
                                 }
                             })
                         } else { // 老师
@@ -199,7 +214,7 @@ Page({
                                 success: function(res) {
                                     console.log(res.data)
                                     wx.hideLoading()
-                                    if(res.data.flag === 1) {
+                                    if(res.data.flag == 1) {
                                         wx.showToast({
                                             title: '注册成功',
                                         })
@@ -207,6 +222,12 @@ Page({
                                             url: '../index/index',
                                         })
                                     }
+                                    else {
+                                        wx.showToast({
+                                            title: res.data.errMsg[0],
+                                            icon: "none"
+                                        })
+                                    }    
                                 }
                             })
                         }
@@ -283,23 +304,31 @@ Page({
                     },
                     success(res) {
                         console.log(res.data)
-                        datas = res.data.academyList
-                        console.log(datas)
-                        var academyList = new Array()
-                        var specialtyList = new Array()
-                        for (var i = 0; i < datas.length; i++) {
-                            var academy = {
-                                s_name: datas[i].am_name,
-                                am_no: datas[i].am_no
+                        if(res.data.flag == 1) {
+                            datas = res.data.academyList
+                            console.log(datas)
+                            var academyList = new Array()
+                            var specialtyList = new Array()
+                            for (var i = 0; i < datas.length; i++) {
+                                var academy = {
+                                    s_name: datas[i].am_name,
+                                    am_no: datas[i].am_no
+                                }
+                                academyList.push(academy)
+                                specialtyList.push(datas[i].specialtyList)
                             }
-                            academyList.push(academy)
-                            specialtyList.push(datas[i].specialtyList)
+                            that.setData({
+                                academyList: academyList,
+                                specialtyList: specialtyList,
+                                academySpecialty: [academyList, specialtyList[0]]
+                            })
                         }
-                        that.setData({
-                            academyList: academyList,
-                            specialtyList: specialtyList,
-                            academySpecialty: [academyList, specialtyList[0]]
-                        })
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }    
                     }
                 })
             }

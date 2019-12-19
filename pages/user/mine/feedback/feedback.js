@@ -48,7 +48,7 @@ Page({
                         }
                         else {
                             wx.showToast({
-                                title: res.data.errMsg,
+                                title: res.data.errMsg[0],
                                 icon: "none"
                             })
                         }

@@ -36,7 +36,7 @@ Page({
     },
     //添加删除管理员
     // 添加管理员 
-    addAdmin: function(e) {
+    addAdmin: function (e) {
         var that = this
         var index = e.currentTarget.dataset.index;
         var u_no = that.data.userList[index].u_no
@@ -60,6 +60,12 @@ Page({
                             console.log(res.data)
                             if (res.data.flag === 1) {
                                 that.refresh()
+                            }
+                            else {
+                                wx.showToast({
+                                    title: res.data.errMsg[0],
+                                    icon: "none"
+                                })
                             }
                         }
                     })
@@ -98,6 +104,12 @@ Page({
                                     if (res.data.flag == 1) {
                                         that.refresh()
                                     }
+                                    else {
+                                        wx.showToast({
+                                            title: res.data.errMsg[0],
+                                            icon: "none"
+                                        })
+                                    }
                                 }
                             })
                         }
@@ -120,10 +132,18 @@ Page({
             },
             success(res) {
                 console.log(res.data)
-                that.setData({
-                    userList: res.data.userList,
-                    adminList: res.data.adminList,
-                })
+                if (res.data.flag === 1) {
+                    that.setData({
+                        userList: res.data.userList,
+                        adminList: res.data.adminList,
+                    })
+                }
+                else {
+                    wx.showToast({
+                        title: res.data.errMsg[0],
+                        icon: "none"
+                    })
+                }
             },
             fail() {
                 console.log("请求失败")

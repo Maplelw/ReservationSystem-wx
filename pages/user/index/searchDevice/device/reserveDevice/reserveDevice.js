@@ -50,7 +50,7 @@ Page({
                                 })
                                 if (res.data.flag === 0) {
                                     wx.showToast({
-                                        title: res.data.errMsg,
+                                        title: res.data.errMsg[0],
                                         icon: 'none',
                                     })
                                 } else {

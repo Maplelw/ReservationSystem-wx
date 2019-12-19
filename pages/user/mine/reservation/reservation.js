@@ -1,7 +1,7 @@
 let finishedReservation = require('../../../../global/global.js').finishedReservation;
 let unfinishedReservation = require('../../../../global/global.js').unfinishedReservation;
 let cancelReservation = require('../../../../global/global.js').cancelReservation;
-let agreeEditReservation = require('../../../../global/global.js').agreeEditReservation; 
+let agreeEditReservation = require('../../../../global/global.js').agreeEditReservation;
 Page({
 
     /**
@@ -58,20 +58,19 @@ Page({
                                 success: function(res) {
                                     console.log(res.data)
                                     // 页面删减一项
-                                    if(res.data.flag == 1) {
+                                    if (res.data.flag == 1) {
                                         that.data.reservationIng.splice(e.currentTarget.dataset.index, 1)
                                         that.setData({
                                             reservationIng: that.data.reservationIng
                                         })
                                         that.refreshDone()
-                                    }
-                                    else {
+                                    } else {
                                         wx.showToast({
-                                            title: res.errMsg,
+                                            title: res.data.errMsg[0],
                                             icon: "none"
                                         })
                                     }
-                                   
+
                                 },
                                 fail: function(res) {
                                     console.log("请求失败")
@@ -87,7 +86,7 @@ Page({
     },
 
     // 同意修改
-    agree: function (e) {
+    agree: function(e) {
         var that = this;
         var r_no = this.data.reservationIng[e.currentTarget.dataset.index].r_no
         console.log("被选择的预约编号" + r_no)
@@ -97,7 +96,7 @@ Page({
             success: (res) => {
                 if (res.confirm) {
                     wx.login({
-                        success: function (res) {
+                        success: function(res) {
                             wx.request({
                                 url: agreeEditReservation,
                                 data: {
@@ -107,19 +106,24 @@ Page({
                                 header: {
                                     'content-type': 'application/x-www-form-urlencoded'
                                 },
-                                success: function (res) {
+                                success: function(res) {
                                     console.log(res.data)
-                                    var t = that.data.reservationIng
-                                    t[e.currentTarget.dataset.index].r_state = 3
-                                    console.log(t)
-                                    if(res.data.flag == 1) {
+                                    if (res.data.flag == 1) {
+                                        var t = that.data.reservationIng
+                                        t[e.currentTarget.dataset.index].r_state = 3
+                                        console.log(t)
                                         that.setData({
                                             reservationIng: t
                                         })
+                                    } else {
+                                        wx.showToast({
+                                            title: res.data.errMsg[0],
+                                            icon: "none"
+                                        })
                                     }
                                 },
-                                fail: function (res) {
-                                    consol.log("请求失败")
+                                fail: function(res) {
+                                    console.log("请求失败")
                                 },
                             })
                         }
@@ -154,15 +158,23 @@ Page({
                         'content-type': 'application/x-www-form-urlencoded'
                     },
                     method: 'POST',
-                    success: function (res) {
+                    success: function(res) {
                         console.log("未完成")
                         console.log(res.data)
-                        that.setData({
-                            reservationIng: res.data.reservation,
-                            pageIng: that.data.pageIng + 1
-                        })
+                        if(res.data.flag == 1) {
+                            that.setData({
+                                reservationIng: res.data.reservation,
+                                pageIng: that.data.pageIng + 1
+                            })
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }
                     },
-                    fail: function (res) {
+                    fail: function(res) {
                         console.log("请求失败")
                     },
                 })
@@ -175,7 +187,7 @@ Page({
             pageDone: 1
         })
         wx.login({
-            success: function (res) {
+            success: function(res) {
                 // 已经完成
                 wx.request({
                     url: finishedReservation,
@@ -187,15 +199,23 @@ Page({
                         'content-type': 'application/x-www-form-urlencoded'
                     },
                     method: 'POST',
-                    success: function (res) {
+                    success: function(res) {
                         console.log("已经完成")
                         console.log(res.data)
-                        that.setData({
-                            reservationDone: res.data.reservation,
-                            pageDone: that.data.pageDone + 1
-                        })
+                        if(res.data.flag == 1 ) {
+                            that.setData({
+                                reservationDone: res.data.reservation,
+                                pageDone: that.data.pageDone + 1
+                            })
+                        }   
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }                                            
                     },
-                    fail: function (res) {
+                    fail: function(res) {
                         console.log("请求失败")
                     },
                 })
@@ -208,7 +228,7 @@ Page({
     onLoad: function(options) {
         var that = this;
         wx.login({
-            success: function (res) {
+            success: function(res) {
                 // 已经完成
                 wx.request({
                     url: finishedReservation,
@@ -220,15 +240,23 @@ Page({
                         'content-type': 'application/x-www-form-urlencoded'
                     },
                     method: 'POST',
-                    success: function (res) {
+                    success: function(res) {
                         console.log("已经完成")
                         console.log(res.data)
-                        that.setData({
-                            reservationDone: res.data.reservation,
-                            pageDone: that.data.pageDone + 1
-                        })
+                        if(res.data.flag == 1 ) {
+                            that.setData({
+                                reservationDone: res.data.reservation,
+                                pageDone: that.data.pageDone + 1
+                            })
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }                          
                     },
-                    fail: function (res) {
+                    fail: function(res) {
                         console.log("请求失败")
                     },
                 })
@@ -247,15 +275,23 @@ Page({
                         'content-type': 'application/x-www-form-urlencoded'
                     },
                     method: 'POST',
-                    success: function (res) {
+                    success: function(res) {
                         console.log("未完成")
                         console.log(res.data)
-                        that.setData({
-                            reservationIng: res.data.reservation,
-                            pageIng: that.data.pageIng + 1
-                        })
+                        if(res.data.flag == 1) {
+                            that.setData({
+                                reservationIng: res.data.reservation,
+                                pageIng: that.data.pageIng + 1
+                            })
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }     
                     },
-                    fail: function (res) {
+                    fail: function(res) {
                         console.log("请求失败")
                     },
                 })
@@ -274,7 +310,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-       
+
     },
 
     /**

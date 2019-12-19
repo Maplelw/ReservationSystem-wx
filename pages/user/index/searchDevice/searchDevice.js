@@ -88,9 +88,17 @@ Page({
             },
             success: function(res) {
                 console.log(res.data)
-                that.setData({
-                    hotDevice: res.data.device
-                })
+                if(res.data.flag === 1) {
+                    that.setData({
+                        hotDevice: res.data.device
+                    })
+                }
+                else {
+                    wx.showToast({
+                        title: res.data.errMsg[0],
+                        icon: "none"
+                    })
+                }
             },
             fail: function(res) {console.log("请求失败")},
         })
@@ -105,10 +113,18 @@ Page({
             },
             success: function (res) {
                 console.log(res.data)
-                that.setData({
-                    allDevice: res.data.device,
-                    page: that.data.page + 1,
-                })
+                if(res.data.flag === 1) {
+                    that.setData({
+                        allDevice: res.data.device,
+                        page: that.data.page + 1,
+                    })
+                }
+                else {
+                    wx.showToast({
+                        title: res.data.errMsg[0],
+                        icon: "none"
+                    })
+                }
             },
             fail: function (res) { console.log("请求失败") },
         })

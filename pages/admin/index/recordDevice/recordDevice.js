@@ -17,7 +17,6 @@ Page({
     // 提交设备
     submit(e) {
         var that = this
-        console.log(e.detail.value)
         var datas = e.detail.value
         if (datas.d_no != '' && datas.d_name != '' && datas.d_model != '' && datas.d_state != '' && datas.d_saveSite != '' && datas.d_storeDate != '' && datas.d_factoryNo != '') {
             wx.showLoading({
@@ -54,7 +53,7 @@ Page({
                             }
                             else {
                                 wx.showToast({
-                                    title: res.flag.errMsg,
+                                    title: res.data.errMsg[0],     
                                     icon: "none"
                                 })
                             }

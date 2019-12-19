@@ -92,11 +92,19 @@ Page({
                         "content-type": "application/x-www-form-urlencoded"
                     },
                     success: function (res) {
-                        console.log(res.data)
-                        that.setData({
-                            borrow: res.data.device,
-                            showList: res.data.device
+                        if(res.data.flag === 1) {
+                            console.log(res.data)
+                            that.setData({
+                                borrow: res.data.device,
+                                showList: res.data.device
+                            })
+                        }
+                        else {
+                        wx.showToast({
+                            title: res.data.errMsg[0],
+                            icon: "none"
                         })
+                    }
                     },
                     fail: function (res) {
                         console.log("请求失败")

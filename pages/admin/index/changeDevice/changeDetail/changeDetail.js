@@ -109,10 +109,16 @@ Page({
                             console.log(res.data)
                             if (res.data.flag === 1) {
                                 that.refresh()
+                                that.setData({
+                                    isWindowShow: false
+                                })
                             }
-                            that.setData({
-                                isWindowShow: false
-                            })
+                            else {
+                                wx.showToast({
+                                    title: res.data.errMsg[0],
+                                    icon: "none"
+                                })
+                            }
                         },
                         fail: function (res) {
                             console.log("请求失败")
@@ -139,10 +145,16 @@ Page({
                             console.log(res.data)
                             if (res.data.flag === 1) {
                                 that.refresh()
+                                that.setData({
+                                    isWindowShow: false
+                                })
+                            }                           
+                            else {
+                                wx.showToast({
+                                    title: res.data.errMsg[0],
+                                    icon: "none"
+                                })
                             }
-                            that.setData({
-                                isWindowShow: false
-                            })
                         },
                         fail: function (res) {
                             console.log("请求失败")
@@ -170,10 +182,16 @@ Page({
                             console.log(res.data)
                             if (res.data.flag === 1) {
                                 that.refresh()
+                                that.setData({
+                                    isWindowShow: false
+                                })
                             }
-                            that.setData({
-                                isWindowShow: false
-                            })
+                            else {
+                                wx.showToast({
+                                    title: res.data.errMsg[0],
+                                    icon: "none"
+                                })
+                            }
                         },
                         fail: function (res) {
                             console.log("请求失败")
@@ -235,7 +253,12 @@ Page({
                 if(tData.flag === 1) {
                     that.refresh()
                 }
-                
+                else {
+                    wx.showToast({
+                        title: res.data.errMsg[0],
+                        icon: "none"
+                    })
+                }
             }
         })
     },
@@ -256,10 +279,18 @@ Page({
                     },
                     success(res) {
                         console.log(res.data)
-                        that.setData({
-                            device: res.data.device
-                        })
-                        console.log(res.data.device)
+                        if(res.data.flag === 1) {
+                            that.setData({
+                                device: res.data.device
+                            })
+                            console.log(res.data.device)
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }
                     }
                 }) 
             }
@@ -298,6 +329,12 @@ Page({
                                             url: '../changeDevice'
                                         })
                                     }
+                                    else {
+                                        wx.showToast({
+                                            title: res.data.errMsg[0],
+                                            icon: "none"
+                                        })
+                                    }
                                 }
                             })
                         }
@@ -332,10 +369,18 @@ Page({
                         code: res.code
                     },
                     success(res) {
-                        console.log(res.data)
-                        that.setData({
-                            device: res.data.device
-                        })
+                        if(res.data.flag === 1) {
+                            console.log(res.data)
+                            that.setData({
+                                device: res.data.device
+                            })
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }
                     }
                 })
             }

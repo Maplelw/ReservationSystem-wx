@@ -52,10 +52,18 @@ Page({
                     },
                     success(res) {
                         console.log(res.data)
-                        that.setData({
-                            device: res.data.device,
-                            page: that.data.page + 1
-                        })
+                        if(res.data.flag === 1) {
+                            that.setData({
+                                device: res.data.device,
+                                page: that.data.page + 1
+                            })
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }
                     }
                 })
             }

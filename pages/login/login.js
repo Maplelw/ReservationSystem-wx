@@ -25,22 +25,30 @@ Page({
                     },
                     success(res) {
                         console.log(res.data)
-                        if (res.data.identity === 0) {//用户
-                            wx.redirectTo({
-                                url: '/pages/user/index/index',
-                            })
-                        }
-                        else if (res.data.identity === 1) {// 管理员
-                            wx.redirectTo({
-                                url: '/pages/admin/index/index?' + "superAdmin=" + res.data.superAdmin,
-                            })
+                        if (res.data.flag == 1) {
+                            if (res.data.identity === 0) {//用户
+                                wx.redirectTo({
+                                    url: '/pages/user/index/index',
+                                })
+                            }
+                            else if (res.data.identity === 1) {// 管理员
+                                wx.redirectTo({
+                                    url: '/pages/admin/index/index?' + "superAdmin=" + res.data.superAdmin,
+                                })
 
+                            }
+                            else { // 不存在
+                                console.log(res.data.academyList)
+                                var academyList = JSON.stringify(res.data.academyList)
+                                wx.navigateTo({
+                                    url: '/pages/user/register/register'
+                                })
+                            }
                         }
-                        else { // 不存在
-                            console.log(res.data.academyList)
-                            var academyList = JSON.stringify(res.data.academyList)
-                            wx.navigateTo({
-                                url: '/pages/user/register/register'
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
                             })
                         }
                     }

@@ -18,7 +18,7 @@ Page({
         lock: 0 //跟踪锁
     },
     //预约设备
-    reserve: function() {
+    reserve: function () {
         var device = this.data.device
         console.log(device)
         if (device.d_state === "在库") {
@@ -44,9 +44,9 @@ Page({
 
     },
     //跟踪设备
-    track: function() {
+    track: function () {
         var that = this;
-        if(that.data.lock == 0 ) {
+        if (that.data.lock == 0) {
             that.setData({
                 lock: 1
             })
@@ -74,17 +74,23 @@ Page({
                                     lock: 0 //释放锁
                                 })
                             }
+                            else {
+                                wx.showToast({
+                                    title: res.data.errMsg[0],
+                                    icon: "none"
+                                })
+                            }
                         }
                     })
                 }
             })
         }
-        
+
     },
     // 取消跟踪
     disTrack: function () {
         var that = this;
-        if(that.data.lock == 0) {
+        if (that.data.lock == 0) {
             that.setData({
                 lock: 1
             })
@@ -111,15 +117,21 @@ Page({
                                     lock: 0
                                 })
                             }
+                            else {
+                                wx.showToast({
+                                    title: res.data.errMsg[0],
+                                    icon: "none"
+                                })
+                            }
                         }
                     })
                 }
             })
         }
-        
+
     },
     //改变页面显示为 详细信息
-    toDetail: function() {
+    toDetail: function () {
         this.setData({
             choice: "detail",
             detailColor: "#000000",
@@ -127,7 +139,7 @@ Page({
         })
     },
     //改变页面显示为 评论
-    toComment: function() {
+    toComment: function () {
         this.setData({
             choice: "all",
             detailColor: "#bbbbbb",
@@ -137,7 +149,7 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
         this.setData({
             d_no: options.d_no,
         })
@@ -148,7 +160,7 @@ Page({
                 wx.request({
                     url: deviceDetail,
                     data: {
-                        d_no: that.data.d_no,   
+                        d_no: that.data.d_no,
                         code: res.code
                     },
                     method: 'POST',
@@ -157,10 +169,18 @@ Page({
                     },
                     success(res) {
                         console.log(res.data)
-                        that.setData({
-                            device: res.data.device,
-                            track: res.data.track
-                        })
+                        if (res.data.flag == 1) {
+                            that.setData({
+                                device: res.data.device,
+                                track: res.data.track
+                            })
+                        }
+                        else {
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }
                     }
                 })
             }
@@ -178,9 +198,17 @@ Page({
             },
             success(res) {
                 console.log(res.data)
-                that.setData({
-                    comment: res.data.comment
-                })
+                if (res.data.flag === 1) {
+                    that.setData({
+                        comment: res.data.comment
+                    })
+                }
+                else {
+                    wx.showToast({
+                        title: res.data.errMsg[0],
+                        icon: "none"
+                    })
+                }
             }
         })
     },
@@ -188,49 +216,49 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
+    onHide: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+    onUnload: function () {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+    onReachBottom: function () {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     }
 })
