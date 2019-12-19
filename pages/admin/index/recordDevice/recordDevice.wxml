@@ -1,15 +1,15 @@
 <form bindsubmit="submit">
     <view class="inputs">
         <text>设备ID</text>
-        <input type="text" placeholder="请填写设备ID" placeholder-class="placeholder" name="d_no"></input>
+        <input maxlength="20" type="text" placeholder="请填写设备ID" placeholder-class="placeholder" name="d_no"></input>
     </view>
     <view class="inputs">
         <text>设备名称</text>
-        <input type="text" placeholder="请填写设备名称" name="d_name"></input>
+        <input maxlength="20" type="text" placeholder="请填写设备名称" name="d_name"></input>
     </view>
     <view class="inputs">
         <text>设备型号</text>
-        <input type="text" placeholder="请填写设备型号" name="d_model"></input>
+        <input maxlength="20" type="text" placeholder="请填写设备型号" name="d_model"></input>
     </view>
     <view class="inputs">
         <text>设备状态</text>
@@ -21,11 +21,11 @@
     </view>
     <view class="inputs">
         <text>存放场地</text>
-        <input type="text" placeholder="请填写存放场地" name="d_saveSite"></input>
+        <input maxlength="20" type="text" placeholder="请填写存放场地" name="d_saveSite"></input>
     </view>
     <view class="inputs">
         <text>工厂编号</text>
-        <input type="text" placeholder="请填写工厂编号" name="d_factoryNo"></input>
+        <input maxlength="20" type="text" placeholder="请填写工厂编号" name="d_factoryNo"></input>
     </view>
     <view class="inputs">
         <text>入库日期</text>

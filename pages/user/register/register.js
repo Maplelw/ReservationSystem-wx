@@ -102,6 +102,15 @@ Page({
         }
         return flag
     },
+    // 校验邮箱
+    checkEmail(email) {
+        var re = /^[\w\.]+@\w+\.\w+$/;
+        if(re.test(email)){
+            return true
+        }
+        else 
+            return false
+    },
 
     // 提交
     formSubmit: function(e) {
@@ -139,7 +148,12 @@ Page({
             this.setData({
                 errorMsg: "导师手机不能为空"
             })
-        } else {
+        } else if(!that.checkEmail(e.detail.value.u_email)) {
+            this.setData({
+                errorMsg: "邮箱格式错误"
+            })
+        }
+        else {
             // 校验验证码
             console.log("正确验证码：" + this.data.verifyCode);
             console.log("输入验证码：" + e.detail.value.securityCode);

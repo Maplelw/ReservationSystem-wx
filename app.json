@@ -1,10 +1,9 @@
 {
     "pages": [
         "pages/login/login",
-
         "pages/test/test",
         "pages/user/mine/message/message",
-        "pages/admin/index/management/management",
+        
         "pages/user/index/index",
         "pages/admin/index/index",
         
@@ -23,7 +22,7 @@
         "pages/user/mine/feedback/feedback",
         
 
-
+        "pages/admin/index/management/management",
         "pages/admin/index/feedback/feedback",
         "pages/admin/index/feedback/reply/reply",
         "pages/admin/index/checkReservation/chooseReservation/chooseReservation",
