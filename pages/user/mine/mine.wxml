@@ -43,7 +43,7 @@
     <navigator class="options" url="/pages/user/mine/borrowed/borrowed">
         <view class="img_text">
             <image src="/img/mine/borrowed.png" class="icon"></image>
-            <text>已借设备</text>
+            <text>借用记录</text>
         </view>
         <image src="/img/mine/arrow.png" class="arrow"></image>
     </navigator>
