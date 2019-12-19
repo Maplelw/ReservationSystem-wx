@@ -105,7 +105,6 @@ Page({
 
     // 提交
     formSubmit: function(e) {
-        var  a = new RegExp
         var that = this;
         // 校验不能为空
         if (e.detail.value.u_name == "") {

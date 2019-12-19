@@ -1,4 +1,3 @@
 <view class="login">
-    <image src="/img/global/login.png"></image>
-    <view>登录中</view>
+    <image src="/img/user/index2.jpg"></image>
 </view>
