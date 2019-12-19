@@ -24,6 +24,6 @@
         </view>
     </view>
     <view class="buttons">
-        <text bindtap="confirm" data-index="{{index}}" style="background-color: #607D8B; color:#ffffff; border-radius:15%">确认归还</text>
+        <text bindtap="confirm" data-index="{{index}}" style="background-color: #89AFD4; color:#ffffff; border-radius:5px">确认归还</text>
     </view>
 </view>

@@ -22,10 +22,10 @@ Page({
                     wx.request({
                         url: remindOverDue,
                         data: {
-                            b_no: this.data.borrow[e.currentTarget.dataset.index].b_no
+                            b_no: that.data.borrow[e.currentTarget.dataset.index].b_no
                         },
                         success: function (res) {
-                            if(res.data.flag === 1) {
+                            if(res.data.flag == 1) {
                                 console.log(res.data)
                             }
                             else {

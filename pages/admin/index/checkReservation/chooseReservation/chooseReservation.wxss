@@ -107,15 +107,14 @@ page {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: rgb(45, 154, 167)
+    color: rgba(18, 150, 219, 1)
 }
 
 .all .buttons {
     display: flex;
     justify-content: flex-end;
-    margin-top: 10rpx;
+    margin-top: 30rpx;
     /* border-bottom: 25rpx solid #eee; */
-    padding-bottom: 20rpx;
 }
 
 .all .buttons text {

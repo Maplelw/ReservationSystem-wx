@@ -19,9 +19,9 @@ Page({
         var that = this;
         console.log("开始时间：" + that.data.startDate)
         console.log("开始时间：" + that.data.returnDate)
-        if (that.data.startDate > that.data.returnDate) {
+        if (that.data.startDate >= that.data.returnDate) {
             wx.showToast({
-                title: '归还时间必须在借用时间之后',
+                title: '归还时间必须在借用时间之后,且借用时间必须大于一天',
                 icon: "none"
             })
         } else {
@@ -93,12 +93,15 @@ Page({
      */
     onLoad: function(options) {
         // 获取今天
-        var date = getDate(new Date());
-        console.log(date + 1)
+        var t = new Date()
+        var curDate = getDate(t);
+        var nextDate = getDate(new Date(t.getTime() + 24 * 60 * 60 * 1000));
+        console.log("今天" + curDate)
+        console.log("后一天" + nextDate)
         this.setData({
-            currentDate: date,
-            startDate: date,
-            returnDate: date,
+            currentDate: curDate,
+            startDate: curDate,
+            returnDate: nextDate,
             d_no: options.d_no
         })
         console.log('上个页面传来的设备编号' + this.data.d_no)

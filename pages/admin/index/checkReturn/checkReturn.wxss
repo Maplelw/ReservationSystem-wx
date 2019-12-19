@@ -64,7 +64,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: rgb(45, 154, 167);
+    color: rgba(18, 150, 219, 1);
 }
 
 .buttons {

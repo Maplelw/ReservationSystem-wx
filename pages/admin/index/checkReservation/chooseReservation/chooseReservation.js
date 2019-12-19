@@ -1,7 +1,7 @@
 let reservationDetail = require('../../../../../global/global.js').reservationDetail;
 let rejectReservation = require('../../../../../global/global.js').rejectReservation;
 let confirmReservation = require('../../../../../global/global.js').confirmReservation;
-let editReservation = require('../../../../../global/global.js').editReservation;
+let editReservation = require('../../../../../global/global.js').editReservation; 
 Page({
 
     /**
@@ -9,15 +9,15 @@ Page({
      */
     data: {
         isShow: false, // 是否弹出修改事件框
-        new_startDate: "", // 修改后借用时间
-        new_returnDate: "", // 修改归还时间
-        d_no: "", //上个页面的参数
-        d_name: "", //上个页面的参数
-        d_photo: "", //上个页面的参数
+        new_startDate: "",// 修改后借用时间
+        new_returnDate: "",// 修改归还时间
+        d_no:"",//上个页面的参数
+        d_name: "",//上个页面的参数
+        d_photo: "",//上个页面的参数
         feedback: "",
         reservation: []
     },
-    //弹窗
+//弹窗
     // 弹窗：管理员修改借用时间
     changeDate: function(e) {
         var index = e.currentTarget.dataset.index
@@ -29,79 +29,96 @@ Page({
         })
     },
     // 弹窗：取消
-    hideWindow: function(e) {
+    hideWindow: function (e) {
         this.setData({
             isShow: false
         })
     },
     // 修改开始时间
-    startChange: function(e) {
+    startChange: function (e) {
         console.log(e.detail.value);
         this.setData({
             new_startDate: e.detail.value
         })
     },
     // 修改归还时间
-    returnChange: function(e) {
+    returnChange: function (e) {
         console.log(e.detail.value);
         this.setData({
             new_returnDate: e.detail.value
         })
     },
     //弹窗： 获取反馈信息
-    getFeedback(e) {
+    getFeedback (e) {
         this.setData({
             feedback: e.detail.value
         })
     },
-
+    
     // 提交修改
-    submitChange: function(e) {
+    submitChange: function (e) {
         var index = e.currentTarget.dataset.index
         var that = this;
-        wx.login({
-            success(res) {
-                wx.request({
-                    url: editReservation,
-                    method: 'POST',
-                    header: {
-                        "content-type": "application/x-www-form-urlencoded"
-                    },
-                    data: {
-                        r_no: that.data.reservation[index].r_no,
-                        startDate: that.data.new_startDate,
-                        returnDate: that.data.new_returnDate,
-                        feedBack: that.data.feedback,
-                    },
-                    success(res) {
-                        if (res.data.flag === 1) {
-                            console.log(res.data)
-                            // 关闭弹窗
-                            that.setData({
-                                isShow: false
-                            })
-                            that.onShow()
-                        } else {
-                            wx.showToast({
-                                title: res.data.errMsg[0],
-                                icon: "none"
-                            })
+        if (that.data.new_startDate >= that.data.new_returnDate) {
+            wx.showToast({
+                title: '归还时间必须在借用时间之后,且借用时间必须大于一天',
+                icon: "none"
+            })
+        }
+        else {
+            wx.showLoading({
+                title: '提交中',
+                mask: true
+            })
+            wx.login({
+                success(res) {
+                    wx.request({
+                        url: editReservation,
+                        method: 'POST',
+                        header: {
+                            "content-type": "application/x-www-form-urlencoded"
+                        },
+                        data: {
+                            r_no: that.data.reservation[index].r_no,
+                            startDate: that.data.new_startDate,
+                            returnDate: that.data.new_returnDate,
+                            feedBack: that.data.feedback,
+                        },
+                        success(res) {
+                            if (res.data.flag == 1) {
+                                console.log(res.data)
+                                wx.hideLoading()
+                                // 关闭弹窗
+                                that.setData({
+                                    isShow: false
+                                })
+                                that.data.reservation.splice(e.currentTarget.dataset.index, 1)
+                                that.setData({
+                                    reservation: that.data.reservation
+                                })
+                            }
+                            else {
+                                wx.showToast({
+                                    title: res.data.errMsg[0],
+                                    icon: "none"
+                                })
+                            }
                         }
-                    }
-                })
-            }
-        })
+                    })
+                }
+            })
+        } 
     },
 
     //拒绝租借按钮
-    reject: function(e) {
+    reject: function (e) {
         var r_no = this.data.reservation[e.currentTarget.dataset.index].r_no
         wx.navigateTo({
             url: '/pages/admin/index/checkReservation/chooseReservation/refuseFeedback/refuseFeedback' + "?r_no=" + r_no,
         })
     },
     //确认租借按钮
-    confirm: function(e) {
+    confirm: function (e) {
         var that = this;
         wx.showModal({
             title: '提示',
@@ -119,22 +136,22 @@ Page({
                         header: {
                             "content-type": "application/x-www-form-urlencoded"
                         },
-                        success: function(res) {
+                        success: function (res) {
                             console.log(res.data)
-                            if (res.data.flag == 1) {
+                            if(res.data.flag == 1) {
                                 that.data.reservation.splice(e.currentTarget.dataset.index, 1)
                                 that.setData({
                                     reservation: that.data.reservation
                                 })
-                            } else {
+                            }
+                            else {
                                 wx.showToast({
                                     title: res.data.errMsg[0],
                                     icon: "none",
                                 })
                             }
-
                         },
-                        fail: function(res) {
+                        fail: function (res) {
                             console.log("请求失败")
                         },
                     })
@@ -147,13 +164,13 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
-        console.log("上一页面发送的设备编号:" + options.d_no)
+    onLoad: function (options) {
+        console.log( "上一页面发送的设备编号:" + options.d_no)
         console.log("上一页面发送的设备名称:" + options.d_name)
         console.log("上一页面发送的设备名称:" + options.d_photo)
         this.setData({
             d_no: options.d_no,
-            d_name: options.d_name,
+            d_name : options.d_name,
             d_photo: options.d_photo
         })
     },
@@ -161,36 +178,43 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
         var that = this
         wx.request({
             url: reservationDetail,
             data: {
                 d_no: that.data.d_no
             },
-            success: function(res) {
-                if (res.data.flag === 1) {
+            method: 'POST',
+            header: {
+                "content-type": "application/x-www-form-urlencoded"
+            },
+            success: function (res) {
+                console.log(res.data)
+                if(res.data.flag == 1) {
                     console.log("获取具体设备的申请信息\n")
                     console.log(res.data)
                     that.setData({
                         reservation: res.data.reservation,
                     })
-                } else {
+                } 
+                else {
+                    console.log(1)
                     wx.showToast({
                         title: res.data.errMsg[0],
                         icon: "none"
                     })
                 }
             },
-            fail: function(res) {
-                consolo.log("请求失败")
+            fail: function (res) {
+                console.log("请求失败")
             },
         })
     },
@@ -198,35 +222,35 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
+    onHide: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+    onUnload: function () {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+    onReachBottom: function () {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     }
 })

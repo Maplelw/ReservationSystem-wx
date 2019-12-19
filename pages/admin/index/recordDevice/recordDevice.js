@@ -13,12 +13,33 @@ Page({
             d_storeDate: e.detail.value
         })
     },
+    // 校验
+    // 校验设备No
+    checkNo(no) {
+        var re = /^\w*$/
+        if(re.test(no)) 
+            return true
+        else
+            return false
+    },
 
     // 提交设备
     submit(e) {
         var that = this
         var datas = e.detail.value
-        if (datas.d_no != '' && datas.d_name != '' && datas.d_model != '' && datas.d_state != '' && datas.d_saveSite != '' && datas.d_storeDate != '' && datas.d_factoryNo != '') {
+        if (datas.d_no == '' || datas.d_name == '' || datas.d_model == '' || datas.d_state == '' || datas.d_saveSite == '' || datas.d_storeDate == '' || datas.d_factoryNo == '') {
+            wx.showToast({
+                title: '信息不能为空',
+                icon: "none"
+            })
+        }
+        else if(!that.checkNo(datas.d_no)) {
+            wx.showToast({
+                title: '设备编号必须是英文字母或数字，不能含有特殊字符、中文',
+                icon: "none"
+            })
+        }
+        else {
             wx.showLoading({
                 title: '提交中',
                 mask: true
@@ -62,13 +83,6 @@ Page({
                 }
             })
         }
-        else {
-            wx.showToast({
-                title: '信息不能为空',
-                icon: "none"
-            })
-        }
-        
     },
     uploadImg: function () {
         wx.chooseImage({

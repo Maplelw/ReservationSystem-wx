@@ -1,7 +1,7 @@
 <form bindsubmit="submit">
     <view class="inputs">
-        <text>设备ID</text>
-        <input maxlength="20" type="text" placeholder="请填写设备ID" placeholder-class="placeholder" name="d_no"></input>
+        <text>设备编号</text>
+        <input maxlength="20" type="text" placeholder="请填写设备编号" placeholder-class="placeholder" name="d_no"></input>
     </view>
     <view class="inputs">
         <text>设备名称</text>

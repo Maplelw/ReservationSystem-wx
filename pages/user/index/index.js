@@ -64,10 +64,16 @@ Page({
                     },
                     success(res) {
                         console.log(res.data)
-                        if (res.data.flag === 1) {
+                        if (res.data.flag == 1) {
+                            if (res.data.errMsg == "当前无未读消息")
                             that.setData({
-                                messages: res.data.messageList,
+                                messages: null,
                             })
+                            else {
+                                that.setData({
+                                    messages: res.data.messageList,
+                                })
+                            }
                         }
                         else {
                             wx.showToast({

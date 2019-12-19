@@ -33,7 +33,7 @@
         "pages/admin/index/checkReservation/checkReservation",
         "pages/admin/index/changeDevice/changeDevice",
         "pages/admin/index/changeDevice/changeDetail/changeDetail",
-        "pages/admin/index/recordDevice/recordDevice",
+        
         "pages/admin/mine/mine"
         
     ],
