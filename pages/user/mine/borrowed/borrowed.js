@@ -60,19 +60,11 @@ Page({
                         },
                         success(res) {
                             console.log(res.data)
-                            if (res.data.flag === 1) {
-                                that.setData({
-                                    img: res.data,
-                                    isTrue: true
-                                })
+                            that.setData({
+                                img: res.data,
+                                isTrue: true
+                            })
                             }
-                            else {
-                                wx.showToast({
-                                    title: res.data.errMsg[0],
-                                    icon: "none"
-                                })
-                            }
-                        }
                     })
                 }
             })
