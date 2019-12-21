@@ -64,7 +64,7 @@ Page({
                                 img: res.data,
                                 isTrue: true
                             })
-                            }
+                        }
                     })
                 }
             })

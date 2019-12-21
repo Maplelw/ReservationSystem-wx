@@ -59,6 +59,8 @@ Page({
     submitChange: function (e) {
         var index = e.currentTarget.dataset.index
         var that = this;
+        console.log("开始时间："  + that.data.new_startDate)
+        console.log("结束时间：" + that.data.new_returnDate)
         if (that.data.new_startDate >= that.data.new_returnDate) {
             wx.showToast({
                 title: '归还时间必须在借用时间之后,且借用时间必须大于一天',
@@ -167,7 +169,7 @@ Page({
     onLoad: function (options) {
         console.log( "上一页面发送的设备编号:" + options.d_no)
         console.log("上一页面发送的设备名称:" + options.d_name)
-        console.log("上一页面发送的设备名称:" + options.d_photo)
+        console.log("上一页面发送的图片路径:" + options.d_photo)
         this.setData({
             d_no: options.d_no,
             d_name : options.d_name,

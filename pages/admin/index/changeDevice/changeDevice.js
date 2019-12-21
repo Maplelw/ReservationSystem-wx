@@ -27,7 +27,8 @@ Page({
         var that = this
         console.log("提交内容:" + e.detail.value)
         that.setData({
-            searchPage: 1
+            searchPage: 1,
+            searchDevice: null
         })
         wx.login({
             success: function (res) {
@@ -44,7 +45,7 @@ Page({
                     },
                     success: function (res) {
                         console.log(res.data)
-                        if(res.data.flag === 1 ) {
+                        if(res.data.flag == 1 ) {
                             that.setData({
                                 searchDevice: res.data.device,
                                 searchPage: that.data.searchPage + 1,
@@ -240,7 +241,7 @@ Page({
                     },
                     success: function (res) {
                         console.log(res.data)
-                        if (res.data.flag === 0) {
+                        if (res.data.flag == 0) {
                             that.setData({
                                 searchFlag: 1
                             })
