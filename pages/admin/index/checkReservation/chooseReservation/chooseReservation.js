@@ -2,6 +2,7 @@ let reservationDetail = require('../../../../../global/global.js').reservationDe
 let rejectReservation = require('../../../../../global/global.js').rejectReservation;
 let confirmReservation = require('../../../../../global/global.js').confirmReservation;
 let editReservation = require('../../../../../global/global.js').editReservation; 
+var getDate = require('../../../../../utils/util.js').formatDate;
 Page({
 
     /**
@@ -61,7 +62,9 @@ Page({
         var that = this;
         console.log("开始时间："  + that.data.new_startDate)
         console.log("结束时间：" + that.data.new_returnDate)
-        if (that.data.new_startDate >= that.data.new_returnDate) {
+        var curDate = getDate(new Date) 
+        console.log(curDate)
+        if (that.data.new_startDate >= that.data.new_returnDate || that.data.new_startDate < curDate) {
             wx.showToast({
                 title: '归还时间必须在借用时间之后,且借用时间必须大于一天',
                 icon: "none"
@@ -151,6 +154,7 @@ Page({
                                     title: res.data.errMsg[0],
                                     icon: "none",
                                 })
+                                that.onShow()
                             }
                         },
                         fail: function (res) {
@@ -208,10 +212,8 @@ Page({
                     })
                 } 
                 else {
-                    console.log(1)
-                    wx.showToast({
-                        title: res.data.errMsg[0],
-                        icon: "none"
+                    that.setData({
+                        reservation: null
                     })
                 }
             },

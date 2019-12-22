@@ -52,6 +52,12 @@ Page({
                 searchResult.push(borrow[i])
             }
         }
+        if (searchResult.length == 0) {
+            wx.showToast({
+                title: '没有搜索到该设备',
+                icon: "none"
+            })
+        }
         this.setData({
             showList: searchResult
         })

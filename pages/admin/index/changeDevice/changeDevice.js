@@ -28,7 +28,8 @@ Page({
         console.log("提交内容:" + e.detail.value)
         that.setData({
             searchPage: 1,
-            searchDevice: null
+            searchDevice: null,
+            choice: "search"
         })
         wx.login({
             success: function (res) {

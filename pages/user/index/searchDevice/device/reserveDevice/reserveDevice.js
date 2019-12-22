@@ -51,14 +51,16 @@ Page({
                                 if (res.data.flag === 0) {
                                     wx.showToast({
                                         title: res.data.errMsg[0],
-                                        icon: 'none',
+                                        icon: "none",
                                     })
                                 } else {
                                     wx.showToast({
                                         title: '预约成功',
-                                    })
-                                    wx.reLaunch({
-                                        url: '/pages/user/index/index',
+                                        success() {
+                                            wx.reLaunch({
+                                                url: '/pages/user/index/index',
+                                            })
+                                        }
                                     })
                                 }
                             }

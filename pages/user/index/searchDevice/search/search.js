@@ -27,7 +27,9 @@ Page({
         var that = this
         console.log("提交内容:" + e.detail.value)
         that.setData({
-            searchPage: 1
+            searchPage: 1,
+            searchDevice: null,
+            choice: "search"
         })
         wx.login({
             success: function (res) {
@@ -51,6 +53,9 @@ Page({
                             })
                         }
                         else {
+                            that.setData({
+                                searchDevice: null,  
+                            })
                             wx.showToast({
                                 title: res.data.errMsg[0],
                                 icon: "none"

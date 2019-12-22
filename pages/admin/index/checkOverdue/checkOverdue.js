@@ -24,6 +24,10 @@ Page({
                         data: {
                             b_no: that.data.borrow[e.currentTarget.dataset.index].b_no
                         },
+                        method: 'POST',
+                        header: {
+                            "content-type": "application/x-www-form-urlencoded"
+                        },
                         success: function (res) {
                             if(res.data.flag == 1) {
                                 console.log(res.data)
@@ -63,6 +67,7 @@ Page({
                         'content-type': 'application/x-www-form-urlencoded'
                     },
                     success: function (res) {
+                        console.log(res.data)
                         if(res.data.flag === 1) {
                             console.log(res.data)
                             that.setData({

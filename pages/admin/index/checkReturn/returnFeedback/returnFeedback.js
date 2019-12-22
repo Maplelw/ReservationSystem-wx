@@ -33,8 +33,15 @@ Page({
                         }
                         else {
                             wx.showToast({
-                                title: res.flag.errMsg[0],
-                                icon: "none"
+                                title: res.data.errMsg[0],
+                                icon: "none",
+                                duration: 1000,
+                                success() {
+                                    setTimeout(function(){
+                                        wx:wx.navigateBack({})
+                                    },2000)
+                                    
+                                }
                             })
                         }
                     }

@@ -111,6 +111,15 @@ Page({
         else 
             return false
     },
+    // 校验邮箱
+    checkNo(no) {
+        var re = /^\d*$/;
+        if (re.test(no)) {
+            return true
+        }
+        else
+            return false
+    },
 
     // 提交
     formSubmit: function(e) {
@@ -151,6 +160,11 @@ Page({
         } else if(!that.checkEmail(e.detail.value.u_email)) {
             this.setData({
                 errorMsg: "邮箱格式错误"
+            })
+        }
+        else if (!that.checkNo(e.detail.value.u_no)) {
+            this.setData({
+                errorMsg: "学号/工号必须为数字"
             })
         }
         else {

@@ -203,12 +203,6 @@ Page({
                         comment: res.data.comment
                     })
                 }
-                else {
-                    wx.showToast({
-                        title: res.data.errMsg[0],
-                        icon: "none"
-                    })
-                }
             }
         })
     },

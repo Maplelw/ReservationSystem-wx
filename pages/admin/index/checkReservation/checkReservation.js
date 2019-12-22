@@ -14,6 +14,8 @@ Page({
         var d_no = this.data.device[param].d_no;
         var d_name = this.data.device[param].d_name;
         var d_photo = this.data.device[param].d_photo;
+        if (this.data.device[param].d_photo == undefined)
+            d_photo = ''
         wx.navigateTo({
             url: '/pages/admin/index/checkReservation/chooseReservation/chooseReservation' + '?d_no=' + d_no +　"&d_name=" + d_name + "&d_photo=" + d_photo
         })
