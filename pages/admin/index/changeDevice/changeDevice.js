@@ -71,7 +71,11 @@ Page({
 //获取设备的具体信息
     getDetails: function(e) {
         var t = e.currentTarget.dataset.index;
-        var d_no = this.data.allDevice[t].d_no;
+        var d_no
+        if (this.data.choice === 'all')
+            d_no = this.data.allDevice[t].d_no
+        else
+            d_no = this.data.searchDevice[t].d_no;
         console.log("编号：" + d_no)
         wx.navigateTo({
             url: 'changeDetail/changeDetail' + '?d_no=' + d_no,

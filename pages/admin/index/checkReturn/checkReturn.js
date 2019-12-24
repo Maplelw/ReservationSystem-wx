@@ -28,7 +28,7 @@ Page({
     //确认归还按钮
     confirm: function (e) {
         var that = this
-        var b_no = that.data.borrow[e.currentTarget.dataset.index].b_no
+        var b_no = that.data.showList[e.currentTarget.dataset.index].b_no
         wx.navigateTo({
             url: 'returnFeedback/returnFeedback' + '?b_no=' + b_no,
         })
