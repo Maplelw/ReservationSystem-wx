@@ -64,182 +64,190 @@ Page({
     submitChange() {
         var that = this
         console.log(this.data.inputValue)
-        if (this.data.topic === "修改姓名") {
-            console.log("修改姓名:" + this.data.inputValue)
-            wx.login({
-                success: function(res) {
-                    wx.request({
-                        url: editUserInfo,
-                        data: {
-                            u_no: that.data.user.u_no,
-                            u_name: that.data.inputValue
-                        },
-                        method: 'POST',
-                        header: {
-                            'content-type': 'application/x-www-form-urlencoded'
-                        },
-                        success: function(res) {
-                            console.log(res.data)
-                            if (res.data.flag == 1) {
-                                that.refresh() //重新加载
-                                that.setData({
-                                    isWindowShow: false
-                                })
-                            }
-                            else {
-                                wx.showToast({
-                                    title: res.data.errMsg[0],
-                                    icon: "none"
-                                })
-                            } 
-                        },
-                        fail: function(res) {
-                            console.log("请求失败")
-                        },
-                    })
-                }
+        if(that.data.inputValue == '') {
+            wx.showToast({
+                title: '输入不能为空',
+                icon: "none"
             })
-        } else if (this.data.topic === "修改手机") {
-            console.log("修改手机:" + this.data.inputValue)
-            wx.login({
-                success: function(res) {
-                    wx.request({
-                        url: editUserInfo,
-                        data: {
-                            u_no: that.data.user.u_no,
-                            u_phone: that.data.inputValue
-                        },
-                        method: 'POST',
-                        header: {
-                            'content-type': 'application/x-www-form-urlencoded'
-                        },
-                        success: function(res) {
-                            console.log(res.data)
-                            if (res.data.flag === 1) {
-                                that.refresh() //重新加载
-                                that.setData({
-                                    isWindowShow: false
-                                })
-                            }
-                            else {
-                                wx.showToast({
-                                    title: res.data.errMsg[0],
-                                    icon: "none"
-                                })
-                            }
-                        },
-                        fail: function(res) {
-                            console.log("请求失败")
-                        },
-                    })
-                }
-            })
-        } else if (this.data.topic === "修改邮箱") {
-            console.log("修改邮箱:" + this.data.inputValue)
-            wx.login({
-                success: function(res) {
-                    wx.request({
-                        url: editUserInfo,
-                        data: {
-                            u_no: that.data.user.u_no,
-                            u_email: that.data.inputValue
-                        },
-                        method: 'POST',
-                        header: {
-                            'content-type': 'application/x-www-form-urlencoded'
-                        },
-                        success: function(res) {
-                            console.log(res.data)
-                            if (res.data.flag === 1) {
-                                that.refresh() //重新加载
-                                that.setData({
-                                    isWindowShow: false
-                                })
-                            }
-                            else {
-                                wx.showToast({
-                                    title: res.data.errMsg[0],
-                                    icon: "none"
-                                })
-                            }
-                            
-                        },
-                        fail: function(res) {
-                            console.log("请求失败")
-                        },
-                    })
-                }
-            })
-        } else if (this.data.topic === "修改导师姓名") {
-            console.log("修改导师姓名:" + this.data.inputValue)
-            wx.login({
-                success: function(res) {
-                    wx.request({
-                        url: editUserInfo,
-                        data: {
-                            u_no: that.data.user.u_no,
-                            u_mentorName: that.data.inputValue
-                        },
-                        method: 'POST',
-                        header: {
-                            'content-type': 'application/x-www-form-urlencoded'
-                        },
-                        success: function(res) {
-                            console.log(res.data)
-                            if (res.data.flag == 1) {
-                                that.refresh() //重新加载
-                                that.setData({
-                                    isWindowShow: false
-                                })
-                            }
-                            else {
-                                wx.showToast({
-                                    title: res.data.errMsg[0],
-                                    icon: "none"
-                                })
-                            }
-                        },
-                        fail: function(res) {
-                            console.log("请求失败")
-                        },
-                    })
-                }
-            })
-        } else if (this.data.topic === "修改导师电话") {
-            console.log("修改导师电话:" + this.data.inputValue)
-            wx.login({
-                success: function(res) {
-                    wx.request({
-                        url: editUserInfo,
-                        data: {
-                            u_no: that.data.user.u_no,
-                            u_mentorPhone: that.data.inputValue
-                        },
-                        method: 'POST',
-                        header: {
-                            'content-type': 'application/x-www-form-urlencoded'
-                        },
-                        success: function(res) {
-                            console.log(res.data)
-                            if (res.data.flag == 1) {
-                                that.refresh() //重新加载
-                                that.setData({
-                                    isWindowShow: false
-                                })
-                            }
-                            else {
-                                wx.showToast({
-                                    title: res.data.errMsg[0],
-                                    icon: "none"
-                                })
-                            }
-                        },
-                        fail: function(res) {
-                            console.log("请求失败")
-                        },
-                    })
-                }
-            })
+        }
+        else {
+            if (this.data.topic === "修改姓名") {
+                console.log("修改姓名:" + this.data.inputValue)
+                wx.login({
+                    success: function (res) {
+                        wx.request({
+                            url: editUserInfo,
+                            data: {
+                                u_no: that.data.user.u_no,
+                                u_name: that.data.inputValue
+                            },
+                            method: 'POST',
+                            header: {
+                                'content-type': 'application/x-www-form-urlencoded'
+                            },
+                            success: function (res) {
+                                console.log(res.data)
+                                if (res.data.flag == 1) {
+                                    that.refresh() //重新加载
+                                    that.setData({
+                                        isWindowShow: false
+                                    })
+                                }
+                                else {
+                                    wx.showToast({
+                                        title: res.data.errMsg[0],
+                                        icon: "none"
+                                    })
+                                }
+                            },
+                            fail: function (res) {
+                                console.log("请求失败")
+                            },
+                        })
+                    }
+                })
+            } else if (this.data.topic === "修改手机") {
+                console.log("修改手机:" + this.data.inputValue)
+                wx.login({
+                    success: function (res) {
+                        wx.request({
+                            url: editUserInfo,
+                            data: {
+                                u_no: that.data.user.u_no,
+                                u_phone: that.data.inputValue
+                            },
+                            method: 'POST',
+                            header: {
+                                'content-type': 'application/x-www-form-urlencoded'
+                            },
+                            success: function (res) {
+                                console.log(res.data)
+                                if (res.data.flag === 1) {
+                                    that.refresh() //重新加载
+                                    that.setData({
+                                        isWindowShow: false
+                                    })
+                                }
+                                else {
+                                    wx.showToast({
+                                        title: res.data.errMsg[0],
+                                        icon: "none"
+                                    })
+                                }
+                            },
+                            fail: function (res) {
+                                console.log("请求失败")
+                            },
+                        })
+                    }
+                })
+            } else if (this.data.topic === "修改邮箱") {
+                console.log("修改邮箱:" + this.data.inputValue)
+                wx.login({
+                    success: function (res) {
+                        wx.request({
+                            url: editUserInfo,
+                            data: {
+                                u_no: that.data.user.u_no,
+                                u_email: that.data.inputValue
+                            },
+                            method: 'POST',
+                            header: {
+                                'content-type': 'application/x-www-form-urlencoded'
+                            },
+                            success: function (res) {
+                                console.log(res.data)
+                                if (res.data.flag === 1) {
+                                    that.refresh() //重新加载
+                                    that.setData({
+                                        isWindowShow: false
+                                    })
+                                }
+                                else {
+                                    wx.showToast({
+                                        title: res.data.errMsg[0],
+                                        icon: "none"
+                                    })
+                                }
+
+                            },
+                            fail: function (res) {
+                                console.log("请求失败")
+                            },
+                        })
+                    }
+                })
+            } else if (this.data.topic === "修改导师姓名") {
+                console.log("修改导师姓名:" + this.data.inputValue)
+                wx.login({
+                    success: function (res) {
+                        wx.request({
+                            url: editUserInfo,
+                            data: {
+                                u_no: that.data.user.u_no,
+                                u_mentorName: that.data.inputValue
+                            },
+                            method: 'POST',
+                            header: {
+                                'content-type': 'application/x-www-form-urlencoded'
+                            },
+                            success: function (res) {
+                                console.log(res.data)
+                                if (res.data.flag == 1) {
+                                    that.refresh() //重新加载
+                                    that.setData({
+                                        isWindowShow: false
+                                    })
+                                }
+                                else {
+                                    wx.showToast({
+                                        title: res.data.errMsg[0],
+                                        icon: "none"
+                                    })
+                                }
+                            },
+                            fail: function (res) {
+                                console.log("请求失败")
+                            },
+                        })
+                    }
+                })
+            } else if (this.data.topic === "修改导师电话") {
+                console.log("修改导师电话:" + this.data.inputValue)
+                wx.login({
+                    success: function (res) {
+                        wx.request({
+                            url: editUserInfo,
+                            data: {
+                                u_no: that.data.user.u_no,
+                                u_mentorPhone: that.data.inputValue
+                            },
+                            method: 'POST',
+                            header: {
+                                'content-type': 'application/x-www-form-urlencoded'
+                            },
+                            success: function (res) {
+                                console.log(res.data)
+                                if (res.data.flag == 1) {
+                                    that.refresh() //重新加载
+                                    that.setData({
+                                        isWindowShow: false
+                                    })
+                                }
+                                else {
+                                    wx.showToast({
+                                        title: res.data.errMsg[0],
+                                        icon: "none"
+                                    })
+                                }
+                            },
+                            fail: function (res) {
+                                console.log("请求失败")
+                            },
+                        })
+                    }
+                })
+            }
         }
     },
     //重新加载

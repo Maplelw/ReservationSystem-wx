@@ -90,118 +90,126 @@ Page({
         var that = this
         var changeEntity
         // 判断需要修改的内容是什么
-        if (this.data.topic === "修改设备名称") {
-            console.log("修改设备名称:" + this.data.inputValue)
-            changeEntity = "d_name"
-            wx.login({
-                success: function (res) {
-                    wx.request({
-                        url: editDevice,
-                        data: {
-                            d_no: that.data.d_no,
-                            d_name: that.data.inputValue
-                        },
-                        method: 'POST',
-                        header: {
-                            'content-type': 'application/x-www-form-urlencoded'
-                        },
-                        success: function (res) {
-                            console.log(res.data)
-                            if (res.data.flag === 1) {
-                                that.refresh()
-                                that.setData({
-                                    isWindowShow: false
-                                })
-                            }
-                            else {
-                                wx.showToast({
-                                    title: res.data.errMsg[0],
-                                    icon: "none"
-                                })
-                            }
-                        },
-                        fail: function (res) {
-                            console.log("请求失败")
-                        },
-                    })
-                }
+        if(that.data.inputValue == '') {
+            wx.showToast({
+                title: '输入信息不能为空',
+                icon: "none"
             })
         }
-        else if (this.data.topic === "修改设备型号") {
-            console.log("修改设备型号:" + this.data.inputValue)
-            wx.login({
-                success: function (res) {
-                    wx.request({
-                        url: editDevice,
-                        data: {
-                            d_no: that.data.d_no,
-                            d_model: that.data.inputValue
-                        },
-                        method: 'POST',
-                        header: {
-                            'content-type': 'application/x-www-form-urlencoded'
-                        },
-                        success: function (res) {
-                            console.log(res.data)
-                            if (res.data.flag === 1) {
-                                that.refresh()
-                                that.setData({
-                                    isWindowShow: false
-                                })
-                            }                           
-                            else {
-                                wx.showToast({
-                                    title: res.data.errMsg[0],
-                                    icon: "none"
-                                })
-                            }
-                        },
-                        fail: function (res) {
-                            console.log("请求失败")
-                        },
-                    })
-                }
-            })
-        }
-        else if (this.data.topic === "修改设备状态") {
-            console.log("修改设备状态:" + this.data.inputValue)
-            changeEntity = "d_state"
-            wx.login({
-                success: function (res) {
-                    wx.request({
-                        url: editDevice,
-                        data: {
-                            d_no: that.data.d_no,
-                            d_state: that.data.inputValue
-                        },
-                        method: 'POST',
-                        header: {
-                            'content-type': 'application/x-www-form-urlencoded'
-                        },
-                        success: function (res) {
-                            console.log(res.data)
-                            if (res.data.flag === 1) {
-                                that.refresh()
-                                that.setData({
-                                    isWindowShow: false
-                                })
-                            }
-                            else {
-                                wx.showToast({
-                                    title: res.data.errMsg[0],
-                                    icon: "none"
-                                })
-                            }
-                        },
-                        fail: function (res) {
-                            console.log("请求失败")
-                        },
-                    })
-                }
-            })
+        else {
+            if (this.data.topic === "修改设备名称") {
+                console.log("修改设备名称:" + this.data.inputValue)
+                changeEntity = "d_name"
+                wx.login({
+                    success: function (res) {
+                        wx.request({
+                            url: editDevice,
+                            data: {
+                                d_no: that.data.d_no,
+                                d_name: that.data.inputValue
+                            },
+                            method: 'POST',
+                            header: {
+                                'content-type': 'application/x-www-form-urlencoded'
+                            },
+                            success: function (res) {
+                                console.log(res.data)
+                                if (res.data.flag === 1) {
+                                    that.refresh()
+                                    that.setData({
+                                        isWindowShow: false
+                                    })
+                                }
+                                else {
+                                    wx.showToast({
+                                        title: res.data.errMsg[0],
+                                        icon: "none"
+                                    })
+                                }
+                            },
+                            fail: function (res) {
+                                console.log("请求失败")
+                            },
+                        })
+                    }
+                })
+            }
+            else if (this.data.topic === "修改设备型号") {
+                console.log("修改设备型号:" + this.data.inputValue)
+                wx.login({
+                    success: function (res) {
+                        wx.request({
+                            url: editDevice,
+                            data: {
+                                d_no: that.data.d_no,
+                                d_model: that.data.inputValue
+                            },
+                            method: 'POST',
+                            header: {
+                                'content-type': 'application/x-www-form-urlencoded'
+                            },
+                            success: function (res) {
+                                console.log(res.data)
+                                if (res.data.flag === 1) {
+                                    that.refresh()
+                                    that.setData({
+                                        isWindowShow: false
+                                    })
+                                }
+                                else {
+                                    wx.showToast({
+                                        title: res.data.errMsg[0],
+                                        icon: "none"
+                                    })
+                                }
+                            },
+                            fail: function (res) {
+                                console.log("请求失败")
+                            },
+                        })
+                    }
+                })
+            }
+            else if (this.data.topic === "修改设备状态") {
+                console.log("修改设备状态:" + this.data.inputValue)
+                changeEntity = "d_state"
+                wx.login({
+                    success: function (res) {
+                        wx.request({
+                            url: editDevice,
+                            data: {
+                                d_no: that.data.d_no,
+                                d_state: that.data.inputValue
+                            },
+                            method: 'POST',
+                            header: {
+                                'content-type': 'application/x-www-form-urlencoded'
+                            },
+                            success: function (res) {
+                                console.log(res.data)
+                                if (res.data.flag === 1) {
+                                    that.refresh()
+                                    that.setData({
+                                        isWindowShow: false
+                                    })
+                                }
+                                else {
+                                    wx.showToast({
+                                        title: res.data.errMsg[0],
+                                        icon: "none"
+                                    })
+                                }
+                            },
+                            fail: function (res) {
+                                console.log("请求失败")
+                            },
+                        })
+                    }
+                })
+            }
         }
     },
-
+       
 // 上传图片
     //添加上传图片
     uploadImageTap: function () {
