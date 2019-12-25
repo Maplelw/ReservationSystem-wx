@@ -14,7 +14,7 @@
     </view>
     <!-- 评价内容框 -->
     <view class="feedback">
-        <textarea placeholder="请填写具体情况(可以不填)" name="feedbackContent"></textarea>
+        <textarea maxlength="80" placeholder="请填写具体情况(可以不填)" name="feedbackContent"></textarea>
     </view>
     <!-- 提交 -->
     <view class="submit">

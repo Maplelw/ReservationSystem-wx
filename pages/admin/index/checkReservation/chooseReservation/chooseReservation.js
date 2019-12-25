@@ -64,9 +64,21 @@ Page({
         console.log("结束时间：" + that.data.new_returnDate)
         var curDate = getDate(new Date) 
         console.log(curDate)
-        if (that.data.new_startDate >= that.data.new_returnDate || that.data.new_startDate < curDate) {
+        if (that.data.new_startDate < curDate) {
+            wx.showToast({
+                title: '借用时间必须从当前日期开始',
+                icon: "none"
+            })
+        }
+        else if (that.data.new_startDate >= that.data.new_returnDate ) {
             wx.showToast({
                 title: '归还时间必须在借用时间之后,且借用时间必须大于一天',
+                icon: "none"
+            })
+        }
+        else if(that.data.feedback == '') {
+            wx.showToast({
+                title: '请填写修改原因',
                 icon: "none"
             })
         }

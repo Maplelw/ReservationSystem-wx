@@ -6,7 +6,8 @@ Page({
      */
     data: {
         device: [],
-        page: 1
+        page: 1,
+        flag: 1 //是否已经到最后一个
     },
 
     getDetails: function(e) {
@@ -40,6 +41,9 @@ Page({
      */
     onShow: function () {
         var that = this;
+        that.setData({
+            device: null
+        })
         wx.login({
             success(res) {
                 wx.request({
@@ -50,14 +54,12 @@ Page({
                     },
                     data: {
                         code: res.code,
-                        page: that.data.page
                     },
                     success(res) {
                         console.log(res.data)
                         if(res.data.flag === 1) {
                             that.setData({
                                 device: res.data.device,
-                                page: that.data.page + 1
                             })
                         }
                         else {
@@ -97,7 +99,6 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
     },
 
     /**

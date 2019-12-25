@@ -29,7 +29,7 @@ Page({
         var datas = e.detail.value
         if (datas.d_no == '' || datas.d_name == '' || datas.d_model == '' || datas.d_state == '' || datas.d_saveSite == '' || datas.d_storeDate == '' || datas.d_factoryNo == '') {
             wx.showToast({
-                title: '信息不能为空',
+                title: '全部信息不能为空',
                 icon: "none"
             })
         }

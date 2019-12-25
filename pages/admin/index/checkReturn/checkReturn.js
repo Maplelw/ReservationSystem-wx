@@ -86,7 +86,10 @@ Page({
      */
     onShow: function () {
         var that = this
-        wx: wx.login({
+        that.setData({
+            showList: null
+        })
+        wx.login({
             success: function (res) {
                 wx.request({
                     url: handleBorrow,
@@ -106,11 +109,11 @@ Page({
                             })
                         }
                         else {
-                        wx.showToast({
-                            title: res.data.errMsg[0],
-                            icon: "none"
-                        })
-                    }
+                            wx.showToast({
+                                title: res.data.errMsg[0],
+                                icon: "none"
+                            })
+                        }
                     },
                     fail: function (res) {
                         console.log("请求失败")

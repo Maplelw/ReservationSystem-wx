@@ -59,7 +59,7 @@
                     </view>
                 </picker>
             </view>
-            <textarea bindinput="getFeedback" placeholder="请填写修改原因"></textarea>
+            <textarea maxlength="80" bindinput="getFeedback" placeholder="请填写修改原因（必须填写）"></textarea>
             <view class="buttons2">
                 <button bindtap="hideWindow">取消</button>
                 <button bindtap="submitChange" data-index="{{index}}" style="background-color:#89afd4;color:white">提交</button>

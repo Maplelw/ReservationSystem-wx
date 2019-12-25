@@ -1,5 +1,4 @@
-//const host ="http://yapi.demo.qunar.com/mock/35294";
-//const host = "http://localhost:8080/CampusDevice_war_exploded"
+//const host = "http://localhost:8080/CampusDevice"
 //const host = "http://49.235.73.29:8083/CampusDevice"
 const host = "https://www.tozsy.com/CampusDevice"
 const datas = {

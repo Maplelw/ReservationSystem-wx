@@ -31,6 +31,10 @@ Page({
                         success: function (res) {
                             if(res.data.flag == 1) {
                                 console.log(res.data)
+                                wx.showToast({
+                                    title: "已经向用户发送消息",
+                                    icon: "none"
+                                })
                             }
                             else {
                                 wx.showToast({

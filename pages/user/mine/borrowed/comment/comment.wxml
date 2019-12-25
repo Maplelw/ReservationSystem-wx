@@ -8,7 +8,7 @@
 
 <!-- 评价内容框 -->
 <view class="comment">
-    <textarea placeholder="请输入评价内容" bindinput="getComment"></textarea>
+    <textarea maxlength="33" placeholder="请输入评价内容" bindinput="getComment"></textarea>
 </view>
 
 <!-- 提交 -->

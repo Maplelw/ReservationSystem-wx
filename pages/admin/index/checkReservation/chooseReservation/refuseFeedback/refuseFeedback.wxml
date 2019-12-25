@@ -8,10 +8,11 @@
 
 <!-- 评价内容框 -->
 <view class="comment">
-    <textarea placeholder="请填写拒绝的理由" bindinput="getInput"></textarea>
+    <textarea maxlength="80" placeholder="请填写拒绝的理由" bindinput="getInput"></textarea>
 </view>
 
 <!-- 提交 -->
 <view class="submit">
-    <button bindtap="sendMessage">提交</button>
+    <button wx:if="{{message == ''}}" disabled="true" bindtap="sendMessage">提交</button>
+    <button wx:else bindtap="sendMessage">提交</button>
 </view>

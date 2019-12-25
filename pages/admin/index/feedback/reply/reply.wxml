@@ -8,7 +8,7 @@
 
 <!-- 评价内容框 -->
 <view class="feedback">
-    <textarea placeholder="请填写您的回复" bindinput="getreply"></textarea>
+    <textarea maxlength="80" placeholder="请填写您的回复" bindinput="getreply"></textarea>
 </view>
 
 <!-- 提交 -->

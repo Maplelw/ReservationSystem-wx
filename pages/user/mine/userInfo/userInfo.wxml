@@ -16,9 +16,8 @@
         <text class="icon" style="color:white">></text>
         <text class="content">{{user.u_no}}</text>
     </view>
-    <view class="piece" bindtap="changePhone">
+    <view class="piece">
         <text class="topic">手机</text>
-        <text class="icon">></text>
         <text class="content">{{user.u_phone}}</text>
     </view>
     <view class="piece" bindtap="changeEmail">
