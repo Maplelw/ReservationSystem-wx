@@ -11,6 +11,21 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+    
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function () {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function () {
+        console.log(1)
         var that = this
         wx.login({
             success(res) {
@@ -40,9 +55,10 @@ Page({
                             else { // 不存在
                                 console.log(res.data.academyList)
                                 var academyList = JSON.stringify(res.data.academyList)
-                                wx.navigateTo({
-                                    url: '/pages/user/register/register'
+                                wx.redirectTo({
+                                    url: '/pages/user/register/register',
                                 })
+                                
                             }
                         }
                         else {
@@ -55,20 +71,6 @@ Page({
                 })
             }
         })
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
     },
 
     /**

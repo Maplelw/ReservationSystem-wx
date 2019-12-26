@@ -12,6 +12,8 @@ Page({
         isShow: false, // 是否弹出修改事件框
         new_startDate: "",// 修改后借用时间
         new_returnDate: "",// 修改归还时间
+        curDate: "",
+        nextDate: "",
         d_no:"",//上个页面的参数
         d_name: "",//上个页面的参数
         d_photo: "",//上个页面的参数
@@ -186,10 +188,18 @@ Page({
         console.log( "上一页面发送的设备编号:" + options.d_no)
         console.log("上一页面发送的设备名称:" + options.d_name)
         console.log("上一页面发送的图片路径:" + options.d_photo)
+        // 获取今天
+        var t = new Date()
+        var curDate = getDate(t);
+        var nextDate = getDate(new Date(t.getTime() + 24 * 60 * 60 * 1000));
+        console.log("今天" + curDate)
+        console.log("后一天" + nextDate)
         this.setData({
             d_no: options.d_no,
             d_name : options.d_name,
-            d_photo: options.d_photo
+            d_photo: options.d_photo,
+            curDate: curDate,
+            nextDate: nextDate
         })
     },
 

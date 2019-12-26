@@ -45,7 +45,7 @@
         <view class="windowContent">
             <view class="borrow">
                 <text>借用时间</text>
-                <picker mode="date" value="{{item.r_startDate}}" bindchange="startChange">
+                <picker mode="date" value="{{item.r_startDate}}" start="{{curDate}}" bindchange="startChange">
                     <view class="pickTime">
                         <text>{{new_startDate}}</text>
                     </view>
@@ -53,7 +53,7 @@
             </view>
             <view class="borrow">
                 <text>归还时间</text>
-                <picker mode="date" value="{{item.r_returnDate}}" bindchange="returnChange">
+                <picker mode="date" value="{{item.r_returnDate}}" start="{{nextDate}}" bindchange="returnChange">
                     <view class="pickTime">
                         <text>{{new_returnDate}}</text>
                     </view>

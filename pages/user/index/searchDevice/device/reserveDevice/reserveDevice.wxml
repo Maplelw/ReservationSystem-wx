@@ -9,7 +9,7 @@
   </view>
   <view class="borrow">
     <text>归还时间</text>
-    <picker mode="date" value="{{currentDate}}" start="{{currentDate}}" bindchange="returnChange">
+    <picker mode="date" value="{{nextDate}}" start="{{nextDate}}" bindchange="returnChange">
         <view class="pickTime">
             <text>{{returnDate}}</text>
         </view>

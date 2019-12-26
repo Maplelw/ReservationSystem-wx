@@ -157,16 +157,17 @@ Page({
             this.setData({
                 errorMsg: "导师手机不能为空"
             })
-        } else if(!that.checkEmail(e.detail.value.u_email)) {
-            this.setData({
-                errorMsg: "邮箱格式错误"
-            })
-        }
+        } 
         else if (!that.checkNo(e.detail.value.u_no)) {
             this.setData({
                 errorMsg: "学号/工号必须为数字"
             })
         }
+        else if(!that.checkEmail(e.detail.value.u_email)) {
+            this.setData({
+                errorMsg: "邮箱格式错误"
+            })
+        } 
         else {
             // 校验验证码
             console.log("正确验证码：" + this.data.verifyCode);
@@ -179,50 +180,61 @@ Page({
                         that.setData({
                             code: res.code
                         });
-                        wx.showLoading({
-                            title: '正在注册中',
-                            mask: true
-                        })
                         if (e.detail.value.u_type === "student") { // 学生
-                            wx.request({
-                                url: register,
-                                method: "POST",
-                                header: {
-                                    "content-type": "application/x-www-form-urlencoded"
-                                },
-                                data: {
-                                    code: that.data.code,
-                                    u_no: e.detail.value.u_no,
-                                    u_name: e.detail.value.u_name,
-                                    u_email: e.detail.value.u_email,
-                                    u_phone: e.detail.value.u_phone,
-                                    u_type: e.detail.value.u_type,
-                                    s_no: that.data.specialtyList[that.data.academyIndex][that.data.specialtyIndex].s_no,
-                                    u_mentorName: e.detail.value.u_mentor_name,
-                                    u_mentorPhone: e.detail.value.u_mentor_phone
-                                },
-                                success: function(res) {
-                                    console.log(res.data)
-                                    console.log("注册为学生")
-                                    if (res.data.flag == 1) {
-                                        wx.hideLoading()
-                                        wx.showToast({
-                                            title: '注册成功',
-                                            duration: 2000
-                                        })
-                                        wx.redirectTo({
-                                            url: '../index/index',
-                                        })
+                            if (!that.checkPhone(e.detail.value.u_mentor_phone)) {
+                                that.setData({
+                                    errorMsg: "导师手机号格式不对"
+                                })
+                            }
+                            else {
+                                wx.showLoading({
+                                    title: '正在注册中',
+                                    mask: true
+                                })
+                                wx.request({
+                                    url: register,
+                                    method: "POST",
+                                    header: {
+                                        "content-type": "application/x-www-form-urlencoded"
+                                    },
+                                    data: {
+                                        code: that.data.code,
+                                        u_no: e.detail.value.u_no,
+                                        u_name: e.detail.value.u_name,
+                                        u_email: e.detail.value.u_email,
+                                        u_phone: e.detail.value.u_phone,
+                                        u_type: e.detail.value.u_type,
+                                        s_no: that.data.specialtyList[that.data.academyIndex][that.data.specialtyIndex].s_no,
+                                        u_mentorName: e.detail.value.u_mentor_name,
+                                        u_mentorPhone: e.detail.value.u_mentor_phone
+                                    },
+                                    success: function (res) {
+                                        console.log(res.data)
+                                        console.log("注册为学生")
+                                        if (res.data.flag == 1) {
+                                            wx.hideLoading()
+                                            wx.showToast({
+                                                title: '注册成功',
+                                                duration: 2000
+                                            })
+                                            wx.redirectTo({
+                                                url: '../index/index',
+                                            })
+                                        }
+                                        else {
+                                            wx.showToast({
+                                                title: res.data.errMsg[0],
+                                                icon: "none"
+                                            })
+                                        }
                                     }
-                                    else {
-                                        wx.showToast({
-                                            title: res.data.errMsg[0],
-                                            icon: "none"
-                                        })
-                                    }    
-                                }
-                            })
+                                })
+                            }   
                         } else { // 老师
+                            wx.showLoading({
+                                title: '正在注册中',
+                                mask: true
+                            })
                             console.log("注册为老师")
                             wx.request({
                                 url: register,
@@ -258,7 +270,6 @@ Page({
                                 }
                             })
                         }
-
                     },
                     fali(res) {
                         console.log("获取code失败")

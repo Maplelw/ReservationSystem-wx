@@ -10,6 +10,7 @@ Page({
         startDate: "",
         returnDate: "",
         currentDate: "",
+        nextDate: "",
         d_no: "11",
         lock: 0, //提交的锁
     },
@@ -18,7 +19,7 @@ Page({
     reserve: function(e) {
         var that = this;
         console.log("开始时间：" + that.data.startDate)
-        console.log("开始时间：" + that.data.returnDate)
+        console.log("归还时间：" + that.data.returnDate)
         if (that.data.startDate >= that.data.returnDate) {
             wx.showToast({
                 title: '归还时间必须在借用时间之后,且借用时间必须大于一天',
@@ -102,6 +103,7 @@ Page({
         console.log("后一天" + nextDate)
         this.setData({
             currentDate: curDate,
+            nextDate: nextDate,
             startDate: curDate,
             returnDate: nextDate,
             d_no: options.d_no

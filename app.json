@@ -1,10 +1,9 @@
 {
     "pages": [
         "pages/login/login",
-        "pages/test/test",
         "pages/admin/index/index",
-        
         "pages/user/index/index",
+        
         "pages/user/index/searchDevice/searchDevice",
         "pages/user/index/searchDevice/device/device",
         "pages/user/index/searchDevice/device/reserveDevice/reserveDevice",
